@@ -18,7 +18,7 @@ BASE_DIR = os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__fil
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['pc-swimming-ecommerce-stream4-haleyschafer.c9users.io']
+ALLOWED_HOSTS = ['pc-swimming-ecommerce-stream4-haleyschafer.c9users.io', 'pcswimming-project.herokuapp.com']
 
 
 # Application definition
@@ -30,7 +30,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'storages'
+    'storages', 
+    'home', 
+    'accounts'
 ]
 
 MIDDLEWARE = [
