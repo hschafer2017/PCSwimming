@@ -1,0 +1,14 @@
+{% extends 'home/base.html' %}
+{% load bootstrap_tags %}
+{% load static from staticfiles %}
+{% block content %}
+<h3>Login</h3>
+<form method='POST'>
+    {% csrf_token %}
+   {{form | as_bootstrap }}
+   
+    <input type="submit" value="Login"/>
+    <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
+</form>
+
+{% endblock content %}
