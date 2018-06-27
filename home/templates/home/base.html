@@ -18,7 +18,7 @@
         <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
         <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
         {% endif %}
-
+        <li><a href="{% url 'get_posts' %}"> <i class ='fa fa-bullhorn'></i> Announcements</a></li>
     </ul>
 </nav>
 {% block content %} {% endblock content %}
