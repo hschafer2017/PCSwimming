@@ -20,11 +20,17 @@ from home import urls as home_urls
 from accounts import urls as accounts_urls
 from posts import urls as posts_urls
 from products import urls as products_urls
+from django.conf.urls.static import static
+from django.views.generic import RedirectView
+from django.views.static import serve
+from django.conf import settings
 
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(home_urls)), 
     path('accounts/', include(accounts_urls)),
     path('posts/', include(posts_urls)),
-    path('products/', include(products_urls))
+    path('products/', include(products_urls)), 
+    path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT }),
+    
 ]
