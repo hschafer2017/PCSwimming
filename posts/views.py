@@ -23,3 +23,10 @@ def new_post(request):
         form = PostForm()
         
     return render(request, 'posts/postform.html', {'form': form})
+
+
+def post_detail(request, pk):
+    blogs = get_object_or_404(Post, pk=pk)
+    blogs.views += 1
+    blogs.save()
+    return render(request, "posts/postdetail.html", {'blogs': blogs})

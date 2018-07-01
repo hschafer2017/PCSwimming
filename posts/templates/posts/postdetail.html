@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+            <p><span class="boldtext">Author: </span>{{blogs.owner}}</p>
+            <h3>{{ blogs.title }}</h3>
+                    <p>{{ blogs.content | linebreaksbr }}</p>
+                    <p><span class="boldtext">Published on:</span> {{ blogs.published_date }} </p>
+                    <p><span class="boldtext">Views:</span> {{blogs.views}}</p>
+                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+                    <hr>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

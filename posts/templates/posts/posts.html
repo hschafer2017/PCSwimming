@@ -2,10 +2,15 @@
 {% load static from staticfiles %}
 
 {% block content %}
+{% if user.is_authenticated %}
 <li><a href="{% url 'new_post' %}"> <i class ='fa fa-plus'></i> New Post</a></li>
+    {% endif %}
+     
     {% for blog in blogs %}
                 <h3>{{ blog.title }}</h3>
-                        <p>{{ blog.content }}</p>
+                        <p>{{ blog.content|truncatewords:30 }}</p>
                         <p><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
+                        <p>{{blog.views}}</p>
+                        <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-default">Read more</a></p>
     {% endfor %}
     {% endblock content %}

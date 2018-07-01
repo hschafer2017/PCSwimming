@@ -8,6 +8,7 @@
 <img src="{{MEDIA_URL}}{{product.image}}" width="100px"></img>
 <li>${{product.price}}</li>
 
+<p><a href="{% url 'product_detail' product.id %}"  class="btn btn-default">More Detail</a></p>
 <br>
 {% endfor %}
 {% endblock content %}

@@ -1,0 +1,12 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+{% load bootstrap_tags %}
+{% block content %}
+ <h3>{{ product.name }}</h3>
+  <img class="img-blogpost" src="{{MEDIA_URL}}{{product.image}}" width ='250px' height ="200px">
+    <h5>{{product.price}}</h5>
+    <p>{{product.description}}</p>
+    <a href="{% url 'get_products' %}" class="btn btn-default">Back to Products</a>
+
+
+{% endblock %}
