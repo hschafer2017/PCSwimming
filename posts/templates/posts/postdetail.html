@@ -8,6 +8,10 @@
                     <p><span class="boldtext">Published on:</span> {{ blogs.published_date }} </p>
                     <p><span class="boldtext">Views:</span> {{blogs.views}}</p>
                     <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
+                    
+                    {% if user.is_authenticated and user == blogs.owner or user.is_superuser %}
+                    <a href="{% url 'edit_post' blogs.id %}" class="btn btn-default">Edit Post</a>
+                    {% endif %}
                     <hr>
                 </div>
             </div>

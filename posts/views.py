@@ -24,6 +24,20 @@ def new_post(request):
         
     return render(request, 'posts/postform.html', {'form': form})
 
+def edit_post(request, pk): 
+    post = get_object_or_404(Post, pk=pk)
+    if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
+        if request.method == "POST":
+            form = PostForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                post = form.save()
+                return redirect('post_detail', post.pk)        
+        else:
+            form = PostForm(instance=post)
+    else: 
+        return HttpResponseForbidden()
+        
+    return render(request, 'posts/postform.html', {'form': form})
 
 def post_detail(request, pk):
     blogs = get_object_or_404(Post, pk=pk)
