@@ -2,6 +2,7 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
+<li><a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
 {% for product in products %}
 <h2>{{product.name}}</h2>
 <p>{{product.description}}</p>
@@ -10,5 +11,10 @@
 
 <p><a href="{% url 'product_detail' product.id %}"  class="btn btn-default">More Detail</a></p>
 <br>
+<form action='{% url "cart" %}' method="POST">
+         {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}"/>
+         <button type="submit" class="btn-sm btn-info">Add to Cart</button>
+ </form>
 {% endfor %}
 {% endblock content %}
