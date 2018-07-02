@@ -2,7 +2,7 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-<li><a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a></li>
+<a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a>
 {% for product in products %}
 <h2>{{product.name}}</h2>
 <p>{{product.description}}</p>

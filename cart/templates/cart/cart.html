@@ -3,4 +3,19 @@
 {% load bootstrap_tags %}
 {% block content %}
 <h2>Cart Items:</h2>
+{% for p in cart %}
+
+
+<h5>{{p.product}}</h5>
+<img src="{{MEDIA_URL}}{{p.image}}" width="70px" border-radius='50'></img>
+<ul>
+    <li>Quantity: {{p.quantity}}</li> 
+   <li>${{p.price}} each</li>
+    <li>${{p.total}} total</li>
+</ul>
+<p><strong>Grand Total: ${{totals}}</strong></p>
+<a href="{% url 'get_products' %}" class="btn-sm btn-info">Back to Shopping</a>
+
+
+{% endfor %}
 {% endblock content %}

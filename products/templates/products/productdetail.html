@@ -6,6 +6,11 @@
   <img class="img-blogpost" src="{{MEDIA_URL}}{{product.image}}" width ='250px' height ="200px">
     <h5>{{product.price}}</h5>
     <p>{{product.description}}</p>
+    <form action='{% url "cart" %}' method="POST">
+         {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ product.id }}"/>
+         <button type="submit" class="btn-sm btn-info">Add to Cart</button>
+ </form>
     <a href="{% url 'get_products' %}" class="btn btn-default">Back to Products</a>
 
 
