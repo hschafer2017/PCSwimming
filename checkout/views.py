@@ -1,12 +1,12 @@
 from django.shortcuts import render, get_object_or_404
-from .forms import MakePaymentForm
+from .forms import MakePaymentForm, OrderForm
 from products.models import Product
 
 # Create your views here.
 def checkout(request):
     
     payment_form = MakePaymentForm()
-    
+    order_form = OrderForm()
     # Taken from cart views.py to get cart to show up on checkout.html
     cart = request.session.get('cart', {})
     totals = 0
@@ -23,4 +23,4 @@ def checkout(request):
     
     totals += cart[p] * product.price
     
-    return render(request, "checkout/checkout.html", {'payment_form': payment_form, 'cart': products, 'totals': totals}) 
+    return render(request, "checkout/checkout.html", {'payment_form': payment_form, 'order_form': order_form, 'cart': products, 'totals': totals}) 
