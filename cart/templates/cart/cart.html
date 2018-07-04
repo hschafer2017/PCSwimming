@@ -13,7 +13,15 @@
    <li>${{p.price}} each</li>
     <li>${{p.total}} total</li>
 </ul>
+
+<form action='{% url "remove" %}' method="POST">
+        {% csrf_token %}
+        <input type="hidden" name="product_id" value="{{ p.product.id }}"/>
+        <button class="btn-sm btn-danger">Remove</button>
+</form>
+
 <p><strong>Grand Total: ${{totals}}</strong></p>
+<button class='btn-sm btn-success'>Checkout</button>
 <a href="{% url 'get_products' %}" class="btn-sm btn-info">Back to Shopping</a>
 
 
