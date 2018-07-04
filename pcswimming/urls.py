@@ -25,6 +25,7 @@ from django.views.generic import RedirectView
 from django.views.static import serve
 from django.conf import settings
 from cart import urls as cart_urls
+from checkout import urls as checkout_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -33,6 +34,7 @@ urlpatterns = [
     path('posts/', include(posts_urls)),
     path('products/', include(products_urls)), 
     path('cart/', include(cart_urls)),
+    path('checkout/', include(checkout_urls)),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT }),
     
 ]

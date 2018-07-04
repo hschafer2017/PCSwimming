@@ -21,7 +21,10 @@
 </form>
 
 <p><strong>Grand Total: ${{totals}}</strong></p>
-<button class='btn-sm btn-success'>Checkout</button>
+<form action='{% url "checkout" %}' method="POST">
+         {% csrf_token %}
+         <button class='btn-sm btn-success'>Checkout</button>
+ </form
 <a href="{% url 'get_products' %}" class="btn-sm btn-info">Back to Shopping</a>
 
 
