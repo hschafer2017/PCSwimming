@@ -5,7 +5,20 @@
 
 {% block content %}
 
-    {% include 'cart/cart.html' %}
+    <h2>Your cart:</h2>
+
+{% for p in cart %}
+
+<h5>{{p.product}}</h5>
+<ul>
+    <img src="{{MEDIA_URL}}{{p.image}}" width="70px" border-radius='50'></img>
+    <li>Quantity: {{p.quantity}}</li> 
+    <li>${{p.price}} each</li>
+    <li>${{p.total}} total</li>
+</ul>
+{% endfor %}
+<p><strong>Sub-Total: ${{totals}}</strong></p>
+
     <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
         
     <legend>Payment Details</legend>
