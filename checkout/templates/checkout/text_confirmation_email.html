@@ -1,0 +1,22 @@
+
+{% autoescape off %}
+
+
+Hi {{ user.username }}, 
+
+Thank you for your purchase through {{ site_name }}!
+
+You bought...
+
+{% for item in cart_items %}
+{{ item.quantity}} {{ item.name }} @ ${{ item.price }} (${{ item.total}})\n
+{% endfor %}
+
+Total: ${{total}}\n\n
+
+Thanks supporting Portage Central Swimming and Diving! Be sure to check out the website for upcoming events!
+
+It's a great day to be a mustang!
+
+
+{% endautoescape %}

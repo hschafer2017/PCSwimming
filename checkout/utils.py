@@ -22,21 +22,21 @@ def charge_card(stripe_token, total):
     total_in_cent = int(total*100)
     return stripe.Charge.create(
         amount=total_in_cent,
-        currency="EUR",
+        currency="USD",
         description="Dummy Transaction",
         card=stripe_token,
     )
 
 def send_confirmation_email(email, username, items_and_total):
     context = {
-        'site_name': "Blah Blah dot com",
+        'site_name': "Portage Central Swim Boosters",
         'user': username,
     }
     context.update(items_and_total)
     message = render_to_string('checkout/text_confirmation_email.html', context)
     html_message = render_to_string('checkout/html_confirmation_email.html', context)
                 
-    subject = 'Thanks for buying our stuff!'
+    subject = 'Thanks for your order!'
     message = message
     from_email = settings.SYSTEM_EMAIL
     to_email = [email]

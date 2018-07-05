@@ -40,10 +40,11 @@ def checkout(request):
 
             if customer.paid:
                 messages.error(request, "You have successfully paid")
+                send_confirmation_email(request.user.email, request.user, items_and_total)
         
                 # Clear the Cart
                 del request.session['cart']
-                return HttpResponse("You've Paid!")
+                return redirect('home')
                 
     else:
         order_form = OrderForm()
