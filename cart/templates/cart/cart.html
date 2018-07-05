@@ -24,7 +24,9 @@
 <form action='{% url "checkout" %}'>
          {% csrf_token %}
          <button class='btn-sm btn-success'>Checkout</button>
- </form
+ </form>
+ 
+ 
 <a href="{% url 'get_products' %}" class="btn-sm btn-info">Back to Shopping</a>
 
 

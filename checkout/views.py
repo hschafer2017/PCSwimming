@@ -8,15 +8,17 @@ from django.utils import timezone
 from .models import OrderLineItem
 from django.contrib import messages
 from django.conf import settings
+import stripe
+from .utils import save_order_items, charge_card, send_confirmation_email
 
-# Create your views here.
+# Create your views here- CHECKOUT.
+
 def checkout(request):
-    
     if request.method=="POST":
         order_form = OrderForm(request.POST)    
         payment_form = MakePaymentForm(request.POST)
         
-        if order_form.is_valid():
+        if order_form.is_valid() and payment_form.is_valid():
             # Save The Order
             order = order_form.save(commit=False)
             order.date = timezone.now()
@@ -24,24 +26,31 @@ def checkout(request):
         
             # Save the Order Line Items
             cart = request.session.get('cart', {})
-            for id, quantity in cart.items():
-                product = get_object_or_404(Product, pk=id)
-                order_line_item = OrderLineItem(
-                    order = order,
-                    product = product,
-                    quantity = quantity
-                    )
-                order_line_item.save()
-                
-            del request.session['cart']
-            return HttpResponse("Success")
-    
-    
-    order_form = OrderForm()
-    payment_form = MakePaymentForm()
-    context = {'order_form': order_form, 'payment_form': payment_form}
-    cart = request.session.get('cart', {})
-    cart_items_and_total = get_cart_items_and_total(cart)
-    context.update(cart_items_and_total)
+            save_order_items(order, cart)
+            
+            # Charge the Card
+            items_and_total = get_cart_items_and_total(cart)
+            total = items_and_total['totals']
+            stripe_token=payment_form.cleaned_data['stripe_id']
 
-    return render(request, "checkout/checkout.html", context) 
+            try:
+                customer = charge_card(stripe_token, total)
+            except stripe.error.CardError:
+                messages.error(request, "Your card was declined!")
+
+            if customer.paid:
+                messages.error(request, "You have successfully paid")
+        
+                # Clear the Cart
+                del request.session['cart']
+                return HttpResponse("You've Paid!")
+                
+    else:
+        order_form = OrderForm()
+        payment_form = MakePaymentForm()
+        context = {'order_form': order_form, 'payment_form': payment_form, 'publishable': settings.STRIPE_PUBLISHABLE }
+        cart = request.session.get('cart', {})
+        cart_items_and_total = get_cart_items_and_total(cart)
+        context.update(cart_items_and_total)
+    
+    return render(request, "checkout/checkout.html", context)
