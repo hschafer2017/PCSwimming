@@ -17,7 +17,7 @@
                         {% empty %}
                         <p>No comments here yet</p>
                         {% endfor %}
-                    
+                    <a href="{% url 'new_comment'  blogs.id %}" class="btn btn-default">Comment</a>
                     <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
                     
                     {% if user.is_authenticated and user == blogs.owner or user.is_superuser %}

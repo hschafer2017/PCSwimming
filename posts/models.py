@@ -18,7 +18,6 @@ class Comment(models.Model):
     owner = models.ForeignKey(User, related_name='comments', null=True, default= 1, on_delete=models.SET_NULL)
     content = models.TextField()
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
-    views = models.IntegerField(default=0)
 
     def __str__(self):
         return self.content
