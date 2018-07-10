@@ -11,6 +11,9 @@
                         <p>{{ blog.content|truncatewords:30 }}</p>
                         <p><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
                         <p>{{blog.views}}</p>
+
+                        <p>Comments: {{ blog.comments.count}}</p>
+                        
                         <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-default">Read more</a></p>
     {% endfor %}
     {% endblock content %}

@@ -1,0 +1,23 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+{% for event in events %}
+<table class="cal_month_calendar">
+<tr>
+
+<th>{{ event.day }}</th>
+</tr>
+<tr>
+<td class="cal_not_in_month"> 
+<p><strong>{{ event.location }}</strong></p>
+<p>{{ event.name }} @ {{ event.start_time }}</p>
+</td>
+ 
+</tr>
+
+
+</table>
+<br>
+{% endfor %}
+{% endblock content %}

@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'cart', 
     'checkout',
     'events',
+    'djangobower',
     
 ]
 
@@ -66,6 +67,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
+                'django.template.context_processors.request', 
             ],
         },
     },
@@ -113,3 +115,4 @@ STRIPE_PUBLISHABLE = os.getenv('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET = os.getenv('STRIPE_SECRET_KEY')
 
 MESSAGE_STORAGE = "django.contrib.messages.storage.session.SessionStorage"
+

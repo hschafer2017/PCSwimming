@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post
+from .models import Post, Comment
 from .forms import PostForm
 from django.http import HttpResponseForbidden
 
@@ -7,9 +7,11 @@ from django.http import HttpResponseForbidden
 def get_posts(request): 
     if request.user.is_authenticated:
         blogs = Post.objects.all()
+        comments = Comment.objects.all()
     else: 
+        comments = Comment.objects.all()
         blogs = Post.objects.all()
-    return render(request, 'posts/posts.html', {'blogs': blogs})
+    return render(request, 'posts/posts.html', {'blogs': blogs, 'comments':comments})
 
 def new_post(request):
     if request.method == "POST":
@@ -41,6 +43,7 @@ def edit_post(request, pk):
 
 def post_detail(request, pk):
     blogs = get_object_or_404(Post, pk=pk)
+    comments = Comment.objects.filter()
     blogs.views += 1
     blogs.save()
-    return render(request, "posts/postdetail.html", {'blogs': blogs})
+    return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments})
