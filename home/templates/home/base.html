@@ -6,53 +6,51 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <link rel="stylesheet" href="https://bootswatch.com/3/sandstone/bootstrap.min.css"> {% block head_js %}
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
+    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
+    {% block head_js %}
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% endblock head_js %}
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
-    <link rel="stylesheet" href="#">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>PCHS Swimming and Diving</title>
 </head>
-<div class="background">
-    <div class="content">
-        <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-            <div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+<body>
+    <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
 
+
                 </div>
                 <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        {% if user.is_authenticated %}
-                        <li><a href="{% url 'profile' %}"><i class = 'fa fa-user-circle'></i> Welcome, {{user}}</a></li>
-                        <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> Logout</a></li>
-                        {% else %}
-                        <li><a href="{% url 'register' %}"><i class="fa fa-user-plus"></i> Register</a></li>
-                        <li><a href="{% url 'login' %}"><i class="fa fa-sign-in"></i> Login</a></li>
-                        {% endif %}
-                        <li><a href="{% url 'get_posts' %}"> <i class ='fa fa-bullhorn'></i> Discussion</a></li>
-                        <li><a href="{% url 'get_products' %}"> <i class ='fa fa-gift'></i> Shop</a></li>
-                        <li><a href="{% url 'get_events' %}"> <i class ='fa fa-calendar'></i> Events</a></li>
-                    </ul>
+                    <ul class="nav navbar-nav navbar-default">
+                    <a href="{% url 'home' %}"><span class="circle"><img alt="PC Logo" src="{% static 'images/logo.png' %}"></span></a>
+                    <li><a href="{% url 'get_posts' %}">ALUMNI</a></li>
+                    <li><a href="{% url 'get_posts' %}">DISCUSSION</a></li>
+                    <li><a href="{% url 'get_events' %}">EVENTS</a></li>
+                    <li><a href="{% url 'get_products' %}">SHOP</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a href="{% url 'profile' %}"><i class = 'fa fa-user-circle'></i> WELCOME, {{user}}.</a></li>
+                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
+                    {% else %}
+                    <li><a href="{% url 'login' %}">LOGIN</a></li>
+                    <li><a href="{% url 'register' %}">REGISTER</a></li>
+                    {% endif %}
+                </ul>
                 </div>
             </div>
         </nav>
-    
-        <div id="masthead">
-            <div class="container">
-                <div class="row">
-                    <h1> PCHS Swimming and Diving
-                        <p id="logo" class="lead">It's a great day to be a Mustang!</p>
-                    </h1>
-                </div>
-            </div>
-        </div>
+    <div class="content">
 {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
@@ -77,13 +75,31 @@
                 </div>
             </div>
         </div>
-        <footer>
-            <div class="container">
-                <p>PCHS Swimming and Diving</p>
-            </div>
     </div>
-</div>
-</footer>
+       
+       
+       <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-4">
+                    <p>Portage Central Swimming & Diving</p>
+                    </div>
+                <div class="col-sm-4">
+                    <p class ='mustang'>"It's a great day to be a Mustang!"</p>
+                </div>
+                <div class="col-sm-4">
+                    <p class = 'payment'>
+                    <i class="fa fa-cc-mastercard"></i>
+                    <i class="fa fa-cc-visa"></i>
+                    <i class="fa fa-cc-discover"></i>
+                    <i class="fa fa-cc-amex"></i></p>
+                    <p>Processed by <i class="fab fa-stripe"></i></p>
+                </div>
+            </div>
+            
+        </div>
+    </footer>
+    <script type="text/javascript" src="https://code.jquery.com/jquery.min.js"></script>
 </body>
 
 </html>

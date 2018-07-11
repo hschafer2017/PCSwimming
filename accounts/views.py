@@ -44,15 +44,8 @@ def register(request):
     return render(request, 'accounts/register.html', {'form': registration_form})
     
 def profile(request):
-    posts = Post.objects.all()
-    if request.method == "POST":
-        form = PhotoForm(request.POST, request.FILES)
-        if form.is_valid():
-            photo = form.save()
-            return render(request, 'accounts/profile.html', {'form':form}, {'posts', posts})
-    else:
-        form = PhotoForm()
-    return render(request, 'accounts/profile.html', {'form':form}, {'posts': posts})
+    
+    return render(request, 'accounts/profile.html')
     
 def do_logout(request): 
     logout(request)
