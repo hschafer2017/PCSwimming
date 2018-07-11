@@ -1,1 +1,46 @@
+body,
+html {
+    height: 100%;
+}
 
+.background {
+    background-image: url('../images/background.jpg');
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    /*filter: blur(3px);*/
+    /*position: relative;*/
+}
+
+.content {
+    background:none;
+    left: 0;
+    right: 0;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    /*position:absolute;*/
+    /*z-index: 2;*/
+}
+
+a h1 {
+    color: #fafafa;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 8vw;
+    padding: 20px;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
+
+a:hover {
+    text-decoration: none;
+}
+
+a h1:hover {
+    color: #fafafa;
+    font-family: 'Quicksand', sans-serif;
+    font-size: 11vw;
+    text-decoration: none;
+    transition-duration: 0.5s;
+}
