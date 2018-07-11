@@ -20,4 +20,9 @@
 </table>
 <br>
 {% endfor %}
+{% for document in documents %}
+<p>Document: {{document.name}}</p>
+<a href="{{MEDIA_URL}}{{document.file}}">View File</a>
+{% endfor %}
+
 {% endblock content %}
