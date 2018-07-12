@@ -101,7 +101,8 @@ footer {
 .carousel {
   background-image: url('../images/events.jpg');
   /*background-position: center;*/
-  height: 40vh;
+  height: 50vh;
+  width: 100vw;
   /*opacity: .5;*/
   /*z-index: 2;*/
 }
