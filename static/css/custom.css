@@ -9,19 +9,25 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    /*filter: blur(3px);*/
-    /*position: relative;*/
+    z-index: 2;
+    /*position: absolute;*/
+    transform: scale(1);
+    filter: blur(2px);
+    position: relative;
 }
 
 .content {
-    background:none;
+    background: none;
     left: 0;
     right: 0;
     margin-left: 20px;
     margin-right: 20px;
     text-decoration: none;
+    opacity: 1;
+    position: absolute;
+    /*transform: translateY(0%);*/
     /*position:absolute;*/
-    /*z-index: 2;*/
+    z-index: 3;
 }
 
 a h1 {

@@ -1,5 +1,5 @@
 body {
-  background-color: #fafafa;
+  background-color: #FAFAFA;
   font-family: 'Open Sans', sans-serif;
 }
 .navbar-default {
@@ -81,4 +81,46 @@ footer {
 
 .payment i:hover {
   color: black;
+}
+
+/*------------------EVENTS--------------*/
+
+.carousel-control.left, .carousel-control.right {
+  background-image:none !important;
+  filter:none !important;
+}
+.carousel-control.left:hover, .carousel-control.right:hover{
+  color:#666;
+}
+.carousel-content {
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+  
+}
+.carousel {
+  background-image: url('../images/events.jpg');
+  /*background-position: center;*/
+  height: 40vh;
+  /*opacity: .5;*/
+  /*z-index: 2;*/
+}
+.card  {
+  color: #666;
+  background-color: #FAFAFA;
+  text-align:center;
+  width:15em;
+  height: 15em;
+  top:50%;
+  left:50%;
+  margin: auto;
+  vertical-align: middle;
+  padding: 15px;
+  padding-top: 25px;
+  justify-content: center;
+  align-items: center;
+  /*z-index: 1;*/
+}
+.card-title {
+  top:50px;
 }

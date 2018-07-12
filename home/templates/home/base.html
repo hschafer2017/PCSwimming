@@ -35,10 +35,10 @@
                 <div id="navbar" class="navbar-collapse collapse">
                     <ul class="nav navbar-nav navbar-default">
                     <a href="{% url 'home' %}"><span class="circle"><img alt="PC Logo" src="{% static 'images/logo.png' %}"></span></a>
-                    <li><a href="{% url 'get_posts' %}">ALUMNI</a></li>
-                    <li><a href="{% url 'get_posts' %}">DISCUSSION</a></li>
-                    <li><a href="{% url 'get_events' %}">EVENTS</a></li>
-                    <li><a href="{% url 'get_products' %}">SHOP</a></li>
+                    <li><a href="{% url 'get_posts' %}" class = 'page-scroll'>ALUMNI</a></li>
+                    <li><a href="{% url 'get_posts' %}" class = 'page-scroll'>DISCUSSION</a></li>
+                    <li><a href="{% url 'get_events' %}" class = 'page-scroll'>EVENTS</a></li>
+                    <li><a href="{% url 'get_products' %}" class = 'page-scroll'>SHOP</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}"><i class = 'fa fa-user-circle'></i> WELCOME, {{user}}.</a></li>
                     <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
