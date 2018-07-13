@@ -41,8 +41,8 @@
                     <li><a href="{% url 'get_events' %}" class = 'page-scroll'>EVENTS</a></li>
                     <li><a href="{% url 'get_products' %}" class = 'page-scroll'>SHOP</a></li>
                     {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}"><i class = 'fa fa-user-circle'></i> WELCOME, {{user}}.</a></li>
-                    <li><a href="{% url 'logout' %}"><i class="fa fa-sign-out"></i> LOGOUT</a></li>
+                    <li><a href="{% url 'profile' %}"> WELCOME, {{user}}.</a></li>
+                    <li><a href="{% url 'logout' %}"> LOGOUT</a></li>
                     {% else %}
                     <li><a href="{% url 'login' %}">LOGIN</a></li>
                     <li><a href="{% url 'register' %}">REGISTER</a></li>
@@ -56,7 +56,6 @@
         </nav>
         
         </header>
-       
     <div class="content">
 {% if messages %}
         <div class="alert alert-success">
@@ -72,8 +71,11 @@
         
             <div class="row">
                 <div class="col-md-12">
-                    
-                        
+                    <br>
+                        <br>
+<br>
+<br>
+<br>
                             <!--blogpost entries-->
                             {% block content %} {% endblock %}
                             <!--blogpost entries-->
@@ -88,7 +90,8 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm-4">
-                    <p>Portage Central Swimming & Diving</p>
+                    <p>PORTAGE CENTRAL SWIMMING AND DIVING</p>
+                    <p>PORTAGE, MI</p>
                     </div>
                 <div class="col-sm-4">
                     <p class ='mustang'>"It's a great day to be a Mustang!"</p>

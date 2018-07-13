@@ -4,16 +4,16 @@ body {
 }
 
 .navbar-default {
-  background-color: #fafafa;
-  border-color: #fafafa;
+  background-color: #000F2D;
+  border-color: #000F2d;
 }
 
 .navbar-default .navbar-nav li a {
-  color: #666;
+  color: #fafafa;
 }
 
 .navbar-default .navbar-nav li a:hover {
-  color: black;
+  color: white;
 }
 
 .navbar .navbar-nav {
@@ -24,10 +24,46 @@ body {
 
 .navbar .navbar-collapse {
   text-align: center;
+  color: #fafafa;
+}
+
+@media (min-width: 839px) {
+  .navbar-header {
+    float: left;
+  }
+}
+@media (min-width: 840px) {
+.navbar-toggle {
+    display: none;
+}
+}
+@media (min-width: 739px) {
+.navbar-fixed-bottom .navbar-collapse, .navbar-fixed-top .navbar-collapse, .navbar-static-top .navbar-collapse {
+    padding-right: 0;
+    padding-left: 0;
+}
+}
+
+@media (min-width: 839px) {
+  .container-fluid .navbar-collapse,
+  .container-fluid .navbar-header,
+  .container.navbar-collapse,
+  .container .navbar-header {
+    margin-right: 0;
+    margin-left: 0;
+  }
+}
+
+@media (min-width: 840px){
+.navbar-collapse.collapse {
+    display: block!important;
+    height: auto!important;
+    padding-bottom: 0;
+    overflow: visible!important;
+}
 }
 
 a img {
-  border-radius: 50%;
   float: left;
   height: 50px;
   margin-top: 12.5px;
@@ -48,22 +84,16 @@ a img {
 }
 
 footer {
+  background-color: #fafafa;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
   color: #666;
   text-align: left;
-}
-
-footer {
   text-align: center;
   font-size: 14px;
-
-}
-
-.content {
-  padding-top: 70px;
+  padding-top: 10px
 }
 
 .mustang {
@@ -72,7 +102,7 @@ footer {
 }
 
 .payment {
-  font-size: 26px;
+  font-size: 20px;
 }
 
 .payment i {
@@ -81,7 +111,7 @@ footer {
 }
 
 .payment i:hover {
-  color: black;
+  color: #000F2D;
 }
 
 /*------------------EVENTS--------------*/
@@ -106,15 +136,16 @@ footer {
 
 .carousel {
   background-image: url('../images/events.jpg');
-  /*background-position: center;*/
+  background-position: center;
   height: 50vh;
   width: 100vw;
+  /*filter: saturate(0);*/
   /*opacity: .5;*/
-  /*z-index: 2;*/
+  z-index: 1;
 }
 
 .card {
-  color: #666;
+  color: #000F2D;
   background-color: #FAFAFA;
   text-align: center;
   width: 15em;
@@ -127,40 +158,20 @@ footer {
   padding-top: 25px;
   justify-content: center;
   align-items: center;
-  /*z-index: 1;*/
+  z-index: 2;
 }
 
 .card-title {
   top: 50px;
+  z-index: 3;
 }
 
 /*------------PRODUCTS-------------*/
-
-.card {
-  margin: 10px 0px 10px 0px;
-  position: absolute;
-  text-align: center;
-}
 
 .card:hover {
   -moz-box-shadow: 0 0 10px #ccc;
   -webkit-box-shadow: 0 0 10px #ccc;
   box-shadow: 0 0 10px #ccc;
-}
-
-.overlay {
-  position: relative;
-  text-align: center;
-  top: 0;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /*transform: translate(-50%, -50%);*/
-  /*border-top: 1px solid white;*/
-  /*border-bottom: 1px solid white;*/
-  color: white;
-  text-transform: uppercase;
-  text-shadow: 1.5px 1.5px black;
 }
 
 .try {
@@ -174,27 +185,27 @@ footer {
 }
 
 
-.try .btn {
+.try .btn-sm {
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #fafafa;
-  color: #666;
   text-decoration: none;
   font-size: 16px;
-  padding: 12px 24px;
   border: none;
-  cursor: pointer;
-  border-radius: 5px;
+  color: #040E47;
 }
 
 .image {
   display: block;
 }
-.try .btn:hover {
+
+.try .btn-sm:hover {
   background-color: #fafafa;
+  color: #000F2D;
+  text-decoration: none;
 }
 
 .try:hover .img-hover {
@@ -211,7 +222,33 @@ footer {
   height: 100%;
   width: 100%;
   opacity: 0;
-  transition: .5s ease;
-  background-color: #3877c7;
-  
+  background-color: #000F2D;
+
 }
+
+.cart {
+  background-color: #000F2D;
+  color: #fafafa;
+}
+
+.cart:hover {
+  color: #fafafa;
+}
+
+.prod {
+  color: #000F2D;
+}
+
+.prod:hover {
+  color: #000F2D;
+
+}
+
+.cart-go {
+  color: #000F2D;
+
+}
+
+/*---------------------Product Details---------------------*/
+
+/*----------------------Posts------------------------*/

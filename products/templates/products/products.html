@@ -4,26 +4,32 @@
 {% block content %}
 
 <div class="container">
-<a href="{% url 'view_cart' %}"><i class="fa fa-shopping-cart"></i> Cart</a>
+    <div class="panel">
+        <div class="panel-body">
+            
+        
+<a href="{% url 'view_cart' %}" class='cart-go'><i class="fa fa-shopping-cart"></i> Cart</a>
 
 
 
 {% for product in products %}
 
-<h2>{{product.name}}</h2>
-
-<div class="container try">
- 
+<div class="row">
+<div class="col-xs-hidden col-sm-4">
+     <h4>{{product.name}}</h4>
+<div class="try">
   <img src="{{MEDIA_URL}}{{product.image}}" height = '100px' class = 'image' width ='100px' height="100px" alt="{{product.name}}">
  
   <div class="img-hover">
  
-  <button class="btn"><a href="{% url 'product_detail' product.id %}" >More Detail
+  <button class="btn-sm prod"><a href="{% url 'product_detail' product.id %}" >View
   
    </a></button>
    </div>
 </div>
-
+</div>
+<div class="col-xs-hidden col-sm-4">    
+<br>
 <p>{{product.description}}</p>
 
 <p>${{product.price}}</p>
@@ -33,10 +39,13 @@
 <form action='{% url "cart" %}' method="POST">
          {% csrf_token %}
         <input type="hidden" name="product_id" value="{{ product.id }}"/>
-         <button type="submit" class="btn-sm btn-info">Add to Cart</button>
+         <button type="submit" class="btn cart">Add to Cart</button>
 </form>
- 
- 
+ </div>
+<div class="col-xs-hidden col-sm-4"></div> 
+ </div>
 {% endfor %}
 </div>
+</div>
+    </div>
 {% endblock content %}

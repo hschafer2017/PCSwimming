@@ -2,16 +2,39 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
- <h3>{{ product.name }}</h3>
+<div class="container">
+ <div class="panel">
+  <div class="panel-body">
+ <div class="row">
+  <br>
+  <div class="col-xs-hidden col-sm-6">
+ 
   <img class="img-blogpost" src="{{MEDIA_URL}}{{product.image}}" width ='250px' height ="200px">
-    <h5>{{product.price}}</h5>
-    <p>{{product.description}}</p>
+    </div>
+    <div class="col-xs-hidden col-sm-6">
+     <h3>{{ product.name }}</h3>
+    <h5>${{product.price}}</h5>
+    <br>
+    
+    <br>
     <form action='{% url "cart" %}' method="POST">
          {% csrf_token %}
         <input type="hidden" name="product_id" value="{{ product.id }}"/>
-         <button type="submit" class="btn-sm btn-info">Add to Cart</button>
+         <button type="submit" class="btn cart">Add to Cart</button>
  </form>
-    <a href="{% url 'get_products' %}" class="btn btn-default">Back to Products</a>
-
+ 
+ <br>
+ 
+    <a href="{% url 'get_products' %}" class="btn prod btn-default">Back to Products</a>
+    </div>
+    </div>
+    <br>
+    
+    <div class="container">
+    <div class="row"><h5>{{product.description}}</h5></div>
+    </div>
+    </div>
+    </div>
+</div>
 
 {% endblock %}
