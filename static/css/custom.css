@@ -9,7 +9,7 @@ html {
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
-    z-index: 2;
+    z-index: 1;
     /*position: absolute;*/
     transform: scale(1);
     filter: blur(2px);
@@ -25,9 +25,8 @@ html {
     text-decoration: none;
     opacity: 1;
     position: absolute;
-    /*transform: translateY(0%);*/
-    /*position:absolute;*/
-    z-index: 3;
+    /*position:relative;*/
+    /*z-index: 2;*/
 }
 
 a h1 {
