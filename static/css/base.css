@@ -185,19 +185,50 @@ footer {
 }
 
 
-.try .btn-sm {
+.try .prod {
   position: absolute;
-  top: 50%;
-  left: 50%;
+  top: 60%;
+  left: 30%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  background-color: #fafafa;
+  font-size: 16px;
+  border: none;
+}
+.try .prod a i {
+  color: #040E47;
+}
+.try .prod a:hover{
+  text-decoration: none;
+}
+
+.try .prod a i:hover {
+  color: #040E47;
+}
+
+.try .cart {
+  position: absolute;
+  top: 60%;
+  left: 70%;
   transform: translate(-50%, -50%);
   -ms-transform: translate(-50%, -50%);
   background-color: #fafafa;
   text-decoration: none;
   font-size: 16px;
   border: none;
+}
+
+.try .cart i {
   color: #040E47;
 }
 
+.try .cart a {
+  color: #040E47;
+}
+.try .cart a:hover {
+  color: #040E47;
+  text-decoration: none;
+}
 .image {
   display: block;
 }
@@ -210,10 +241,15 @@ footer {
 
 .try:hover .img-hover {
   opacity: 1;
+  color: #fafafa;
+  padding-top:5px;
+  text-align: center;
+  transition: .5s ease-out;
+  
 }
 
 .img-hover {
-  transition: .5s ease;
+  transition: .5s ease-in;
   position: absolute;
   top: 0;
   bottom: 0;
