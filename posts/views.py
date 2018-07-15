@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment
+from .models import Post, Comment, AlumPost
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib.auth.decorators import login_required
@@ -116,11 +116,13 @@ def delete_comment(request):
 
     return redirect('get_posts')
     
-    
-
 def post_detail(request, pk):
     blogs = get_object_or_404(Post, pk=pk)
     comments = Comment.objects.filter()
     blogs.views += 1
     blogs.save()
     return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments})
+    
+def get_alum_posts(request): 
+    alum_posts = AlumPost.objects.all()
+    return render(request, "posts/alumniposts.html", {"alum_posts":alum_posts})

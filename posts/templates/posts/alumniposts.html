@@ -1,0 +1,16 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+
+{% block content %}
+<br>
+<br>
+<br>
+<div class="container">
+{% for alum_post in alum_posts %}
+<h4>{{alum_post.title}}</h4>
+<p>{{alum_post.content}}</p>
+<p>{{alum_post.published_date}}</p>
+<img class="alumni-photo" src="{{MEDIA_URL}}{{alum_post.image}}" width ='250px' height ="200px">
+</div>
+{% endfor %}
+{% endblock content %}
