@@ -4,29 +4,29 @@ html {
 }
 
 .background {
-    background-image: url('../images/background.jpg');
+    /*background-image: url('../images/background.jpg');*/
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
     background-size: cover;
     z-index: 1;
-    /*position: absolute;*/
-    /*transform: scale(1);*/
-    /*filter: blur(2px);*/
+    
     position: relative;
 }
-
+#blurred {
+    filter: blur(2px);
+}
 .content {
     background: none;
     left: 0;
     right: 0;
+    top: 15%;
     margin-left: 20px;
     margin-right: 20px;
     text-decoration: none;
     opacity: 1;
     position: absolute;
-    /*position:relative;*/
-    /*z-index: 2;*/
+    z-index: 2;
 }
 
 a h1 {

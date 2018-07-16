@@ -1,52 +1,45 @@
-{% extends 'home/base.html' %}
-{% load static from staticfiles %}
-{% load bootstrap_tags %}
-{% block content %}
+{% extends 'home/base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
 <br>
 <br>
 <div class="container">
     <div class="panel">
         <div class="panel-body">
-            
-        
-<a href="{% url 'view_cart' %}" class='cart-go'><i class="fa fa-shopping-cart"></i> Cart</a>
-<br>
 
 
-{% for product in products %}
-<br>
-<div class="row">
-<div class="col-xs-hidden col-sm-4">
-<div class="try">
-  <img src="{{MEDIA_URL}}{{product.image}}" height = '100px' class = 'image' width ='100px' alt="{{product.name}}">
- 
-  <div class="img-hover">
-     <h5 class ='out'>{{product.name}}</h5>
-     <br>
-     
-  <button class="btn-sm prod"><a href="{% url 'product_detail' product.id %}" ><i class="fa fa-bars"></i></button>
-   <form action='{% url "cart" %}' method="POST">
-         {% csrf_token %}
-        <input type="hidden" name="product_id" value="{{ product.id }}"/>
-         <button type="submit" class="btn-sm cart"><i class="fa fa-shopping-cart"></i></button>
-</form>
-  
-   </div>
-</div>
-</div>
-<br>
-<div class="col-xs-hidden col-sm-4">    
-<br>
-<br>
+            <a href="{% url 'view_cart' %}" class='cart-go'><i class="fa fa-shopping-cart"></i> Cart</a>
+            <br> {% for product in products %}
+            <br>
+            <div class="row">
+                <div class="col-xs-hidden col-sm-4">
+                    <div class="try">
+                        <img src="{{MEDIA_URL}}{{product.image}}" height='100px' class='image' width='100px' alt="{{product.name}}"/>
+
+                        <div class="img-hover">
+                            <h5 class='out'>{{product.name}}</h5>
+                            <br>
+
+                            <button class="btn-sm prod"><a href="{% url 'product_detail' product.id %}" ><i class="fa fa-bars"></i></a></button>
+                            <form action='{% url "cart" %}' method="POST">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}" />
+                                <button type="submit" class="btn-sm cart"><i class="fa fa-shopping-cart"></i></button>
+                            </form>
+
+                        </div>
+                    </div>
+                </div>
+                <br>
+                <div class="col-xs-hidden col-sm-4">
+                    <br>
+                    <br>
 
 
- </div>
-<div class="col-xs-hidden col-sm-4"></div> 
- </div>
- <br>
- <br>
-{% endfor %}
-</div>
-</div>
+                </div>
+                <div class="col-xs-hidden col-sm-4"></div>
+            </div>
+            <br>
+            <br> {% endfor %}
+        </div>
     </div>
+</div>
 {% endblock content %}

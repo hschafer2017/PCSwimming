@@ -148,6 +148,10 @@ footer {
   z-index: 1;
 }
 
+.carouselcard {
+  height: 100%;
+}
+
 /*.eventCard {*/
 /*  top: 50%;*/
 /*  transform: translateY(-50%);*/
@@ -162,6 +166,7 @@ footer {
   height: 15em;
   top: 50%;
   left: 50%;
+  margin: 25% auto;
   padding: 15px;
   padding-top: 25px;
   align-items: center;
@@ -246,10 +251,6 @@ footer {
 .try .cart a:hover {
   color: #040E47;
   text-decoration: none;
-}
-
-.image {
-  display: block;
 }
 
 .try .btn-sm:hover {
