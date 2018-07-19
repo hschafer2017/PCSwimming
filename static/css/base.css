@@ -16,6 +16,12 @@ body {
   color: #FFD300;
 }
 
+@media (min-width: 840px) {
+.navbar-collapse.collapse {
+    
+}
+}
+
 .navbar .navbar-nav {
   display: inline-block;
   float: none;
@@ -62,18 +68,19 @@ body {
   .navbar-collapse.collapse {
     display: block!important;
     height: auto!important;
-    padding-bottom: 0;
+    padding-top: 5px;
+    padding-bottom: 5px;
     overflow: visible!important;
   }
 }
 
 a img {
   float: left;
-  height: 50px;
-  margin-top: 12.5px;
+  height: 60px;
+  margin-top: 8px;
   position: absolute;
   right: 90vw;
-  width: 50px;
+  width: 60px;
   vertical-align: top;
 }
 

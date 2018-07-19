@@ -2,6 +2,8 @@
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
 {% block content %}
+<br>
+<div class="container">
 <h3>Login</h3>
 <form method='POST'>
     {% csrf_token %}
@@ -10,5 +12,5 @@
     <input type="submit" value="Login"/>
     <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
 </form>
-
+</div>
 {% endblock content %}

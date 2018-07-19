@@ -14,7 +14,7 @@ def do_login(request):
     
             if user is not None:
                 login(request, user)
-                return redirect("get_posts")
+                return redirect("get_products")
             else:
                 login_form.add_error(None, "Your username or password are incorrect")
     else:

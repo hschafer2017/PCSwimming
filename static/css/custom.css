@@ -4,7 +4,6 @@ html {
 }
 
 .background {
-    /*background-image: url('../images/background.jpg');*/
     height: 100%;
     background-position: center;
     background-repeat: no-repeat;
@@ -48,4 +47,7 @@ a h1:hover {
     font-size: 11vw;
     text-decoration: none;
     transition-duration: 0.5s;
+}
+.home {
+    top:50%;
 }
