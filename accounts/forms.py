@@ -7,8 +7,8 @@ class UserLoginForm(forms.Form):
     """
     Used by the user to enter login credentials
     """
-    username = forms.CharField()
-    password = forms.CharField(widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'USERNAME'}))
+    password = forms.CharField(widget=forms.PasswordInput(attrs={'placeholder': 'PASSWORD'}))
 
 class UserRegistrationForm(UserCreationForm):
     """

@@ -1,15 +1,16 @@
-{% extends 'home/base.html' %}
+{% extends 'home/base2.html' %}
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
 {% block content %}
 <br>
-<div class="container">
+<div class="container login">
 <h3>Login</h3>
-<form method='POST'>
+<form method='POST' class='form' id='form'>
     {% csrf_token %}
    {{form | as_bootstrap }}
    
-    <input type="submit" value="Login"/>
+    <input type="submit" value="Login" class='btn btn-lg btn-default login-btn'/>
+    <br>
     <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
 </form>
 </div>
