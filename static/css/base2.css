@@ -237,6 +237,9 @@ label {
     margin-bottom: 15px;
     font-weight: bold;
     border-radius: 0px;
+    transition: all .3s ease-in-out;
+    -moz-transition: all .3s ease-in-out;
+    -webkit-transition: all .3s ease-in-out;
 }
 
 .login-btn:hover {
@@ -263,9 +266,11 @@ p a:hover {
     position: fixed;
     top: 20%;
 }
+
 #form {
     background-color: transparent !important;
 }
+
 #form:focus {
     background-color: transparent !important;
 }
@@ -296,4 +301,35 @@ input:-webkit-autofill:focus {
     color: #424242 !important;
     -webkit-box-shadow: 0 0 0 1000px #fafafa inset !important;
     -webkit-text-fill-color: #424242 !important;
-    }
+}
+
+/*FORMS - REGISTER */
+
+.help-block {
+    color: #bbb;
+}
+
+/*FORMS - POSTS & COMMENTS */
+
+#post-container {
+    left: 8%;
+    top: 17%;
+}
+
+.post-form {
+    width: 375px;
+}
+
+#post-btn {
+    width: 375px;
+}
+
+#id_content {
+    background-color: #062E82 !important;
+    color: #424242 !important;
+}
+
+#id_content:focus {
+    background-color: #fafafa !important;
+    color: #424242 !important;
+}

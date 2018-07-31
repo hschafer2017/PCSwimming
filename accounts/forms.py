@@ -14,10 +14,12 @@ class UserRegistrationForm(UserCreationForm):
     """
     Used by the user to sign up with the website
     """
-    password1 = forms.CharField(label='Password', widget=forms.PasswordInput)
+    username = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'USERNAME'}))
+    email = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'EMAIL'}))
+    password1 = forms.CharField(label='Password', widget=forms.PasswordInput(attrs={'placeholder': 'PASSWORD'}))
     password2 = forms.CharField(
         label='Password Confirmation',
-        widget=forms.PasswordInput
+        widget=forms.PasswordInput(attrs={'placeholder': 'CONFIRM PASSWORD'})
     )
 
     class Meta:

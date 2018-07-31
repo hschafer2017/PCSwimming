@@ -1,16 +1,14 @@
-{% extends 'home/base.html' %}
-{% load bootstrap_tags %}
-{% load static from staticfiles %}
-{% block content %}
+{% extends 'home/base2.html' %} {% load bootstrap_tags %} {% load static from staticfiles %} {% block content %}
 <br>
 <br>
 <br>
+<div class="container login">
 <h3>Register</h3>
-<form method='POST'>
-    {% csrf_token %}
-   {{form | as_bootstrap }}
-    <input type="submit" value="Login"/>
+<form method='POST' class='form' id='form'>
+    {% csrf_token %} 
+    {{form | as_bootstrap }}
+    <input type="submit" value="Register" class='btn btn-lg btn-default login-btn' />
 </form>
-
+</div>
 
 {% endblock content %}

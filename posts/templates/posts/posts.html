@@ -3,6 +3,9 @@
 
 {% block content %}
 {% if user.is_authenticated %}
+<div class="container">
+    <br>
+    <br>
 <li><a href="{% url 'new_post' %}"> <i class ='fa fa-plus'></i> New Post</a></li>
     {% endif %}
      
@@ -16,4 +19,5 @@
                         
                         <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-default">Read more</a></p>
     {% endfor %}
+    </div>
     {% endblock content %}
