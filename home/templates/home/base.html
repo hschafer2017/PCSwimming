@@ -7,25 +7,24 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    {% block head_js %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
-    <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> {% block head_js %}
-    <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% endblock head_js %}
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
-    <link rel="stylesheet" href="{% static 'css/base.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
     <title>PCHS Swimming and Diving</title>
 </head>
 
 <body>
-    <!--<header>-->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-        <div class="container">
+        <img src="{% static 'images/new_logo.png' %}" class='logo'></img>
+        <div class="container" style="text-align: right;
+    margin-right: 1%;
+    margin-top: 1%;">
             <div class="navbar-header">
-                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+                <button id='scroll-button' type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -35,78 +34,29 @@
 
             </div>
             <div id="navbar" class="navbar-collapse collapse">
-                <ul class="nav navbar-nav navbar-default">
-                    <a href="{% url 'home' %}"><span class="circle"><img alt="PC Logo" src="{% static 'images/logo.png' %}"></span></a>
-                    <li><a href="{% url 'get_posts' %}" class='page-scroll'>ALUMNI</a></li>
-                    <li><a href="{% url 'get_posts' %}" class='page-scroll'>DISCUSSION</a></li>
-                    <li><a href="{% url 'get_events' %}" class='page-scroll'>EVENTS</a></li>
-                    <li><a href="{% url 'get_products' %}" class='page-scroll'>SHOP</a></li>
-                    {% if user.is_authenticated %}
-                    <li><a href="{% url 'profile' %}"> WELCOME, {{user}}.</a></li>
-                    <li><a href="{% url 'logout' %}"> LOGOUT</a></li>
-                    {% else %}
-                    <li><a href="{% url 'login' %}">LOGIN</a></li>
-                    <li><a href="{% url 'register' %}">REGISTER</a></li>
-                    {% endif %}
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id='links' href="{% url 'get_alum_posts' %}">Alumni</a></li>
+                    <li><a id='links' href="{% url 'get_events' %}">Events</a></li>
+                    <li><a id='links' href="{% url 'get_posts' %}">Discussion</a></li>
+                    <li><a id='links' href="{% url 'get_products' %}">Shop</a></li>
                 </ul>
 
             </div>
-
         </div>
-
     </nav>
-
-    </header>
-    <div class="content">
-        {% if messages %}
+    {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
                 {% for message in messages %} {{ message }} {% endfor %}
             </div>
         </div>
         {% endif %}
-
-
-
-        <div class="row">
-            <div class="col-md-12" style="
-    padding-right: 0;">
-                <br>
-                <br>
-                
-
-                <!--blogpost entries-->
-                {% block content %} {% endblock %}
-                <!--blogpost entries-->
-            </div>
-        </div>
+    <div class="col-xs-hidden col-sm-hidden col-md-6">
+        {% block content %} {% endblock content %}
     </div>
-
+    <div class="col-xs-hidden col-sm-hidden col-md-6">
+        <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>
-
-
-       <footer>
-        <div class="container">
-            <div class="row">
-                <div class="col-sm-4">
-                    <p>PORTAGE CENTRAL SWIMMING AND DIVING</p>
-                    <p>PORTAGE, MI</p>
-                    </div>
-                <div class="col-sm-4">
-                    <p class ='mustang'>"It's a great day to be a Mustang!"</p>
-                </div>
-                <div class="col-sm-4">
-                    <p class = 'payment'>
-                    <i class="fab fa-cc-visa fa-2x"></i>
-                    <i class="fab fa-cc-mastercard fa-2x"></i>
-                    <i class="fab fa-cc-discover fa-2x"></i>
-                    <i class="fab fa-cc-amex fa-2x"></i></p>
-                    <p><i class="fab fa-stripe fa-3x pay"></i></p>
-                </div>
-            </div>
-
-        </div>
-    </footer>
 </body>
 
 </html>
