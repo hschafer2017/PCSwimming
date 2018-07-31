@@ -17,12 +17,12 @@
 
 <body>
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
-            <img src="{% static 'images/new_logo.png' %}" class='logo'></img>
-            <div class="container" style="text-align: right;
+        <img src="{% static 'images/new_logo.png' %}" class='logo'></img>
+        <div class="container" style="text-align: right;
     margin-right: 1%;
     margin-top: 1%;">
-                <div class="navbar-header">
-                    <button id='scroll-button' type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <div class="navbar-header">
+                <button id='scroll-button' type="button" class="navbar-toggle collapsed " data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
                     <span class="sr-only">Toggle navigation</span>
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
@@ -30,21 +30,20 @@
                 </button>
 
 
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-right">
-                        <li><a id='links' href="{% url 'get_alum_posts' %}">Alumni</a></li>
-                                <li><a id='links' href="{% url 'get_events' %}">Events</a></li>
-                                <li><a id='links' href="{% url 'get_posts' %}">Discussion</a></li>
-                                <li><a id='links' href="{% url 'get_products' %}">Shop</a></li>
-                    </ul>
-
-                </div>
             </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a id='links' href="{% url 'get_alum_posts' %}">Alumni</a></li>
+                    <li><a id='links' href="{% url 'get_events' %}">Events</a></li>
+                    <li><a id='links' href="{% url 'get_posts' %}">Discussion</a></li>
+                    <li><a id='links' href="{% url 'get_products' %}">Shop</a></li>
+                </ul>
+
+            </div>
+        </div>
     </nav>
     <div class="col-xs-hidden col-sm-hidden col-md-6">
-    {% block content %}
-    {% endblock content %}
+        {% block content %} {% endblock content %}
     </div>
     <div class="col-xs-hidden col-sm-hidden col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>

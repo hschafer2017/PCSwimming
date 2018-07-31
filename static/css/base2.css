@@ -152,6 +152,11 @@ a {
     #links {
         color: #fafafa;
     }
+    .swimmer {
+    right: 0%;
+    position: fixed;
+    top: 20%;
+}
 
 }
 

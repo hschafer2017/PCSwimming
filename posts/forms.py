@@ -13,7 +13,8 @@ class PostForm(forms.ModelForm):
     
         
 
-class CommentForm(ModelForm):
+class CommentForm(forms.ModelForm):
+    content = forms.CharField(widget=forms.Textarea(attrs={'placeholder': 'CONTENT'}))
     class Meta:
         model = Comment
         fields = ['content']

@@ -35,6 +35,7 @@ def new_post(request):
 @login_required(login_url='/accounts/login/')    
 def new_comment(request, pk): 
     post = get_object_or_404(Post, pk=pk)
+    blogs = Post.objects.all()
     if request.method == "POST":
         form = CommentForm(request.POST)
         if form.is_valid():
@@ -46,7 +47,7 @@ def new_comment(request, pk):
     else:
         form = CommentForm()
         
-    return render(request, 'posts/commentform.html', {'form': form})
+    return render(request, 'posts/commentform.html', {'form': form, 'blogs':blogs})
     
 
 
