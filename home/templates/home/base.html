@@ -11,15 +11,15 @@
     <script type="text/javascript" src="{% static 'js/bootstrap.min.js' %}"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hover.css/2.1.1/css/hover-min.css" type="text/css" />
     <link href="https://fonts.googleapis.com/css?family=Parisienne" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> 
-    {% block head_js %}
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet"> {% block head_js %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     {% endblock head_js %}
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" type="text/css" />
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.1/css/all.css" integrity="sha384-O8whS3fhG2OnA5Kas0Y9l3cfpmYjapjI0E4theH4iuMD+pLhbf6JI0jIMfYcK3yZ" crossorigin="anonymous">
     <link rel="stylesheet" href="{% static 'css/base.css' %}">
     <title>PCHS Swimming and Diving</title>
 </head>
+
 <body>
     <!--<header>-->
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
@@ -33,14 +33,14 @@
                 </button>
 
 
-                </div>
-                <div id="navbar" class="navbar-collapse collapse">
-                    <ul class="nav navbar-nav navbar-default">
+            </div>
+            <div id="navbar" class="navbar-collapse collapse">
+                <ul class="nav navbar-nav navbar-default">
                     <a href="{% url 'home' %}"><span class="circle"><img alt="PC Logo" src="{% static 'images/logo.png' %}"></span></a>
-                    <li><a href="{% url 'get_posts' %}" class = 'page-scroll'>ALUMNI</a></li>
-                    <li><a href="{% url 'get_posts' %}" class = 'page-scroll'>DISCUSSION</a></li>
-                    <li><a href="{% url 'get_events' %}" class = 'page-scroll'>EVENTS</a></li>
-                    <li><a href="{% url 'get_products' %}" class = 'page-scroll'>SHOP</a></li>
+                    <li><a href="{% url 'get_posts' %}" class='page-scroll'>ALUMNI</a></li>
+                    <li><a href="{% url 'get_posts' %}" class='page-scroll'>DISCUSSION</a></li>
+                    <li><a href="{% url 'get_events' %}" class='page-scroll'>EVENTS</a></li>
+                    <li><a href="{% url 'get_products' %}" class='page-scroll'>SHOP</a></li>
                     {% if user.is_authenticated %}
                     <li><a href="{% url 'profile' %}"> WELCOME, {{user}}.</a></li>
                     <li><a href="{% url 'logout' %}"> LOGOUT</a></li>
@@ -49,43 +49,42 @@
                     <li><a href="{% url 'register' %}">REGISTER</a></li>
                     {% endif %}
                 </ul>
-            
-                </div>
-               
+
             </div>
-            
-        </nav>
-        
-        </header>
+
+        </div>
+
+    </nav>
+
+    </header>
     <div class="content">
-{% if messages %}
+        {% if messages %}
         <div class="alert alert-success">
             <div class="messages">
-                {% for message in messages %}
-                    {{ message }}
-                {% endfor %}
+                {% for message in messages %} {{ message }} {% endfor %}
             </div>
         </div>
-{% endif %}
+        {% endif %}
 
 
-        
-            <div class="row">
-                <div class="col-md-12">
-                    <br>
-                        <br>
-<br>
 
-                            <!--blogpost entries-->
-                            {% block content %} {% endblock %}
-                            <!--blogpost entries-->
-                        
-                </div>
+        <div class="row">
+            <div class="col-md-12" style="
+    padding-right: 0;">
+                <br>
+                <br>
+                
+
+                <!--blogpost entries-->
+                {% block content %} {% endblock %}
+                <!--blogpost entries-->
             </div>
-        
+        </div>
     </div>
-       
-       
+
+    </div>
+
+
        <footer>
         <div class="container">
             <div class="row">
@@ -98,14 +97,14 @@
                 </div>
                 <div class="col-sm-4">
                     <p class = 'payment'>
-                    <i class="fa fa-cc-mastercard"></i>
-                    <i class="fa fa-cc-visa"></i>
-                    <i class="fa fa-cc-discover"></i>
-                    <i class="fa fa-cc-amex"></i></p>
-                    <p>Processed by <i class="fab fa-stripe"></i></p>
+                    <i class="fab fa-cc-visa fa-2x"></i>
+                    <i class="fab fa-cc-mastercard fa-2x"></i>
+                    <i class="fab fa-cc-discover fa-2x"></i>
+                    <i class="fab fa-cc-amex fa-2x"></i></p>
+                    <p><i class="fab fa-stripe fa-3x pay"></i></p>
                 </div>
             </div>
-            
+
         </div>
     </footer>
 </body>

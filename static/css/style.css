@@ -1,0 +1,31 @@
+body,
+html {
+    height: 100%;
+}
+
+.background {
+    height: 100%;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    z-index: 1;
+    
+    position: relative;
+}
+
+.content {
+    background: none;
+    left: 0;
+    right: 0;
+    top: 15%;
+    margin-left: 20px;
+    margin-right: 20px;
+    text-decoration: none;
+    opacity: 1;
+    position: absolute;
+    z-index: 2;
+}
+
+.jumbotron {
+    background-color: transparent;
+}

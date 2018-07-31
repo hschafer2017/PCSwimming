@@ -16,7 +16,7 @@ def do_login(request):
                 login(request, user)
                 return redirect("get_products")
             else:
-                login_form.add_error(None, "Your username or password are incorrect")
+                login_form.add_error(None, "Yogtiur username or password are incorrect")
     else:
         login_form = UserLoginForm()
 

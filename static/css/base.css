@@ -45,7 +45,7 @@ body {
   }
 }
 
-@media (min-width: 739px) {
+@media (min-width: 790px) {
   .navbar-fixed-bottom .navbar-collapse,
   .navbar-fixed-top .navbar-collapse,
   .navbar-static-top .navbar-collapse {
@@ -95,12 +95,12 @@ a img {
 }
 
 footer {
-  background-color: #fafafa;
+  background-color: #000F2D;
   position: fixed;
   left: 0;
   bottom: 0;
   width: 100%;
-  color: #666;
+  color: #fafafa;
   text-align: left;
   text-align: center;
   font-size: 14px;
@@ -113,7 +113,7 @@ footer {
 }
 
 .payment {
-  font-size: 20px;
+  /*font-size: 22px;*/
 }
 
 .payment i {
@@ -123,6 +123,10 @@ footer {
 
 .payment i:hover {
   color: #000F2D;
+}
+.pay {
+  /*font-size: 30px;*/
+  
 }
 
 /*------------------EVENTS--------------*/
@@ -150,8 +154,6 @@ footer {
   background-position: center;
   height: 50vh;
   width: 100vw;
-  /*filter: saturate(0);*/
-  /*opacity: .5;*/
   z-index: 1;
 }
 
@@ -159,11 +161,7 @@ footer {
   height: 100%;
 }
 
-/*.eventCard {*/
-/*  top: 50%;*/
-/*  transform: translateY(-50%);*/
 
-/*}*/
 
 .card {
   color: #000F2D;
@@ -322,4 +320,15 @@ footer {
   margin-right: auto;
 }
 
-/*----------------------Posts------------------------*/
+/*----------------------Jumbotron------------------------*/
+.jumbotron {
+  background-image: url('../images/swimgradient.png');
+  height: 100vh;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  z-index: 1;
+  color: #fafafa;
+  padding-bottom: 60px;
+  margin-bottom: 0px;
+}
