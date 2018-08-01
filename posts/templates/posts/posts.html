@@ -2,22 +2,31 @@
 {% load static from staticfiles %}
 
 {% block content %}
+<br>
+<br>
+<br>
 {% if user.is_authenticated %}
-<div class="container">
+<div class="container posts">
+    <div class="col-xs-hidden col-sm-hidden col-md-5 col-lg-6">
     <br>
     <br>
-<li><a href="{% url 'new_post' %}"> <i class ='fa fa-plus'></i> New Post</a></li>
+<a href="{% url 'new_post' %}" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+<br>
     {% endif %}
      
     {% for blog in blogs %}
-                <h3>{{ blog.title }}</h3>
-                        <p>{{ blog.content|truncatewords:30 }}</p>
-                        <p><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
-                        <p>{{blog.views}}</p>
+    <br>
+                <h3 class = 'blog-title'>{{ blog.title }}</h3>
+                <br>
+                        <p class='blog-content'>{{ blog.content|truncatewords:30 }}</p>
+                        <p class ='info'><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
+                        <p class='info'>Views: {{blog.views}}</p>
 
-                        <p>Comments: {{ blog.comments.count}}</p>
+                        <p class='info'>Comments: {{ blog.comments.count}}</p>
                         
-                        <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-default">Read more</a></p>
+                        <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-md login-btn new-post">Read more</a></p>
     {% endfor %}
+    <br>
+    </div>
     </div>
     {% endblock content %}
