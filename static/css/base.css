@@ -109,102 +109,6 @@ a {
     }
 }
 
-/*TABLET SIZING*/
-
-@media (min-width: 426px) and (max-width: 990px) {
-    html,
-    body {
-        height: 100%;
-        background: #fafafa;
-    }
-    .navbar {
-        background: #062E82;
-        border-color: #062E82;
-        letter-spacing: 7px;
-        text-transform: uppercase;
-    }
-    .logo {
-        margin-left: 10px;
-        margin-top: 10px;
-        height: 95px;
-        width: 100px;
-    }
-    #scroll-button {
-        margin-top: -75px;
-    }
-    .navbar-default .navbar-toggle {
-        border-color: #ccc;
-        background-color: #ccc;
-    }
-
-    .navbar-default .navbar-toggle:hover {
-        border-color: #002865;
-        background-color: #002865;
-    }
-
-    .navbar-default .navbar-toggle .icon-bar {
-        background-color: #002865;
-    }
-
-    .navbar-default .navbar-toggle:hover .icon-bar {
-        background-color: #ccc;
-    }
-    #links {
-        color: #fafafa;
-    }
-    .swimmer {
-        right: 0%;
-        position: fixed;
-        top: 20%;
-    }
-
-}
-
-/*MOBILE SIZING*/
-
-@media (max-width: 426px) {
-    html,
-    body {
-        height: 100%;
-        background: #fafafa;
-    }
-    .navbar {
-        background: #062E82;
-        border-color: #062E82;
-        letter-spacing: 7px;
-        text-transform: uppercase;
-    }
-    .logo {
-        margin-left: 10px;
-        margin-top: 10px;
-        height: 95px;
-        width: 100px;
-    }
-    #scroll-button {
-        margin-top: -75px;
-    }
-    .navbar-default .navbar-toggle {
-        border-color: #ccc;
-        background-color: #ccc;
-    }
-
-    .navbar-default .navbar-toggle:hover {
-        border-color: #002865;
-        background-color: #002865;
-    }
-
-    .navbar-default .navbar-toggle .icon-bar {
-        background-color: #002865;
-    }
-
-    .navbar-default .navbar-toggle:hover .icon-bar {
-        background-color: #ccc;
-    }
-    #links {
-        color: #fafafa;
-    }
-}
-
 /*LOGIN FORM*/
 
 .login {
@@ -359,12 +263,161 @@ input:-webkit-autofill:focus {
 }
 
 .blog-title {
-    font-size: 36px;;
+    font-size: 36px;
+    ;
     line-height: 10px
 }
+
 .blog-content {
     font-size: 22px;
 }
+
 .info {
     margin: 0 0 5px;
+}
+
+/*PRODUCTS*/
+
+.product-name {
+    text-transform: uppercase;
+    color: #212121;
+    font-weight: bolder;
+}
+
+.product-name:hover {
+    color: #212121;
+    text-decoration: none;
+}
+
+.panel-body {
+    padding: 15px;
+    background: #fafafa;
+    width: 460px;
+    height: 110px;
+    box-shadow: 5px 5px 25px #212121;
+}
+
+.panel-body:hover {
+    border: 3px solid #FFD236;
+}
+
+.product {
+    color: #212121;
+}
+
+.product-image {
+    margin-left: -15px;
+    margin-top: 3px;
+}
+
+#price {
+    color: #212121;
+    font-size: 36px;
+    margin-top: -10px;
+    text-align: center;
+    margin-bottom: -20px;
+    font-weight: 900;
+}
+
+.buy {
+    width: 100px;
+    margin-top: 27px;
+    padding-left: 10px;
+    margin-left: 5px;
+}
+
+/*TABLET SIZING*/
+
+@media (min-width: 426px) and (max-width: 990px) {
+    html,
+    body {
+        height: 100%;
+        background: #fafafa;
+    }
+    .navbar {
+        background: #062E82;
+        border-color: #062E82;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+    }
+    .logo {
+        margin-left: 10px;
+        margin-top: 10px;
+        height: 95px;
+        width: 100px;
+    }
+    #scroll-button {
+        margin-top: -75px;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: #ccc;
+        background-color: #ccc;
+    }
+
+    .navbar-default .navbar-toggle:hover {
+        border-color: #002865;
+        background-color: #002865;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #002865;
+    }
+
+    .navbar-default .navbar-toggle:hover .icon-bar {
+        background-color: #ccc;
+    }
+    #links {
+        color: #fafafa;
+    }
+    .swimmer {
+        right: 0%;
+        position: fixed;
+        top: 20%;
+    }
+
+}
+
+/*MOBILE SIZING*/
+
+@media (max-width: 426px) {
+    html,
+    body {
+        height: 100%;
+        background: #fafafa;
+    }
+    .navbar {
+        background: #062E82;
+        border-color: #062E82;
+        letter-spacing: 7px;
+        text-transform: uppercase;
+    }
+    .logo {
+        margin-left: 10px;
+        margin-top: 10px;
+        height: 95px;
+        width: 100px;
+    }
+    #scroll-button {
+        margin-top: -75px;
+    }
+    .navbar-default .navbar-toggle {
+        border-color: #ccc;
+        background-color: #ccc;
+    }
+
+    .navbar-default .navbar-toggle:hover {
+        border-color: #002865;
+        background-color: #002865;
+    }
+
+    .navbar-default .navbar-toggle .icon-bar {
+        background-color: #002865;
+    }
+
+    .navbar-default .navbar-toggle:hover .icon-bar {
+        background-color: #ccc;
+    }
+    #links {
+        color: #fafafa;
+    }
 }
