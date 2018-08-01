@@ -146,6 +146,7 @@ label {
     margin-bottom: 15px;
     font-weight: bold;
     border-radius: 0px;
+     box-shadow: 0px 0px 25px #212121;
     transition: all .3s ease-in-out;
     -moz-transition: all .3s ease-in-out;
     -webkit-transition: all .3s ease-in-out;
@@ -294,10 +295,10 @@ input:-webkit-autofill:focus {
     background: #fafafa;
     width: 460px;
     height: 110px;
-    box-shadow: 5px 5px 25px #212121;
+    box-shadow: 0px 0px 25px #212121;
 }
 
-.panel-body:hover {
+.items:hover {
     border: 3px solid #FFD236;
 }
 
@@ -314,7 +315,6 @@ input:-webkit-autofill:focus {
     color: #212121;
     font-size: 36px;
     margin-top: -10px;
-    text-align: center;
     margin-bottom: -20px;
     font-weight: 900;
 }
@@ -324,6 +324,44 @@ input:-webkit-autofill:focus {
     margin-top: 27px;
     padding-left: 10px;
     margin-left: 5px;
+    box-shadow: 0px 0px 10px #d3d3d3;
+}
+
+/*PRODUCT DETAIL*/
+
+.detail {
+    width: 500px;
+    margin-top: 70px;
+    color: #212121;
+}
+
+#products-main {
+    box-shadow: 0px 0px 10px #d3d3d3;
+    height: 500px;
+}
+
+.img-prod {
+    height: 100px;
+    width: 150px;
+}
+
+.product-name-detail {
+    font-size: 32px;
+    text-transform: uppercase;
+    padding-left: 15px;
+    font-weight: 900;
+    padding-top: 10px;
+    letter-spacing: 4px;
+}
+
+.description {
+    font-size: 16px;
+}
+
+h5 {
+    font-size: 20px;
+    text-transform: uppercase;
+    font-weight: 600;
 }
 
 /*TABLET SIZING*/

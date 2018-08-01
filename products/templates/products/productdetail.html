@@ -1,42 +1,51 @@
-{% extends 'home/base.html' %}
+{% extends 'products/products.html' %}
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-<br>
-<br>
-<div class="container">
- <div class="panel">
-  <div class="panel-body">
- <div class="row">
-  <br>
-  <div class="col-xs-hidden col-sm-6">
- 
-  <img class="img-prod" src="{{MEDIA_URL}}{{product.image}}" width ='250px' height ="200px">
-    </div>
-    <div class="col-xs-hidden col-sm-6">
-     <h3>{{ product.name }}</h3>
-    <h5>${{product.price}}</h5>
+<style>
+  .swimmer {
+      display: none;
+  }
+</style>
+
+ <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+ {% include 'products/products.html' %}
+ </div>
+
+  <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+   <br>
+   <br>
+   <br>
+  <div class="container detail">
+   <div id = 'products-main' class="panel-body">
     <br>
+   <div class="row">
+   <div class="col-xs-8 col-sm-8 col-md-8">
     
-    <br>
+  <img class="img-prod" src="{{MEDIA_URL}}{{product.image}}">
+  </div>
+  
+  <div class="col-xs-4 col-sm-4 col-md-4">
+   <div class="row">
+   <h5 id='price' style='margin-top: 7px;'>${{product.price}}</h5>
+   </div>
+   <div class="row">
     <form action='{% url "cart" %}' method="POST">
          {% csrf_token %}
         <input type="hidden" name="product_id" value="{{ product.id }}"/>
-         <button type="submit" class="btn cart">Add to Cart</button>
+         <button type="submit" class="btn btn-md login-btn new-post buy" style='margin-top: 40px;'>Buy</button>
  </form>
- 
- <br>
- 
-    <a href="{% url 'get_products' %}" class="btn prod btn-default">Back to Products</a>
+ </div>
+  </div>
+  </div>
+  <div class="row">
+     <h3 class='product-name-detail'>{{ product.name }}</h3>
     </div>
-    </div>
-    <br>
+<hr>
     
-    <div class="container">
-    <div class="row"><h4>{{product.description}}</h4></div>
-    </div>
-    </div>
+     <h5>Product Description</h5>
+    <p class='description'>{{product.description}}</p>
     </div>
 </div>
-
+</div>
 {% endblock %}

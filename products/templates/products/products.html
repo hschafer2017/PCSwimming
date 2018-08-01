@@ -2,6 +2,7 @@
 <br>
 <br>
 <br>
+<div class="col-xs-hidden col-sm-hidden col-md-6">
 <div class="container posts">
     <br>
     <br>
@@ -9,7 +10,7 @@
     <br> {% for product in products %}
     <br>
     <br>
-    <div class="panel-body">
+    <div class="panel-body items">
 
             
                 <div class="col-md-3 col-lg-3">
@@ -27,7 +28,7 @@
                 
                 <div class="col-md-3 col-lg-3">
                     <div class="row">
-                    <p id='price' class'product'>${{product.price}}</p>
+                    <p id='price'>${{product.price}}</p>
                     </div>
                     <div class="row">
                     <form action='{% url "cart" %}' method="POST">
@@ -50,5 +51,6 @@
     <div class="col-xs-hidden col-sm-hidden"></div>
 
      {% endfor %}
+    </div>
     </div>
 {% endblock content %}
