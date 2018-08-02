@@ -1,50 +1,89 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
-
 {% block content %}
-            <p><span class="boldtext">Author: </span>{{blogs.owner}}</p>
-            <h3>{{ blogs.title }}</h3>
-                    <p>{{ blogs.content | linebreaksbr }}</p>
-                    
-                    <p><span class="boldtext">Published on:</span> {{ blogs.published_date }} </p>
-                    
-                    <p><span class="boldtext">Views:</span> {{blogs.views}}</p>
-                    
-                    {% for comment in blogs.comments.all %}
-                        <p>{{ comment.owner }}</p>
-                        <p>{{ comment.content }}</p>
-                        {% if user.is_authenticated and user == comment.owner or user.is_superuser %}
-                        <a href="{% url 'edit_comment' comment.id %}" class="btn btn-default">Edit Comment</a>
-                        {% endif %}
-                        <form action = "{% url 'delete_comment' %}" method = "POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="comment_id" value="{{ comment.id }}"/>
-                        <input type="hidden" name="blogs_id" value="{{ blogs.id }}"/>
-                        <button class="btn-sm btn-danger">Delete Post</button>
-                    </form>
-                    
-                        {% empty %}
-                        <p>No comments here yet</p>
-                        {% endfor %}
-                    <a href="{% url 'new_comment'  blogs.id %}" class="btn btn-default">Comment</a>
-                    <a href="{% url 'get_posts' %}" class="btn btn-default">Back to Blog</a>
-                    
-                    <form action = "{% url 'delete_post' %}" method = "POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="blogs_id" value="{{ blogs.id }}"/>
-                        <button class="btn-sm btn-danger">Delete Post</button>
-                    </form>
-                    
-                    {% if user.is_authenticated and user == blogs.owner or user.is_superuser %}
-                    <a href="{% url 'edit_post' blogs.id %}" class="btn btn-default">Edit Post</a>
-                    
-                    
-                    
-                    {% endif %}
-                    
+<style>
+  .swimmer {
+      display: none;
+  }
+</style>
+
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+ {% include 'posts/posts.html' %}
+</div>
+ 
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+    <br>
+    <br>
+    <br>
+    <div class="container detail">
+        <div id = 'products-main' class="panel-body">
+        <br>
+            <div class="container post-content">
+            
+                <div class="col-xs-hidden col-sm-hidden col-md-4 col-lg-4">
+                    <p id='price' class='post-title'>{{ post.title }}</p>
                     <hr>
+                    <p>By: {{post.owner}} at {{ post.published_date }}</p>
+                    <p class='post-title'>{{ post.content | linebreaksbr }}</p>
+                    
+                    <p>Views: {{post.views}}</p>
+                    
+                    <p style='text-transform: uppercase;'>Comments:</p>
+                    
+                    {% for comment in post.comments.all %}
+                        
+                        <p>{{ comment.owner }}: {{ comment.content }}</p>
+                    
+                    {% empty %}
+                        
+                        <p>No comments here yet</p>
+                        
+                    {% endfor %} 
+                        
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Options<span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a id='links' href="{% url 'new_comment'  post.id %}" >Comment</a></li>
+    
+                                {% for comments in post.comment.all %}
+                                
+                                {% if user.is_authenticated and user == comments.owner or user.is_superuser %}
+    
+                                <li><a id='links' href="{% url 'edit_comment' comments.id %}">Edit Comment</a></li>
+                                <form action = "{% url 'delete_comment' %}" method = "POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="comment_id" value="{{ comments.id }}"/>
+                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
+                                    <li><a id="delete">Delete Comment</a></li>
+                                </form>
+    
+                                {% endif %}
+                                {% endfor %} 
+    
+                                {% if user.is_authenticated and user == post.owner or user.is_superuser %}
+    
+                                <li><a id = 'links' href="{% url 'edit_post' post.id %}">Edit Post</a></li>
+                                <form action = "{% url 'delete_post' %}" method = "POST">
+                                {% csrf_token %}
+                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
+                                    <li><a id='delete'>Delete Post</a></li>
+                                </form> 
+        
+                                {% endif %}
+     
+                            </ul>
+                    </div>
+                    <br>
+                    <br>
                 </div>
             </div>
         </div>
     </div>
+</div>
+    
+    
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
+
 {% endblock content %}

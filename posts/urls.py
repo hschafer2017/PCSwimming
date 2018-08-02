@@ -9,6 +9,6 @@ urlpatterns = [
     path('delete/', delete_post, name='delete_post'),
     path('delete/comment/', delete_comment, name='delete_comment'),
     path('<pk>/edit', edit_post, name='edit_post'),
-    path('<pk>/', post_detail, name='post_detail'), 
+    path('<pk>/detail', post_detail, name='post_detail'), 
     path('', get_posts, name='get_posts'),
     ]

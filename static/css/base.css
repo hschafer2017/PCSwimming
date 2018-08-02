@@ -292,12 +292,13 @@ input:-webkit-autofill:focus {
 
 .panel-body {
     padding: 15px;
-    background: #fafafa;
     width: 460px;
-    height: 110px;
+    background: #fafafa;
     box-shadow: 0px 0px 25px #212121;
 }
-
+.items {
+    height: 110px;
+}
 .items:hover {
     border: 3px solid #FFD236;
 }
@@ -327,6 +328,35 @@ input:-webkit-autofill:focus {
     box-shadow: 0px 0px 10px #d3d3d3;
 }
 
+/*POST DETAIL*/
+
+.dropdown-toggle {
+    width: 130px;
+}
+.dropdown-menu {
+    border: none;
+}
+.post-title {
+    width: 380px;
+}
+
+.post-content {
+    font-size: 16px;
+}
+
+#delete {
+    display: block;
+    padding: 3px 20px;
+    color: #062E82;
+    
+}
+
+#delete:hover {
+    text-decoration: none;
+    color: #FFD236;
+    background-color: #f2f2f2;
+}
+
 /*PRODUCT DETAIL*/
 
 .detail {
@@ -338,6 +368,9 @@ input:-webkit-autofill:focus {
 #products-main {
     box-shadow: 0px 0px 10px #d3d3d3;
     height: 500px;
+    position: fixed;
+    overflow-y:scroll;
+    overflow-x:hidden;
 }
 
 .img-prod {

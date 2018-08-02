@@ -9,16 +9,13 @@ from django.contrib import messages
 
 
 # Create your views here - POSTS.
+@login_required(login_url='/accounts/login/')
 def get_posts(request): 
-    if request.user.is_authenticated:
-        blogs = Post.objects.all()
-        comments = Comment.objects.all()
-    else: 
-        comments = Comment.objects.all()
-        blogs = Post.objects.all()
+    blogs = Post.objects.all()
+    comments = Comment.objects.all()
     return render(request, 'posts/posts.html', {'blogs': blogs, 'comments': comments})
 
-@login_required(login_url='/accounts/login/')
+
 def new_post(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -32,7 +29,7 @@ def new_post(request):
         
     return render(request, 'posts/postform.html', {'form': form})
  
-@login_required(login_url='/accounts/login/')    
+  
 def new_comment(request, pk): 
     post = get_object_or_404(Post, pk=pk)
     blogs = Post.objects.all()
@@ -51,7 +48,7 @@ def new_comment(request, pk):
     
 
 
-@login_required(login_url='/accounts/login/')
+
 def edit_post(request, pk): 
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
@@ -67,7 +64,7 @@ def edit_post(request, pk):
         
     return render(request, 'posts/postform.html', {'form': form})
 
-@login_required(login_url='/accounts/login/')
+
 def edit_comment(request, pk): 
     comment = get_object_or_404(Comment, pk=pk)
     if request.user.is_authenticated and request.user == comment.owner or request.user.is_superuser: 
@@ -85,7 +82,7 @@ def edit_comment(request, pk):
 
 
 
-@login_required(login_url='/accounts/login/')
+
 def delete_post(request):
    
     id = request.POST['blogs_id']
@@ -102,7 +99,7 @@ def delete_post(request):
     
     
     
-@login_required(login_url='/accounts/login/')
+
 def delete_comment(request):
     id = request.POST['comment_id']
     pk = request.POST['blogs_id']
@@ -118,11 +115,12 @@ def delete_comment(request):
     return redirect('get_posts')
     
 def post_detail(request, pk):
-    blogs = get_object_or_404(Post, pk=pk)
-    comments = Comment.objects.filter()
-    blogs.views += 1
-    blogs.save()
-    return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments})
+    blogs = Post.objects.all()
+    comments = Comment.objects.all()
+    post = get_object_or_404(Post, pk=pk)
+    post.views += 1
+    post.save()
+    return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments, 'post': post})
     
 def get_alum_posts(request): 
     alum_posts = AlumPost.objects.all()
