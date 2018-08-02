@@ -248,8 +248,9 @@ input:-webkit-autofill:focus {
 
 .posts {
     margin-top: 45px;
-    padding-left: 50px;
-    color: #fafafa;
+    margin-top: 45px;
+    margin-left: 15px;
+    padding-left: 0px;
 }
 
 .new-post {
@@ -261,6 +262,17 @@ input:-webkit-autofill:focus {
 .new-post:hover {
     color: #FFD236;
     text-decoration: none;
+}
+
+.panel-body {
+    padding: 15px;
+    width: 460px;
+    background: #fafafa;
+    box-shadow: 0px 0px 25px #212121;
+}
+
+.post-panels {
+    width: auto;
 }
 
 .blog-title {
@@ -290,15 +302,10 @@ input:-webkit-autofill:focus {
     text-decoration: none;
 }
 
-.panel-body {
-    padding: 15px;
-    width: 460px;
-    background: #fafafa;
-    box-shadow: 0px 0px 25px #212121;
-}
 .items {
     height: 110px;
 }
+
 .items:hover {
     border: 3px solid #FFD236;
 }
@@ -333,9 +340,11 @@ input:-webkit-autofill:focus {
 .dropdown-toggle {
     width: 130px;
 }
+
 .dropdown-menu {
     border: none;
 }
+
 .post-title {
     width: 380px;
 }
@@ -348,7 +357,7 @@ input:-webkit-autofill:focus {
     display: block;
     padding: 3px 20px;
     color: #062E82;
-    
+
 }
 
 #delete:hover {
@@ -369,8 +378,8 @@ input:-webkit-autofill:focus {
     box-shadow: 0px 0px 10px #d3d3d3;
     height: 500px;
     position: fixed;
-    overflow-y:scroll;
-    overflow-x:hidden;
+    overflow-y: scroll;
+    overflow-x: hidden;
 }
 
 .img-prod {
@@ -401,8 +410,9 @@ h5 {
 
 .heading {
     text-transform: uppercase;
-    letter-spacing: 4px;
+    letter-spacing: 5px;
     font-size: 36px;
+    color: #fafafa;
 }
 
 .meet {
