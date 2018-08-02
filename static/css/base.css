@@ -408,6 +408,25 @@ h5 {
     text-align: center;
 }
 
+/*CART*/
+
+ul {
+    text-align: right;
+    font-size: 20px;
+    list-style: none;
+    line-height: 30px;
+}
+
+.cart-display {
+    font-size: 22px;
+    margin-top: 30px;
+}
+
+.cart-name {
+    font-size: 18px;
+    text-transform: uppercase;
+}
+
 /*TABLET SIZING*/
 
 @media (min-width: 426px) and (max-width: 990px) {

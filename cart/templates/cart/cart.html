@@ -2,33 +2,97 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-<h2>Cart Items:</h2>
+<style>
+  .swimmer {
+      display: none;
+  }
+</style>
+<br>
+<br>
+<br>
+<div class="col-xs-hidden col-sm-hidden col-md-6">
+    <div class="container posts">
+    <br>
+    <a href="{% url 'get_products' %}" class="btn btn-md login-btn new-post">Back to Shop</a>
+    <br>
+<h3 class='heading'>Cart</h3>
+
 {% for p in cart %}
+<br>
+
+<div class="panel-body items">
+    <div class="col-md-3 col-lg-3">
 
 
-<h5>{{p.product}}</h5>
-<img src="{{MEDIA_URL}}{{p.image}}" width="70px" border-radius='50'></img>
-<ul>
-    <li>Quantity: {{p.quantity}}</li> 
-   <li>${{p.price}} each</li>
-    <li>${{p.total}} total</li>
-</ul>
+<img src="{{MEDIA_URL}}{{p.image}}" class='product-image' width='85px' height='75px' alt='{{p.product}}'></img>
+</div>
 
+<div class="col-md-6 col-lg-6">
+<div class="row">
+<p class='product-name'>{{p.product}}</p>
+</div>
+<div class="row">
+                    <p class='product info'>{{p.description|truncatewords:10}}</p>
+                    </div>
+                    </div>
+
+
+                <div class="col-md-3 col-lg-3">
+                    <div class="row">
+                        <p id='price'>${{p.price}}</p>
+                    </div>
+                    <div class="row">
 <form action='{% url "remove" %}' method="POST">
         {% csrf_token %}
         <input type="hidden" name="product_id" value="{{ p.product.id }}"/>
-        <button class="btn-sm btn-danger">Remove</button>
+        <button class="btn-sm login-btn new-post buy">Remove</button>
 </form>
-
-<p><strong>Grand Total: ${{totals}}</strong></p>
+</div>
+</div>
+</div>
+{% endfor %}
+<br><br>
 <form action='{% url "checkout" %}'>
          {% csrf_token %}
-         <button class='btn-sm btn-success'>Checkout</button>
+         <button class='btn btn-md login-btn new-post'>Checkout</button>
  </form>
- 
- 
-<a href="{% url 'get_products' %}" class="btn-sm btn-info">Back to Shopping</a>
+ </div>
+ </div>
 
 
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+   <br>
+   <br>
+   <br>
+
+  <div class="container detail" style='margin-top: 0px;'>
+   <div id = 'products-main' class="panel-body">
+    <br>
+    <p class='product cart-name'>{{user}}'s Cart:</p>
+    <hr>
+    {% for p in cart %}
+    <div class="row">
+        <div class="col-md-6 col-lg-6">
+        <p class ='product-name cart-display'>{{p.product}}</p>
+        </div>
+        <div class="col-md-6 col-lg-6">
+<ul>
+    
+    <li>Quantity: {{p.quantity}}</li> 
+   <li>${{p.price}} ea</li>
+    <li>${{p.total}} total</li>
+    
+</ul>
+</div>
+</div>
 {% endfor %}
+<hr>
+<p id='price' style='text-align: right;'>Sub-Total: ${{totals}}</p>
+</div>
+</div>
+</div>
+
+
+
+
 {% endblock content %}

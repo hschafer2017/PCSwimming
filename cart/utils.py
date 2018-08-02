@@ -12,6 +12,7 @@ def get_cart_items_and_total(cart):
             'product' : product,
             'quantity': cart[p],
             'price': product.price,
+            'description': product.description,
             'image': product.image,
             'total': (cart[p] * product.price)
         })
