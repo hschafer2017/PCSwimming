@@ -4,15 +4,16 @@
 {% block content %}
 <br>
 <div class="container login">
-<h3>Login</h3>
-<form method='POST' class='form' id='form'>
+    <h3>Login</h3>
+    <form method='POST' class='form' id='form'>
     {% csrf_token %}
-   {{form | as_bootstrap }}
    
-    <input type="submit" value="Login" class='btn btn-lg btn-default login-btn'/>
+       {{form | as_bootstrap }}
+   
+        <input type="submit" value="Login" class='btn btn-lg btn-default login-btn'/>
     <br>
-    <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
-    <p><a href="{% url 'register' %}">Don't Have An Account Yet?</a></p>
-</form>
+        <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
+        <p><a href="{% url 'register' %}">Don't Have An Account Yet?</a></p>
+    </form>
 </div>
 {% endblock content %}

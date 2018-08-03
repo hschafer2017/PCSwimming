@@ -6,45 +6,47 @@
 <br>
 <br>
 <div class="col-xs-hidden col-sm-hidden col-md-6">
-<div class="container posts">
-    <br>
-    <br>
-        
-                                <h3 class='heading'>Events</h3>
+    <div class="container posts">
+        <br>
+        <br>
+        <h3 class='heading'>Events</h3>
                 
                 {% for event in events %}
-                <br>
-                <div class="panel-body">
-                    <div class="col-md-8 col-lg-8">
-                        <div class="row">
-                                <h4 class='product-name meet'>{{ event.name }}</h4>
-                                </div>
-                                <div class="row">
-                                <p class='product info location'>{{ event.location }}</p>
-                                </div>
-                                <div class="row">
-                                    <p class='day notes'>{{event.notes|truncatewords:10}}</p>
-                                </div>
-                            </div>
-                    <div class="col-md-4 col-lg-4">
-                        <p class='day'>{{event.day|date:'m/d/Y' }}</p>
-                        <p class='time'>{{ event.start_time }}</p> 
+               
+        <br>
+            <div class="panel-body">
+                <div class="col-md-8 col-lg-8">
+                    <div class="row">
+                        <h4 class='product-name meet'>{{ event.name }}</h4>
                     </div>
-                            </div>
-                            <br>
+                    <div class="row">
+                        <p class='product info location'>{{ event.location }}</p>
+                    </div>
+                    <div class="row">
+                        <p class='day notes'>{{event.notes|truncatewords:10}}</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-lg-4">
+                    <p class='day'>{{event.day|date:'m/d/Y' }}</p>
+                    <p class='time'>{{ event.start_time }}</p> 
+                </div>
+            </div>
+            <br>
                             
                 {% endfor %}
 
-    {% for document in documents %}
-<br>
-<a href="{{MEDIA_URL}}{{document.file}}" class="btn-md login-btn new-post" id='document'>{{document.name}}</a>
-<br>
-{% endfor %} 
+        {% for document in documents %}
+            <br>
+            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-md login-btn new-post" id='document'>{{document.name}}</a>
+            <br>
+            
+        {% endfor %} 
 
-<br>
-<br>
+            <br>
+            <br>
     </div>
 </div>
+
 <br>
 <br> 
 

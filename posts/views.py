@@ -31,6 +31,7 @@ def new_post(request):
  
   
 def new_comment(request, pk): 
+    comments = Comment.objects.all()
     post = get_object_or_404(Post, pk=pk)
     blogs = Post.objects.all()
     if request.method == "POST":
@@ -44,7 +45,7 @@ def new_comment(request, pk):
     else:
         form = CommentForm()
         
-    return render(request, 'posts/commentform.html', {'form': form, 'blogs':blogs})
+    return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
     
 
 

@@ -3,68 +3,63 @@
 <br>
 <br>
 
-{% if messages %}
-    <br>
-    <br>
-    <br>
-    <div class="alert alert-success">
-        <div class="messages">
-                
-                {% for message in messages %} {{ message }} {% endfor %}
+    {% if messages %}
+        <br>
+        <br>
+        <br>
+        <div class="alert alert-success">
+            <div class="messages">
+                    
+                    {% for message in messages %} {{ message }} {% endfor %}
+            </div>
         </div>
-    </div>
-        
-        {% endif %}
+    {% endif %}
         
 <div class="col-xs-hidden col-sm-hidden col-md-6">
-<div class="container posts">
-    <br>
-    <br>
-    <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
-    <br> {% for product in products %}
-    <br>
-    <br>
-    <div class="panel-body items">
-
-            
-                <div class="col-md-3 col-lg-3">
-                    <img src="{{MEDIA_URL}}{{product.image}}" height='75px' class='product-image' width='85px' alt="{{product.name}}" />
-                </div>
+    <div class="container posts">
+        <br>
+        <br>
+        <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
+        <br> 
+        
+        {% for product in products %}
+        
+        <br>
+        <br>
+        <div class="panel-body items">
+            <div class="col-md-3 col-lg-3">
+                <img src="{{MEDIA_URL}}{{product.image}}" height='75px' class='product-image' width='85px' alt="{{product.name}}" />
+            </div>
                 
-                <div class="col-md-6 col-lg-6">
-                    <div class="row">
+            <div class="col-md-6 col-lg-6">
+                <div class="row">
                     <p><a href="{% url 'product_detail' product.id %}" class='product-name'>{{product.name}}</a></p>
-                    </div>
-                    <div class="row">
+                </div>
+                <div class="row">
                     <p class='product info'>{{product.description|truncatewords:10}}</p>
-                    </div>
+                </div>
                 </div>
                 
-                <div class="col-md-3 col-lg-3">
-                    <div class="row">
+            <div class="col-md-3 col-lg-3">
+                <div class="row">
                     <p id='price'>${{product.price}}</p>
-                    </div>
-                    <div class="row">
+                </div>
+                <div class="row">
                     <form action='{% url "cart" %}' method="POST">
                         {% csrf_token %}
                         <input type="hidden" name="product_id" value="{{ product.id }}" />
                         <button type="submit" class="btn-sm login-btn new-post buy">Buy</button>
                     </form>
-                    </div>
                 </div>
-
-
             </div>
+        </div>
         
     <br>
+    
     <div class="col-xs-hidden col-sm-hidden">
-        
-
-
     </div>
     <div class="col-xs-hidden col-sm-hidden"></div>
-
      {% endfor %}
     </div>
-    </div>
+</div>
 {% endblock content %}

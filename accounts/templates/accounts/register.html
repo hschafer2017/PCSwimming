@@ -3,12 +3,13 @@
 <br>
 <br>
 <div class="container login">
-<h3>Register</h3>
-<form method='POST' class='form' id='form'>
+    <h3>Register</h3>
+    <form method='POST' class='form' id='form'>
     {% csrf_token %} 
+    
     {{form | as_bootstrap }}
-    <input type="submit" value="Register" class='btn btn-lg btn-default login-btn' />
-</form>
+        <input type="submit" value="Register" class='btn btn-lg btn-default login-btn' />
+    </form>
 </div>
 
 {% endblock content %}

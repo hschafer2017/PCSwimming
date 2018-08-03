@@ -2,15 +2,34 @@
 {% load bootstrap_tags %}
 
 {% block content %}
-<div class="container login" id='post-container'>
-    <h3>Comment</h3>
+<style>
+  .swimmer {
+      display: none;
+  }
+  .posts {
+      display: none;
+  }
+</style>
+
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+    <div class="container login" id='post-container'>
+        <br>
+        <a href="{% url 'get_posts' %}" class ='btn btn-md login-btn new-post'> Back </a>
+        <br>
+        <h3>Comment</h3>
+    
+        
+        <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
+            {% csrf_token %}
+            {{ form | as_bootstrap }}
+            <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn'>Post</button>
+        </form>
+        
+    </div>
+</div>
+
+
+    {% include 'posts/postdetail.html' %}
 
     
-    <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn'>Post</button>
-    </form>
-    
-    </div>
 {% endblock %}
