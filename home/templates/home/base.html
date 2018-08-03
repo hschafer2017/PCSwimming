@@ -6,6 +6,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+     <link rel="shortcut icon" type="image/x-icon" href="{% static 'images/favicon.ico' %}">
     <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
     {% block head_js %}
     <script type="text/javascript" src="{% static 'js/jquery.min.js' %}"></script>
@@ -40,21 +41,19 @@
                     <li><a id='links' href="{% url 'get_events' %}">Events</a></li>
                     <li><a id='links' href="{% url 'get_posts' %}">Discussion</a></li>
                     <li><a id='links' href="{% url 'get_products' %}">Shop</a></li>
+                    {% if user.is_authenticated %}
+                    <li><a id='links' href="{% url 'logout' %}">Logout</a></li>
+                    {% endif %}
                 </ul>
 
             </div>
         </div>
     </nav>
-    {% if messages %}
-        <div class="alert alert-success">
-            <div class="messages">
-                {% for message in messages %} {{ message }} {% endfor %}
-            </div>
-        </div>
-        {% endif %}
+        
     <div class="col-xs-hidden col-sm-hidden col-md-12">
         {% block content %} {% endblock content %}
     </div>
+    
     <div class="col-xs-hidden col-sm-hidden col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>

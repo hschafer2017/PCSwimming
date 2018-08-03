@@ -4,9 +4,8 @@
 {% block content %}
 <div class="container login" id='post-container'>
     <h3>Comment</h3>
-    {% for blog in blogs %}
-    <p>You're commenting for {{ blog.title }}.</p>
-    {% endfor %}
+
+    
     <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
         {% csrf_token %}
         {{ form | as_bootstrap }}

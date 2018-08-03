@@ -23,7 +23,7 @@ def new_post(request):
             post = form.save(commit=False)
             post.author = request.user
             post.save()
-            return redirect('/')
+            return redirect('get_posts')
     else:
         form = PostForm()
         

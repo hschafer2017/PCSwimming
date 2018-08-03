@@ -39,12 +39,12 @@ def checkout(request):
                 messages.error(request, "Your card was declined!")
 
             if customer.paid:
-                messages.error(request, "You have successfully paid")
+                messages.error(request, "You have successfully paid!")
                 send_confirmation_email(request.user.email, request.user, items_and_total)
         
                 # Clear the Cart
                 del request.session['cart']
-                return redirect('home')
+                return redirect('get_products')
                 
     else:
         order_form = OrderForm()

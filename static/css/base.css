@@ -338,7 +338,7 @@ input:-webkit-autofill:focus {
 /*POST DETAIL*/
 
 .dropdown-toggle {
-    width: 130px;
+    width: 215px;
 }
 
 .dropdown-menu {
@@ -357,6 +357,9 @@ input:-webkit-autofill:focus {
     display: block;
     padding: 3px 20px;
     color: #062E82;
+    border: none;
+    background-color: #fff;
+    font-size: 18px;
 
 }
 

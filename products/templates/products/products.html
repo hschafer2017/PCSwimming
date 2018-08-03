@@ -2,6 +2,20 @@
 <br>
 <br>
 <br>
+
+{% if messages %}
+    <br>
+    <br>
+    <br>
+    <div class="alert alert-success">
+        <div class="messages">
+                
+                {% for message in messages %} {{ message }} {% endfor %}
+        </div>
+    </div>
+        
+        {% endif %}
+        
 <div class="col-xs-hidden col-sm-hidden col-md-6">
 <div class="container posts">
     <br>

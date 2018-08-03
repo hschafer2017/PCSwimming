@@ -24,15 +24,31 @@
                     <p id='price' class='post-title'>{{ post.title }}</p>
                     <hr>
                     <p>By: {{post.owner}} at {{ post.published_date }}</p>
-                    <p class='post-title'>{{ post.content | linebreaksbr }}</p>
+                    <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
                     
-                    <p>Views: {{post.views}}</p>
-                    
-                    <p style='text-transform: uppercase;'>Comments:</p>
+                    <p class='info'>Views: {{post.views}}</p>
+                    <br>
+                    <p style='text-transform: uppercase; font-size: 18px;'>Comments:</p>
                     
                     {% for comment in post.comments.all %}
                         
-                        <p>{{ comment.owner }}: {{ comment.content }}</p>
+                        <p class = 'comments'>{{ comment.owner }}: {{ comment.content }}</p>
+                        
+                        {% if user.is_authenticated and user == comment.owner or user.is_superuser %}
+                        
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-sm login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Comment Options<span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                                <li><a id='links' href="{% url 'edit_comment' comment.id %}">Edit Comment</a></li>
+                                <form action = "{% url 'delete_comment' %}" method = "POST">
+                                    {% csrf_token %}
+                                    <input type="hidden" name="comment_id" value="{{ comment.id }}"/>
+                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
+                                    <li><input type="submit" id ='delete' value="Delete Comment"/></li>
+                                </form>
+                            </ul>
+                    </div>
+                    {% endif %}
                     
                     {% empty %}
                         
@@ -41,32 +57,17 @@
                     {% endfor %} 
                         
                     <div class="btn-group">
-                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Options<span class="caret"></span></button>
+                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post Options<span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a id='links' href="{% url 'new_comment'  post.id %}" >Comment</a></li>
-    
-                                {% for comments in post.comment.all %}
                                 
-                                {% if user.is_authenticated and user == comments.owner or user.is_superuser %}
-    
-                                <li><a id='links' href="{% url 'edit_comment' comments.id %}">Edit Comment</a></li>
-                                <form action = "{% url 'delete_comment' %}" method = "POST">
-                                    {% csrf_token %}
-                                    <input type="hidden" name="comment_id" value="{{ comments.id }}"/>
-                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
-                                    <li><a id="delete">Delete Comment</a></li>
-                                </form>
-    
-                                {% endif %}
-                                {% endfor %} 
-    
                                 {% if user.is_authenticated and user == post.owner or user.is_superuser %}
     
                                 <li><a id = 'links' href="{% url 'edit_post' post.id %}">Edit Post</a></li>
                                 <form action = "{% url 'delete_post' %}" method = "POST">
                                 {% csrf_token %}
                                     <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
-                                    <li><a id='delete'>Delete Post</a></li>
+                                    <li><input type="submit" id ='delete' value="Delete Post"/></li>
                                 </form> 
         
                                 {% endif %}
