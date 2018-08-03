@@ -1,7 +1,6 @@
 {% extends "home/base.html" %}
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
-
 {% block head_js %}
   {{ block.super }}
   <script src="https://js.stripe.com/v2/" type="text/javascript"></script>
@@ -14,42 +13,93 @@
 {% endblock head_js %}
 
 {% block content %}
+<style>
+    .swimmer {
+        display: none;
+    }
+</style>
 
-    <h2>Your cart:</h2>
+<br>
+<br>
+<br>
+<div class="col-xs-hidden col-sm-hidden col-md-6">
+    <div class="container posts">
+        <br>
+        <a href="{% url 'get_products' %}" class="btn btn-md login-btn new-post">Back to Shop</a>
+        <br>
+        <h3 class='heading'>Cart</h3>
 
-{% for p in cart %}
-
-<h5>{{p.product}}</h5>
-<ul>
-    <img src="{{MEDIA_URL}}{{p.image}}" width="70px" border-radius='50'></img>
-    <li>Quantity: {{p.quantity}}</li> 
-    <li>${{p.price}} each</li>
-    <li>${{p.total}} total</li>
-</ul>
-{% endfor %}
-<p><strong>Sub-Total: ${{totals}}</strong></p>
-
-    <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+        {% for p in cart %}
         
-    <legend>Payment Details</legend>
+        <br>
 
-    <div id="credit-card-errors" style="display:none">
-      <div class="alert-message block-message error" id="stripe-error-message"></div>
+        <div class="panel-body items">
+            <div class="col-md-3 col-lg-3">
+
+
+                <img src="{{MEDIA_URL}}{{p.image}}" class='product-image' width='85px' height='75px' alt='{{p.product}}'></img>
+            </div>
+
+            <div class="col-md-6 col-lg-6">
+                <div class="row">
+                <p class='product-name'>{{p.product}}</p>
+                </div>
+                <div class="row">
+                    <p class='product info'>{{p.description|truncatewords:10}}</p>
+                </div>
+            </div>
+            <div class="col-md-3 col-lg-3">
+                <div class="row">
+                    <p id='price'>${{p.price}}</p>
+                </div>
+                    <div class="row">
+                        <form action='{% url "remove" %}' method="POST">
+        
+                            {% csrf_token %}
+        
+                            <input type="hidden" name="product_id" value="{{ p.product.id }}"/>
+                            <button class="btn-sm login-btn new-post buy">Remove</button>
+                        </form>
+                    </div>
+            </div>
+        </div>
+
+            {% endfor %}
+
+        <br>
     </div>
+</div>
 
-    <div class="form-group col-md-6">
-        {{ order_form|as_bootstrap }}
+
+<!--PAYMENT FORM-->
+<div class="col-xs-hidden col-sm-hidden col-md-6">
+    <br>
+    <br>
+    
+    <div class="container detail">
+        <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
+            
+            <legend>Payment Details</legend>
+        
+            <div id="credit-card-errors" style="display:none">
+                 <div class="alert-message block-message error" id="stripe-error-message"></div>
+            </div>
+        
+            <div class="form-group">
+                {{ order_form|as_bootstrap }}
+            </div>
+        
+            <div class="form-group">
+                {{ payment_form|as_bootstrap }}
+            </div>
+        
+            {% csrf_token %}
+            <div class="form-group">
+                <input class="btn-md login-btn new-post buy" id="submit_payment_btn" name="commit" type="submit" value="Checkout" style='width: 150px; height: 40px;'>
+            </div>
+        
+        </form>
     </div>
-
-    <div class="form-group col-md-6">
-        {{ payment_form|as_bootstrap }}
-    </div>
-
-    {% csrf_token %}
-    <div class="form-group col-md-12">
-      <input class="btn btn-primary" id="submit_payment_btn" name="commit" type="submit" value="Submit Payment">
-    </div>
-
-    </form>
+</div>
 
 {% endblock %}

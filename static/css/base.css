@@ -470,6 +470,31 @@ ul {
     text-transform: uppercase;
 }
 
+/*CHECKOUT & PAYMENT FORM*/
+
+.form-control-override {
+    color: #555;
+    /*background-color: #fff !important;*/
+    background-image: none;
+    /*border: 1px solid #ccc;*/
+    /*border-radius: 4px;*/
+}
+
+.form-control-override:focus {
+    background-color: #fff !important;
+    color: #555 !important;
+}
+.form-control-override::placeholder {
+    color: #555 !important;
+}
+
+legend {
+    font-size: 28px;
+    text-transform: uppercase;
+    letter-spacing: 4px;
+}
+
+
 /*TABLET SIZING*/
 
 @media (min-width: 426px) and (max-width: 990px) {
