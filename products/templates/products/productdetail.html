@@ -6,15 +6,23 @@
   .swimmer {
       display: none;
   }
+  
 </style>
 
-<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6 include-content">
  {% include 'products/products.html' %}
 </div>
 
 <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
      <br><br><br>
  <div class="container detail">
+  <br>
+  <br>
+  <a href="{% url 'cart' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Cart</a>
+  <br class='responsive'>
+        <br class='responsive'>
+        <br class='responsive'>
+  
   <div id = 'products-main' class="panel-body">
    <br>
    <div class="row">
@@ -46,6 +54,8 @@
    <h5>Product Description</h5>
    <p class='description'>{{product.description}}</p>
   </div>
+  <br>
+  <br>
  </div>
 </div>
 {% endblock %}

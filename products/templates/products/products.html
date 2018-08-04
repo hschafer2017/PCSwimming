@@ -2,7 +2,7 @@
 <br>
 <br>
 <br>
-
+<br>
     {% if messages %}
         <br>
         <br>
@@ -14,9 +14,10 @@
             </div>
         </div>
     {% endif %}
-        
-<div class="col-xs-hidden col-sm-hidden col-md-6">
-    <div class="container posts">
+        <div class="container posts" style='margin-left: -5px;'>
+<div class="col-xs-hidden col-sm-hidden col-md-5 col-lg-5">
+    <br>
+    <br>
         <br>
         <br>
         <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
@@ -27,11 +28,11 @@
         <br>
         <br>
         <div class="panel-body items">
-            <div class="col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3">
                 <img src="{{MEDIA_URL}}{{product.image}}" height='75px' class='product-image' width='85px' alt="{{product.name}}" />
             </div>
                 
-            <div class="col-md-6 col-lg-6">
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
                     <p><a href="{% url 'product_detail' product.id %}" class='product-name'>{{product.name}}</a></p>
                 </div>
@@ -40,7 +41,7 @@
                 </div>
                 </div>
                 
-            <div class="col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="row">
                     <p id='price'>${{product.price}}</p>
                 </div>
