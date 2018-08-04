@@ -71,6 +71,10 @@ a {
     width: 105px;
 }
 
+.responsive {
+    display: none;
+}
+
 @media (max-width: 5000px) {
     .navbar-header {
         float: none;
@@ -342,7 +346,7 @@ input:-webkit-autofill:focus {
 /*POST DETAIL*/
 
 .dropdown-toggle {
-    width: 215px;
+    width: 145px;
 }
 
 .dropdown-menu {
@@ -494,6 +498,7 @@ ul {
     background-color: #fff !important;
     color: #555 !important;
 }
+
 .form-control-override::placeholder {
     color: #555 !important;
 }
@@ -594,9 +599,17 @@ legend {
     #links {
         color: #fafafa;
     }
+    /*MOBILE ONLY*/
+    .day {
+        text-align: right;
+    }
+    .time {
+        text-align: right;
+    }
 }
 
 /*RESPONSIVE STYLING FOR CONTENT*/
+
 @media (max-width: 990px) {
     /*PANEL ADJUSTMENTS -- ADD GENERAL MEDIA QUERY FOR TABLET/MOBILE*/
     .main-column {
@@ -630,12 +643,16 @@ legend {
     }
     #products-main {
         position: relative;
-        
+
     }
-    /*RESPONSIVE-ONLY*/
+    .product-row {
+        margin-right: 0px;
+        margin-left: 0px;
+    }
     .responsive {
         display: inline;
     }
+
     .swimmer {
         position: relative;
         width: 63%;

@@ -16,7 +16,7 @@
                
         <br>
             <div class="panel-body">
-                <div class="col-sm-8 col-md-8 col-lg-8">
+                <div class="col-xs-hidden col-sm-8 col-md-8 col-lg-8">
                     <div class="row">
                         <h4 class='product-name meet'>{{ event.name }}</h4>
                     </div>
@@ -24,10 +24,10 @@
                         <p class='product info location'>{{ event.location }}</p>
                     </div>
                     <div class="row">
-                        <p class='day notes'>{{event.notes|truncatewords:10}}</p>
+                        <p class='notes'>{{event.notes|truncatewords:10}}</p>
                     </div>
                 </div>
-                <div class="col-sm-4 col-md-4 col-lg-4">
+                <div class="col-xs-hidden col-sm-4 col-md-4 col-lg-4">
                     <p class='day'>{{event.day|date:'m/d/Y' }}</p>
                     <p class='time'>{{ event.start_time }}</p> 
                 </div>

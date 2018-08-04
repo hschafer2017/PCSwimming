@@ -43,7 +43,7 @@
                         {% if user.is_authenticated and user == comment.owner or user.is_superuser %}
                         
                     <div class="btn-group">
-                        <button type="button" class="btn btn-sm login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Comment Options<span class="caret"></span></button>
+                        <button type="button" class="btn btn-sm login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Comment<span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a id='links' href="{% url 'edit_comment' comment.id %}">Edit Comment</a></li>
                                 <form action = "{% url 'delete_comment' %}" method = "POST">
@@ -63,7 +63,7 @@
                     {% endfor %} 
                         <br>
                     <div class="btn-group">
-                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post Options<span class="caret"></span></button>
+                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
                             <ul class="dropdown-menu">
                                 <li><a id='links' href="{% url 'new_comment'  post.id %}" >Comment</a></li>
                                 
