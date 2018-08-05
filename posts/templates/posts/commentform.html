@@ -9,14 +9,24 @@
   .posts {
       display: none;
   }
+  .form-hidden {
+      display: none;
+  }
+@media (max-width: 990px) {
+    .detail-content {
+        display: none;
+    }
+}
+
 </style>
 
-<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
-    <div class="container login" id='post-container'>
-        <br>
+<div class="col-xs-4 col-sm-8 col-md-6 col-lg-6">
+    <div class="container login" id='post-container' >
+        <br><br><br><br>
+        <br><br><br><br>
         <a href="{% url 'get_posts' %}" class ='btn btn-md login-btn new-post'> Back </a>
         <br>
-        <h3>Comment</h3>
+        <h3 class='heading'>Comment</h3>
     
         
         <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
@@ -24,12 +34,17 @@
             {{ form | as_bootstrap }}
             <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn'>Post</button>
         </form>
-        
+        <br>
     </div>
+    <br>
 </div>
 
-
-    {% include 'posts/postdetail.html' %}
-
+<div class="container">
+<div class="col-xs-4 col-sm-8 col-md-1 col-lg-1">
     
+    {% include 'posts/postdetail.html' %}
+    
+</div>
+<br><br><br>
+</div>
 {% endblock %}

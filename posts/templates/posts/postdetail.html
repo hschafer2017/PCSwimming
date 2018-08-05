@@ -13,10 +13,10 @@
 
 </div>
  <br>
-<div class="col-xs-hidden col-sm-12 col-md-6 col-lg-6">
+<div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
     <br>
     <br>
-    <br>
+    <br class='form-hidden'>
     <div class="container detail">
         <a href="{% url 'get_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
         <br class='responsive'>
@@ -26,8 +26,8 @@
         <br>
             <div class=" post-content">
             
-                <div class="col-xs-hidden col-sm-12 col-md-12 col-lg-12">
-                    <p id='price' class='post-title'>{{ post.title }}</p>
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p class='post-title' >{{ post.title }}</p>
                     <hr>
                     <p>By: {{post.owner}} at {{ post.published_date }}</p>
                     <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
