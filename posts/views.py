@@ -4,7 +4,6 @@ from .forms import PostForm, CommentForm
 from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
-# from django.contrib.comments.view.moderate import perform_delete
 
 
 
@@ -47,9 +46,7 @@ def new_comment(request, pk):
         
     return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
     
-
-
-
+    
 def edit_post(request, pk): 
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
@@ -67,6 +64,9 @@ def edit_post(request, pk):
 
 
 def edit_comment(request, pk): 
+    comments = Comment.objects.all()
+    blogs = Post.objects.all()
+    post = get_object_or_404(Post, pk=pk)
     comment = get_object_or_404(Comment, pk=pk)
     if request.user.is_authenticated and request.user == comment.owner or request.user.is_superuser: 
         if request.method == "POST":
@@ -79,9 +79,7 @@ def edit_comment(request, pk):
     else: 
         return HttpResponseForbidden()
         
-    return render(request, 'posts/commentform.html', {'form': form})
-
-
+    return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
 
 
 def delete_post(request):
@@ -98,9 +96,7 @@ def delete_post(request):
 
     return redirect('get_posts')
     
-    
-    
-
+   
 def delete_comment(request):
     id = request.POST['comment_id']
     pk = request.POST['blogs_id']
@@ -114,7 +110,8 @@ def delete_comment(request):
             messages.warning(request, 'The comment could not be deleted.')
 
     return redirect('get_posts')
-    
+   
+   
 def post_detail(request, pk):
     blogs = Post.objects.all()
     comments = Comment.objects.all()
@@ -122,6 +119,7 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments, 'post': post})
+ 
     
 def get_alum_posts(request): 
     alum_posts = AlumPost.objects.all()

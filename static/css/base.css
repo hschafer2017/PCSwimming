@@ -490,10 +490,7 @@ ul {
 
 .form-control-override {
     color: #555;
-    /*background-color: #fff !important;*/
     background-image: none;
-    /*border: 1px solid #ccc;*/
-    /*border-radius: 4px;*/
 }
 
 .form-control-override:focus {
@@ -665,7 +662,6 @@ legend {
     #products-main {
         position: relative;
         width: 73vw;
-        /*overflow-x: scroll;*/
 
     }
     .product-row {
