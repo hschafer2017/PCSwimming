@@ -15,6 +15,7 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Quicksand" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Muli" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans" rel="stylesheet">
     <link rel="stylesheet" href="{% static 'css/base.css' %}" type="text/css" />
     <title>PCHS Swimming and Diving</title>
 </head>
@@ -58,6 +59,27 @@
     <div class="col-xs-hidden col-sm-hidden col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>
+    <br>
+    <footer>
+        <div class="container" style='color: #333; text-align: center;'>
+            <div class="row">
+                <div class="col-sm-4 col-md-6 col-lg-6 blue-side">
+                    <p>PORTAGE CENTRAL SWIMMING AND DIVING</p>
+                    <p>PORTAGE, MI</p>
+                    </div>
+                <div class="col-sm-4">
+                </div>
+                <div class="col-sm-4 col-md-6 col-lg-6">
+                    <p class = 'payment-icons'>
+                    <i class="fab fa-cc-visa fa-2x"></i>
+                    <i class="fab fa-cc-mastercard fa-2x"></i>
+                    <i class="fab fa-cc-discover fa-2x"></i>
+                    <i class="fab fa-cc-amex fa-2x"></i></p>
+                    <p><i class="fab fa-stripe fa-3x pay-icon"></i></p>
+                </div>
+            </div>
+        </div>
+    </footer>
     
     <script>
         $(document).on('click','.navbar-collapse.in',function(e) {
