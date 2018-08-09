@@ -2,22 +2,27 @@
 {% load static from staticfiles %}
 {% block content %}
 <style>
-  .swimmer {
+ 
+   .swimmer {
       display: none;
   }
 </style>
 
-<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6 include-content">
-   
  {% include 'posts/posts.html' %}
+ 
+<style>
+    .posts {
+      padding-right: 30px;
+  }
+  
+</style>
 
-</div>
  <br>
 <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
+    <div class="container detail">
     <br>
     <br>
     <br class='form-hidden'>
-    <div class="container detail">
         <a href="{% url 'get_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
         <br class='responsive'>
         <br class='responsive'>
