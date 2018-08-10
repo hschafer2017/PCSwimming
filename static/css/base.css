@@ -116,13 +116,19 @@ a {
 /*LOGIN FORM*/
 
 .login {
-
+    width: auto;
     top: 25%;
-    position: relative;
     color: #fafafa;
     padding-left: 15px;
     left: 25%;
 
+}
+
+.center {
+    position: relative;
+    width: auto;
+    left: auto;
+    left: 0%;
 }
 
 .login h3 {
@@ -145,7 +151,7 @@ label {
     background-color: #FFD236;
     border-color: #FFD236;
     color: #fafafa;
-    width: 300px;
+    width: -webkit-fill-available;
     text-transform: uppercase;
     letter-spacing: 4px;
     margin-top: 10px;
@@ -186,6 +192,7 @@ p a:hover {
 
 #form {
     background-color: transparent !important;
+    width: auto;
 }
 
 #form:focus {
@@ -242,7 +249,7 @@ input:-webkit-autofill:focus {
 }
 
 #post-btn {
-    width: 375px;
+    width: -webkit-fill-available;
 }
 
 #id_content {
@@ -262,7 +269,7 @@ input:-webkit-autofill:focus {
     margin-top: 45px;
     padding-left: 0px;
     width: auto;
-    
+
 }
 
 .new-post {
@@ -614,6 +621,10 @@ legend {
     .time {
         text-align: right;
     }
+    #form {
+    width: 350px;
+    }
+    
     #id_content,
     #id_title,
     #id_published_date {
