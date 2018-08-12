@@ -3,8 +3,6 @@ body {
     height: 100%;
     background: linear-gradient(90deg, #062E82 50%, #fafafa 50%);
     font-family: 'Noto Sans', sans-serif;
-    overflow-y: scroll; 
-    position: relative;
 }
 
 .navbar {
@@ -185,6 +183,7 @@ label {
     background-color: #002865;
     border-color: #002865;
     color: #fafafa;
+     cursor:pointer;
 }
 
 p a {
@@ -246,6 +245,10 @@ input:-webkit-autofill:focus {
 
 .responsive {
     display: none;
+}
+
+#respond {
+    padding-right: 0px; 
 }
 
 /*FORMS - REGISTER */
@@ -643,7 +646,7 @@ legend {
         text-align: right;
     }
     #form {
-        width: 350px;
+        width: auto;
     }
 
     #id_content,
@@ -742,10 +745,27 @@ legend {
     #respond {
         color: #333;
     }
+    .form-control {
+    color: #333;
+    
+}
+
+.form-control:focus {
+    background-color: transparent !important;
+    color: #333 !important;
+}
 
 }
 
-
+footer {
+    text-align: center;
+    width: 100%;
+    height: auto;
+    background-color: transparent;
+    color: #A9ACA9; 
+    position: relative;
+    bottom: 0;
+}
 @media (min-width: 990px) {
     .blue-side {
         color: #fafafa;
@@ -753,4 +773,10 @@ legend {
     footer {
         display: none;
     }
+    .login-btn:hover {
+    background-color: #002865;
+    border-color: #002865;
+    color: #fafafa;
+     cursor:pointer;
+}
 }
