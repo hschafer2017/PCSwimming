@@ -1,19 +1,19 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from .models import Post, Comment, AlumPost
+from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.contrib.auth.models import User
 
 
 
 # Create your views here - POSTS.
 @login_required(login_url='/accounts/login/')
-def get_posts(request): 
+def get_posts(request):
     blogs = Post.objects.all()
     comments = Comment.objects.all()
     return render(request, 'posts/posts.html', {'blogs': blogs, 'comments': comments})
-
 
 def new_post(request):
     if request.method == "POST":
@@ -119,8 +119,4 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments, 'post': post})
- 
     
-def get_alum_posts(request): 
-    alum_posts = AlumPost.objects.all()
-    return render(request, "posts/alumniposts.html", {"alum_posts":alum_posts})

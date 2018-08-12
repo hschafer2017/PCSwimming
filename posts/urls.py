@@ -1,8 +1,7 @@
 from django.urls import path
-from posts.views import get_posts, new_post, post_detail, edit_post, new_comment, edit_comment, delete_post, delete_comment, get_alum_posts
+from posts.views import get_posts, new_post, post_detail, edit_post, new_comment, edit_comment, delete_post, delete_comment
 
 urlpatterns = [
-    path('alumni/', get_alum_posts, name='get_alum_posts'),
     path('new/', new_post, name='new_post'),
     path('<pk>/detail/comment', new_comment, name='new_comment'),
     path('<pk>/comment/edit', edit_comment, name='edit_comment'),

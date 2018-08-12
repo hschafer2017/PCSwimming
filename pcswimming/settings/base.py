@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'cart', 
     'checkout',
     'events',
+    'alumni',
     'djangobower',
     
 ]

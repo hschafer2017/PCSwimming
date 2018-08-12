@@ -27,6 +27,7 @@ from django.conf import settings
 from cart import urls as cart_urls
 from checkout import urls as checkout_urls
 from events import urls as events_urls
+from alumni import urls as alumni_urls
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -37,6 +38,7 @@ urlpatterns = [
     path('cart/', include(cart_urls)),
     path('checkout/', include(checkout_urls)),
     path('events/', include(events_urls)),
+    path('alumni/', include(alumni_urls)),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT }),
     
 ]
