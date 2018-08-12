@@ -1,6 +1,6 @@
 html,
 body {
-    height: 100%;
+    /*height: 100%;*/
     background: linear-gradient(90deg, #062E82 50%, #fafafa 50%);
     font-family: 'Noto Sans', sans-serif;
 }
@@ -76,19 +76,30 @@ a {
 }
 
 /*footer {*/
-/*    position: fixed;*/
-/*    height: 50px;*/
-/*    background-color: red;*/
-/*    bottom: 0px;*/
-/*    left: 0px;*/
-/*    right: 0px;*/
-/*    margin-bottom: 0px;*/
-/*    margin-top: 2%;*/
-/*    width: 100%;*/
-/*    text-align: center;*/
-/*    font-size: 0.8em;*/
-/*}*/
 
+/*    position: fixed;*/
+
+/*    height: 50px;*/
+
+/*    background-color: red;*/
+
+/*    bottom: 0px;*/
+
+/*    left: 0px;*/
+
+/*    right: 0px;*/
+
+/*    margin-bottom: 0px;*/
+
+/*    margin-top: 2%;*/
+
+/*    width: 100%;*/
+
+/*    text-align: center;*/
+
+/*    font-size: 0.8em;*/
+
+/*}*/
 
 @media (max-width: 5000px) {
     .navbar-header {
@@ -183,7 +194,7 @@ label {
     background-color: #002865;
     border-color: #002865;
     color: #fafafa;
-     cursor:pointer;
+    cursor: pointer;
 }
 
 p a {
@@ -248,7 +259,7 @@ input:-webkit-autofill:focus {
 }
 
 #respond {
-    padding-right: 0px; 
+    padding-right: 0px;
 }
 
 /*FORMS - REGISTER */
@@ -405,6 +416,10 @@ input:-webkit-autofill:focus {
     text-decoration: none;
     color: #FFD236;
     background-color: #f2f2f2;
+}
+
+#post_links {
+    color: #062E82;
 }
 
 /*PRODUCT DETAIL*/
@@ -706,7 +721,7 @@ legend {
     #products-main {
         position: relative;
         width: 73vw;
-        left: 6%;
+        left: 0%;
     }
 
     .product-row {
@@ -721,11 +736,11 @@ legend {
     .responsive {
         display: inline;
     }
-    
+
     #cart_btn {
         padding: 10px 16px;
         position: relative;
-        left: 6%;
+        left: 0%;
     }
 
     .include_responsive {
@@ -746,37 +761,43 @@ legend {
         color: #333;
     }
     .form-control {
-    color: #333;
-    
-}
+        color: #333;
 
-.form-control:focus {
-    background-color: transparent !important;
-    color: #333 !important;
-}
+    }
+
+    .form-control:focus {
+        background-color: transparent !important;
+        color: #333 !important;
+    }
 
 }
 
 footer {
     text-align: center;
-    width: 100%;
-    height: auto;
-    background-color: transparent;
-    color: #A9ACA9; 
+    background-color: transparent !important;
+    color: #333;
     position: relative;
     bottom: 0;
+    /*position: absolute;*/
+    bottom: 0;
+    width: 100%;
+
 }
+
 @media (min-width: 990px) {
     .blue-side {
         color: #fafafa;
     }
-    footer {
-        display: none;
+    .white-side {
+        color: #333;
     }
+    /*footer {*/
+    /*    display: none;*/
+    /*}*/
     .login-btn:hover {
-    background-color: #002865;
-    border-color: #002865;
-    color: #fafafa;
-     cursor:pointer;
-}
+        background-color: #002865;
+        border-color: #002865;
+        color: #fafafa;
+        cursor: pointer;
+    }
 }

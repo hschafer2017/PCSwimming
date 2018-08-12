@@ -2,14 +2,47 @@
 {% load static from staticfiles %}
 {% block content %}
 <style>
- 
-   .swimmer {
+ @media (max-width: 990px) {
+  footer {
+         display:none;
+     }
+ }
+.swimmer {
       display: none;
   }
 </style>
 
 <div class="include_responsive">
- {% include 'posts/posts.html' %}
+ <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+        <div class="container posts">
+        <br>
+        <br>
+            <a href="{% url 'new_post' %}" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+        <br>
+    
+            <h3 class='heading'>Discussion</h3>
+            <br>
+        {% for blog in blogs %}
+            <div class="panel-body post-panels">
+                <br>
+                <h3 class = 'blog-title'>{{ blog.title }}</h3>
+                <br>
+                    <p class='blog-content'>{{ blog.content|truncatewords:30 }}</p>
+                    <p class ='info'><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
+                    <p class='info'>Views: {{blog.views}}</p>
+    
+                    <p class='info'>Comments: {{ blog.comments.count}}</p>
+                            
+                    <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
+            </div>
+            <br>
+            <br>
+        {% endfor %}
+        
+        <br>
+    </div>
+</div>
+
  </div>
  
 <style>
@@ -20,7 +53,7 @@
 </style>
 
  <br>
-<div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
     <div class="container detail">
     <br>
     <br>
@@ -52,7 +85,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-sm login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Comment<span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a id='links' href="{% url 'edit_comment' comment.id %}">Edit Comment</a></li>
+                                <li><a id='post_links' href="{% url 'edit_comment' comment.id %}">Edit Comment</a></li>
                                 
                                 
                                 <form action = "{% url 'delete_comment' %}" method = "POST">
@@ -75,11 +108,11 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a id='links' href="{% url 'new_comment'  post.id %}" >Comment</a></li>
+                                <li><a id='post_links' href="{% url 'new_comment'  post.id %}" >Comment</a></li>
                                 
                                 {% if user.is_authenticated and user == post.owner or user.is_superuser %}
     
-                                <li><a id = 'links' href="{% url 'edit_post' post.id %}">Edit Post</a></li>
+                                <li><a id = 'post_links' href="{% url 'edit_post' post.id %}">Edit Post</a></li>
                                 
                                 <form action = "{% url 'delete_post' %}" method = "POST">
                                 {% csrf_token %}
@@ -97,6 +130,8 @@
             </div>
         </div>
     </div>
+    <br>
+    <br>
     <br>
 </div>
     

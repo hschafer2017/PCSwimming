@@ -2,13 +2,43 @@
 {% load static from staticfiles %}
 {% block content %}
 <style>
+@media (max-width: 990px) {
+  footer {
+         display:none;
+     }
+ }
    .swimmer {
       display: none;
   }
 </style>
-
+<br>
+<br>
+<br>
 <div class="include_responsive">
- {% include 'alumni/alumniposts.html' %}
+ <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+    <div class="container posts">
+    <br>
+    <br>
+        <a href="{% url 'new_alum_post' %}" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+    <br>
+    
+        <h3 class='heading'>Alumni</h3>
+        <br>
+        {% for alum_post in alum_posts %}
+        <div class="panel-body post-panels">
+            <br>
+            <h3 class = 'blog-title'>{{ alum_post.title }}</h3>
+            <br>
+            <p class='blog-content'>{{ alum_post.content|truncatewords:30 }}</p>
+            <p class ='info'><span class="boldtext">Published on:</span> {{ alum_post.published_date }} </p>
+            <p><a href="{% url 'alum_post_detail' alum_post.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
+        </div>
+        <br>
+        <br>
+{% endfor %}
+        <br>
+    </div>
+</div>
  </div>
  
 <style>
@@ -64,8 +94,12 @@
                     <br>
                     <br>
                 </div>
+                <br>
+                <br>
+                <br>
             </div>
         </div>
+        <br>
     </div>
     <br>
 </div>
