@@ -20,7 +20,7 @@ def new_post(request):
         form = PostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.owner = request.user
             post.save()
             return redirect('get_posts')
     else:
@@ -37,7 +37,7 @@ def new_comment(request, pk):
         form = CommentForm(request.POST)
         if form.is_valid():
             comment = form.save(commit=False)
-            comment.author = request.user
+            comment.owner = request.user
             comment.post = post
             comment.save()
             return redirect('post_detail', pk=post.pk)

@@ -8,14 +8,14 @@ class Post(models.Model):
   created_date = models.DateTimeField(auto_now_add=True)
   published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
   views = models.IntegerField(default=0)
-  owner = models.ForeignKey(User, related_name='blogs', null=True, default= 1, on_delete=models.SET_NULL)
+  owner = models.ForeignKey(User, related_name='blogs', null=False, default=1, on_delete=models.SET_DEFAULT)
  
   def __str__(self):
     return self.title
 
 class Comment(models.Model):
     post = models.ForeignKey('posts.Post', on_delete=models.CASCADE, related_name='comments')
-    owner = models.ForeignKey(User, related_name='comments', null=True, default= 1, on_delete=models.SET_NULL)
+    owner = models.ForeignKey(User, related_name='comments', null=False, default=1, on_delete=models.SET_DEFAULT)
     content = models.TextField()
     published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
 

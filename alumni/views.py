@@ -13,7 +13,7 @@ def new_alum_post(request):
         form = AlumPostForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            post.author = request.user
+            post.owner = request.user
             post.save()
             return redirect('get_alum_posts')
     else:
