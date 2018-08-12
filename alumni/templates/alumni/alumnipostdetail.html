@@ -1,0 +1,60 @@
+{% extends 'home/base.html' %}
+{% load static from staticfiles %}
+{% block content %}
+<style>
+ 
+   .swimmer {
+      display: none;
+  }
+</style>
+
+ {% include 'posts/posts.html' %}
+ 
+<style>
+    .posts {
+      padding-right: 30px;
+  }
+  
+</style>
+
+ <br>
+<div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
+    <div class="container detail">
+    <br>
+    <br>
+    <br class='form-hidden'>
+        <a href="{% url 'get_alum_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
+        <br class='responsive'>
+        <br class='responsive'>
+        <br class='responsive'>
+        <div id = 'products-main' class="panel-body">
+        <br>
+            <div class=" post-content">
+            
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                    <p class='post-title' >{{ post.title }}</p>
+                    <hr>
+                    <p>By: {{post.owner}} ({{post.owner.graduated}})at {{ post.published_date }}</p>
+                    <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
+                    <br>
+                        <br>
+                    <div class="btn-group">
+                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
+                            <ul class="dropdown-menu">
+                            </ul>
+                    </div>
+                    <br>
+                    <br>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+</div>
+    
+    
+<script>
+    $('.dropdown-toggle').dropdown()
+</script>
+
+{% endblock content %}

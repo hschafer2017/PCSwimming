@@ -8,6 +8,7 @@ class AlumPost(models.Model):
   content = models.TextField()
   published_date = models.DateTimeField(blank=True, null=True, default=timezone.now)
   image = models.ImageField(upload_to='images', null=True)
+  owner = models.ForeignKey(User, related_name='alum_posts', null=True, default= 1, on_delete=models.SET_NULL)
 
   def __str__(self):
     return self.title

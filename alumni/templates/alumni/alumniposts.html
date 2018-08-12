@@ -23,7 +23,7 @@
     <div class="container posts">
     <br>
     <br>
-        <a href="#" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+        <a href="{% url 'new_alum_post' %}" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
     <br>
     
         <h3 class='heading'>Discussion</h3>
@@ -36,8 +36,7 @@
             <p class='blog-content'>{{ alum_post.content|truncatewords:30 }}</p>
             <p class ='info'><span class="boldtext">Published on:</span> {{ alum_post.published_date }} </p>
             <img class="alumni-photo" src="{{MEDIA_URL}}{{alum_post.image}}" width ='250px' height ="200px">
-            <!--<p class='info'>Comments: {{ blog.comments.count}}</p>-->
-            <!--<p><a href="#"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>-->
+            <p><a href="{% url 'alum_post_detail' alum_post.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
         </div>
         <br>
         <br>

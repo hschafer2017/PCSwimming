@@ -1,0 +1,31 @@
+{% extends "home/base.html" %}
+{% load bootstrap_tags %}
+{% block content %}
+<style type="text/css">
+    /*@media (max-width: 990px) {*/
+    /*    .swimmer {*/
+    /*        display:none;*/
+    /*    }*/
+    /*}*/
+</style>
+<br>
+<br>
+<br>
+<br>
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="container login" id='post-container'>
+
+    <br>
+    <br>
+    <div class="center">
+    <h3 class='heading'>New Post</h3>
+    <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn adjust-post'>Post</button>
+    </form>
+    </div>
+    <br>
+    </div>
+</div>
+{% endblock %}
