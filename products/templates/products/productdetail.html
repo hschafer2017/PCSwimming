@@ -40,13 +40,15 @@
     <div class="row product-row">
      <h5 id='price' style='margin-top: 7px;'>${{product.price}}</h5>
     </div>
+    <br>
+    <br>
     <div class="row product-row">
-      <form action='{% url "cart" %}' method="POST">
-       
+      <form action='{% url "cart" %}' method="POST" enctype="multipart/form-data">
          {% csrf_token %}
-         
+         {{ form | as_bootstrap }}
        <input type="hidden" name="product_id" value="{{ product.id }}"/>
-        <button type="submit" class="btn btn-md login-btn new-post buy" style='margin-top: 40px;'>Buy</button>
+        <button type="submit" class="btn btn-md login-btn new-post buy">Buy</button>
+      </form>
       </form>
     </div>
   </div>

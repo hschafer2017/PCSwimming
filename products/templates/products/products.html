@@ -21,7 +21,7 @@
     <br>
         <br>
         <br>
-        <button onClick='viewModal()' class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</button>
+         <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
         <br> 
         
         {% for product in products %}
@@ -35,7 +35,7 @@
                 
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                    <p><a href="{% url 'product_detail' product.id %}" class='product-name'>{{product.name}}</a></p>
+                    <p>{{product.name}}</p>
                 </div>
                 <div class="row">
                     <p class='product info'>{{product.description|truncatewords:10}}</p>
@@ -46,12 +46,10 @@
                 <div class="row">
                     <p id='price'>${{product.price}}</p>
                 </div>
+                <br>
+                
                 <div class="row">
-                    <form action='{% url "cart" %}' method="POST">
-                        {% csrf_token %}
-                        <input type="hidden" name="product_id" value="{{ product.id }}" />
-                        <button type="submit" class="btn-sm login-btn new-post buy">Buy</button>
-                    </form>
+                    <a href="{% url 'product_detail' product.id %}" class="btn-sm login-btn new-post buy">More</a>
                 </div>
             </div>
         </div>
@@ -67,26 +65,5 @@
     <br>
     <br>
 </div>
-<!--CART MODAL-->
-<div class="modal fade" tabindex="-1" role="dialog" id='CartModal'>
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Thanks for Choosing this Item!</h4>
-                </div>
-                <div class="modal-body">
-                    <p class='header'>We need a little more information from you first before we add this to your cart.</p>
-                    <p>Please specify any following size requirements or special considerations below: </p>
-                    
-                <div class="modal-footer">
-                    <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'>Done!</a>
-                </div>
-            </div>
-        </div>
-    </div>
     
-    <script>
-        
-    </script>
 {% endblock content %}

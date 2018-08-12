@@ -18,4 +18,4 @@ class ItemRequirements(models.Model):
     notes = models.CharField(max_length=15)
 
     def __str__(self):
-        return "{0} ({1})".format(self.product.name, self.notes)
+        return "{0} ({1})".format(self.product.name, self.user)
