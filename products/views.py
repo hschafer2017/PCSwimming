@@ -5,6 +5,8 @@ from .models import Product
 
 def get_products(request): 
     products = Product.objects.all()
+    item_requirements = ItemRequirements.objects.all()
+    
     return render(request, 'products/products.html', {'products': products})
 
 def product_detail(request, pk):

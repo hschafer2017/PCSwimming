@@ -21,7 +21,7 @@
     <br>
         <br>
         <br>
-        <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
+        <button onClick='viewModal()' class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</button>
         <br> 
         
         {% for product in products %}
@@ -67,4 +67,26 @@
     <br>
     <br>
 </div>
+<!--CART MODAL-->
+<div class="modal fade" tabindex="-1" role="dialog" id='CartModal'>
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Thanks for Choosing this Item!</h4>
+                </div>
+                <div class="modal-body">
+                    <p class='header'>We need a little more information from you first before we add this to your cart.</p>
+                    <p>Please specify any following size requirements or special considerations below: </p>
+                    
+                <div class="modal-footer">
+                    <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'>Done!</a>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        
+    </script>
 {% endblock content %}

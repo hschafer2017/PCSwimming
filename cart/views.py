@@ -6,6 +6,7 @@ from .utils import get_cart_items_and_total
 
 def view_cart(request):
     cart = request.session.get('cart', {})
+    # cart_notes = 
     return render(request, 'cart/cart.html', get_cart_items_and_total(cart))
 
 # Adds items to the cart and redirects to the cart after adding
