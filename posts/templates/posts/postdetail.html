@@ -34,7 +34,7 @@
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
                     <p class='post-title' >{{ post.title }}</p>
                     <hr>
-                    <p>By: {{post.owner}} at {{ post.published_date }}</p>
+                    <p>By: {{post.owner.username}} at {{ post.published_date }}</p>
                     <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
                     
                     <p class='info'>Views: {{post.views}}</p>

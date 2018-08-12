@@ -29,14 +29,13 @@ def alum_post_detail(request, pk):
 def delete_alum_post(request):
     id = request.POST['blogs_id']
     if request.method == 'POST':
-        post = get_object_or_404(AlumPost, pk=id)
-        if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser:
-            try:
-                post.delete()
-                messages.success(request, 'You have successfully deleted the post')
+        blogs = get_object_or_404(AlumPost, pk=id)
+        try:
+            blogs.delete()
+            messages.success(request, 'You have successfully deleted the post')
         
-            except:
-                messages.warning(request, 'The post could not be deleted.')
+        except:
+            messages.warning(request, 'The post could not be deleted.')
 
     return redirect('get_alum_posts')
     
