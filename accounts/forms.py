@@ -2,6 +2,7 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth.models import User
 from django.core.exceptions import ValidationError
+from .models import Alumni, Swimmer
 
 class UserLoginForm(forms.Form):
     """
@@ -41,3 +42,15 @@ class UserRegistrationForm(UserCreationForm):
             raise ValidationError("Passwords do not match")
 
         return password2
+        
+class SwimmerRegistrationForm(forms.ModelForm): 
+    graduation_year = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'GRADUATION YEAR'}))
+    class Meta: 
+        model=Swimmer
+        fields= ['graduation_year']
+        
+class AlumniRegistrationForm(forms.ModelForm): 
+    graduated = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'GRADUATION YEAR'}))
+    class Meta: 
+        model=Alumni
+        fields= ['graduated']

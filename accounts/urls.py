@@ -1,7 +1,7 @@
 # ACCOUNTS FOLDER
 from django.conf.urls import url
 from django.urls import path, reverse_lazy
-from accounts.views import do_login, register_swimmer, register_alumni, do_logout, profile  
+from accounts.views import do_login, register_swimmer, register_alumni, do_logout  
 from django.contrib.auth.views import password_reset, password_reset_done, password_reset_confirm, password_reset_complete
 
 
@@ -11,7 +11,6 @@ urlpatterns = [
     path('register_swimmer', register_swimmer, name='register_swimmer'), 
     path('register_alumni', register_alumni, name='register_alumni'), 
     path('logout', do_logout, name='logout'),
-    path('profile', profile, name='profile'), 
     path('password-reset/', password_reset,
         {'post_reset_redirect': reverse_lazy('password_reset_done')}, name='password_reset'),
     path('password-reset/done/', password_reset_done, name='password_reset_done'),

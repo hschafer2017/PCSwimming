@@ -1,7 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, authenticate, login
-from .forms import UserLoginForm, UserRegistrationForm
+from .forms import UserLoginForm, UserRegistrationForm, AlumniRegistrationForm, SwimmerRegistrationForm
+
 # Create your views here - ACCOUNTS.
 
 def do_login(request):
@@ -25,6 +26,7 @@ def do_login(request):
 def register_swimmer(request):
     if request.method=="POST":
         registration_form = UserRegistrationForm(request.POST)
+        swimmer_form = SwimmerRegistrationForm(request.POST, request.FILES)
         if registration_form.is_valid() and swimmer_form.is_valid():
             user = registration_form.save()
             swimmer = swimmer_form.save(commit=False)
@@ -51,32 +53,29 @@ def register_swimmer(request):
 def register_alumni(request): 
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
-        alumni_form = SellerRegistrationForm(request.POST, request.FILES)
+        alumni_form = AlumniRegistrationForm(request.POST, request.FILES)
         
         if registration_form.is_valid() and alumni_form.is_valid():
-            user = user_form.save()
+            user = registration_form.save()
             alumni = alumni_form.save(commit=False)
             alumni.user = user
             alumni.save()
             
-            u = user_form.cleaned_data['username']
-            p = user_form.cleaned_data['password1']
+            u = registration_form.cleaned_data['username']
+            p = registration_form.cleaned_data['password1']
             user = authenticate(username=u, password=p)
             
             if user is not None:
-                auth.login(request, user)
-                return redirect("/")
+                login(request, user)
+                return redirect("login")
             else:
                 user_form.add_error(None, "Can't log in now, try later.")
     else:
         registration_form = UserRegistrationForm()
         alumni_form = AlumniRegistrationForm()
 
-    return render(request, "accounts/register.html", {'form': registration_form, 'user_type_form': alumni_form})
+    return render(request, "accounts/register_alumni.html", {'form': registration_form, 'user_type_form': alumni_form})
     
-def profile(request):
-    
-    return render(request, 'accounts/profile.html')
     
 def do_logout(request): 
     logout(request)
