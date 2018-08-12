@@ -3,7 +3,7 @@ from .forms import UserLoginForm, UserRegistrationForm
 from django.contrib.auth.models import User
 
 # Create your tests here.
-# The arguement of the class is what we're actually doing (model, test, form, etc)
+
 
 
 class TestAccountsForms(TestCase):              

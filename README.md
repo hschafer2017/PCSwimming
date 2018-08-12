@@ -12,7 +12,20 @@ A live demo of this project can be found [here](https://pcswimming-project.herok
 # Testing
 ## Automated Testing  
 All automated testing was done using Travis-CI. 
-There is automated testing done for accounts and 
+There is automated testing done for accounts. 
+
+Testing was done by running the following in the command line: 
+```
+$ sudo pip3 install coverage 
+$ coverage run manage.py test (app name)
+$ coverage html
+```
+This will create a htmlcov folder. There are a bunch of files in this folder, so make sure to include them in the .gitignore. 
+
+To view the percentage of your app that's being tested for, open a new idle, and run the command 'htmlcov/index.html' in the idle. By clicking the link that appears when you run, it will be able to see the coverage in a new window. You can also view that all of your tests are passing by running the following in the command line: 
+```
+$ python3 manage.py test
+```
 
 ## Manual Testing: 
 Manual testing was done for all edit/post/delete/appearance functions in both the events and posts apps. This was to ensure that what was supposed to be deleting was deleting, and that only designated users (the post/comment owner or the superuser) was able to delete/edit the content selected. I also verified that the correct author showed up for the posts and comments. 
@@ -44,7 +57,7 @@ If you have the Grammarly plug-in in your browser, when you click on a form's te
 # Installation 
 If you're interested in cloning this repository, to set up and install everything in the requirements.txt run the following command in the terminal: 
 ```
-sudo pip3 -r install requirements.txt
+$ sudo pip3 -r install requirements.txt
 ```
 Then, detatch from my repository using the following command: 
 ```
