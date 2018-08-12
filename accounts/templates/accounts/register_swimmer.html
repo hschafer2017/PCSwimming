@@ -1,9 +1,9 @@
 {% extends 'home/base.html' %} {% load bootstrap_tags %} {% load static from staticfiles %} {% block content %}
-<br>
-<br>
-<br>
+<br><br><br>
+<br><br><br><br>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
 <div class="container login">
-    <h3>Register</h3>
+    <h3 class = 'heading' >Register as a Swimmer</h3>
     <form method='POST' class='form' id='form'>
     {% csrf_token %} 
     
@@ -11,5 +11,5 @@
         <input type="submit" value="Register" class='btn btn-lg btn-default login-btn adjust' />
     </form>
 </div>
-
+</div>
 {% endblock content %}

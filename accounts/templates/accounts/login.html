@@ -14,8 +14,8 @@
    
         <input type="submit" value="Login" class='btn btn-lg btn-default login-btn adjust'/>
     <br>
-        <p><a href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
-        <p><a href="{% url 'register' %}">Don't Have An Account Yet?</a></p>
+        <p id='respond'><a id='respond' href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
+        <p id='respond'>Don't Have An Account Yet? <a id= 'respond' href="{% url 'register_swimmer' %}"> Register as a Swimmer </a> or <a id= 'respond' href="{% url 'register_alumni' %}"> Register as an Alumni</a></p>
     </form>
 </div>
 </div>

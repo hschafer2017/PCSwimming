@@ -22,11 +22,14 @@ def do_login(request):
 
     return render(request, 'accounts/login.html', {'form': login_form})
     
-def register(request):
+def register_swimmer(request):
     if request.method=="POST":
         registration_form = UserRegistrationForm(request.POST)
-        if registration_form.is_valid():
-            registration_form.save()
+        if registration_form.is_valid() and swimmer_form.is_valid():
+            user = registration_form.save()
+            swimmer = swimmer_form.save(commit=False)
+            swimmer.user = user
+            swimmer.save()
             
             u = registration_form.cleaned_data['username']
             p = registration_form.cleaned_data['password1']
@@ -39,9 +42,37 @@ def register(request):
                 registration_form.add_error(None, "Can't log in now, try later.")
     else:
         registration_form = UserRegistrationForm()
+        swimmer_form = SwimmerRegistrationForm()
+
     
     
-    return render(request, 'accounts/register.html', {'form': registration_form})
+    return render(request, 'accounts/register_swimmer.html', {'form': registration_form, 'user_type_form': swimmer_form})
+    
+def register_alumni(request): 
+    if request.method == "POST":
+        registration_form = UserRegistrationForm(request.POST)
+        alumni_form = SellerRegistrationForm(request.POST, request.FILES)
+        
+        if registration_form.is_valid() and alumni_form.is_valid():
+            user = user_form.save()
+            alumni = alumni_form.save(commit=False)
+            alumni.user = user
+            alumni.save()
+            
+            u = user_form.cleaned_data['username']
+            p = user_form.cleaned_data['password1']
+            user = authenticate(username=u, password=p)
+            
+            if user is not None:
+                auth.login(request, user)
+                return redirect("/")
+            else:
+                user_form.add_error(None, "Can't log in now, try later.")
+    else:
+        registration_form = UserRegistrationForm()
+        alumni_form = AlumniRegistrationForm()
+
+    return render(request, "accounts/register.html", {'form': registration_form, 'user_type_form': alumni_form})
     
 def profile(request):
     

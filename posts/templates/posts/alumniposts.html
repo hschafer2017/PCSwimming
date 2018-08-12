@@ -5,12 +5,45 @@
 <br>
 <br>
 <br>
-<div class="container">
-{% for alum_post in alum_posts %}
-<h4>{{alum_post.title}}</h4>
-<p>{{alum_post.content}}</p>
-<p>{{alum_post.published_date}}</p>
-<img class="alumni-photo" src="{{MEDIA_URL}}{{alum_post.image}}" width ='250px' height ="200px">
-</div>
+<br>
+
+{% if messages %}
+        <br>
+        <br>
+        <br>
+        <div class="alert alert-success">
+            <div class="messages">
+                    
+                    {% for message in messages %} {{ message }} {% endfor %}
+            </div>
+        </div>
+    {% endif %}
+    
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+    <div class="container posts">
+    <br>
+    <br>
+        <a href="#" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+    <br>
+    
+        <h3 class='heading'>Discussion</h3>
+        <br>
+        {% for alum_post in alum_posts %}
+        <div class="panel-body post-panels">
+            <br>
+            <h3 class = 'blog-title'>{{ alum_post.title }}</h3>
+            <br>
+            <p class='blog-content'>{{ alum_post.content|truncatewords:30 }}</p>
+            <p class ='info'><span class="boldtext">Published on:</span> {{ alum_post.published_date }} </p>
+            <img class="alumni-photo" src="{{MEDIA_URL}}{{alum_post.image}}" width ='250px' height ="200px">
+            <p class='info'>Comments: {{ blog.comments.count}}</p>
+            <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
+        </div>
+        <br>
+        <br>
 {% endfor %}
+        <br>
+    </div>
+</div>
+
 {% endblock content %}
