@@ -16,9 +16,7 @@ def product_detail(request, pk):
         form = ItemRequirementsForm(request.POST, request.FILES)
         if form.is_valid():
             post = form.save(commit=False)
-            # post.author = request.user
             post.save()
-            # return redirect('view_cart')
     else:
         form = ItemRequirementsForm()
     return render(request, 'products/productdetail.html', {'product': product, 'products': products, 'form': form})

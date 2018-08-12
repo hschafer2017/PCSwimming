@@ -9,8 +9,9 @@
   
 </style>
 
-
+<div class="include_responsive">
  {% include 'products/products.html' %}
+ </div>
 
 <style>
     .posts {
@@ -23,7 +24,7 @@
  <div class="container detail">
   <br>
   <br>
-  <a href="{% url 'view_cart' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Cart</a>
+  <a href="{% url 'view_cart' %}" class="btn btn-lg login-btn new-post responsive" id='cart_btn'>Cart</a>
   <br class='responsive'>
         <br class='responsive'>
         <br class='responsive'>

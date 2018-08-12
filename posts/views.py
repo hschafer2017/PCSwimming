@@ -97,6 +97,26 @@ def delete_post(request):
     return redirect('get_posts')
     
    
+# def delete_comment(request):
+#     id = request.POST['comment_id']
+#     print(id)
+#     pk = request.POST['blogs_id']
+#     print(pk)
+#     if request.method == 'POST':
+#         print('post')
+#         comment = get_object_or_404(Comment, pk=pk, id=id)
+#         print('after404')
+#         try:
+#             print('try')
+#             comment.delete()
+#             messages.success(request, 'You have successfully deleted the comment')
+        
+#         except:
+#             print('except')
+#             messages.warning(request, 'The comment could not be deleted.')
+
+#     return redirect('get_posts')
+
 def delete_comment(request):
     id = request.POST['comment_id']
     pk = request.POST['blogs_id']
@@ -108,9 +128,7 @@ def delete_comment(request):
         
         except:
             messages.warning(request, 'The comment could not be deleted.')
-
-    return redirect('get_posts')
-   
+    return redirect('get_posts')  
    
 def post_detail(request, pk):
     blogs = Post.objects.all()

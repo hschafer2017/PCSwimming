@@ -3,6 +3,8 @@ body {
     height: 100%;
     background: linear-gradient(90deg, #062E82 50%, #fafafa 50%);
     font-family: 'Noto Sans', sans-serif;
+    overflow-y: scroll; 
+    position: relative;
 }
 
 .navbar {
@@ -74,6 +76,21 @@ a {
 .responsive {
     display: none;
 }
+
+/*footer {*/
+/*    position: fixed;*/
+/*    height: 50px;*/
+/*    background-color: red;*/
+/*    bottom: 0px;*/
+/*    left: 0px;*/
+/*    right: 0px;*/
+/*    margin-bottom: 0px;*/
+/*    margin-top: 2%;*/
+/*    width: 100%;*/
+/*    text-align: center;*/
+/*    font-size: 0.8em;*/
+/*}*/
+
 
 @media (max-width: 5000px) {
     .navbar-header {
@@ -435,6 +452,10 @@ h5 {
     font-weight: 600;
 }
 
+#id_notes {
+    width: 80%;
+}
+
 /*EVENTS*/
 
 .heading {
@@ -622,9 +643,9 @@ legend {
         text-align: right;
     }
     #form {
-    width: 350px;
+        width: 350px;
     }
-    
+
     #id_content,
     #id_title,
     #id_published_date {
@@ -682,17 +703,30 @@ legend {
     #products-main {
         position: relative;
         width: 73vw;
-
+        left: 6%;
     }
+
     .product-row {
         margin-right: 0px;
         margin-left: 0px;
     }
+
     #id_content {
         background-color: #fafafa !important;
     }
+
     .responsive {
         display: inline;
+    }
+    
+    #cart_btn {
+        padding: 10px 16px;
+        position: relative;
+        left: 6%;
+    }
+
+    .include_responsive {
+        display: none;
     }
 
     .swimmer {
@@ -700,12 +734,15 @@ legend {
         width: 63%;
         left: 21%;
     }
+
     #id_published_date {
         color: #333;
     }
+
     #respond {
         color: #333;
     }
+
 }
 
 

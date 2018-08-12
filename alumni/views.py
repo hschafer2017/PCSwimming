@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import AlumPost
 from .forms import AlumPostForm
+from django.contrib import messages
 
 # Create your views here.
 
@@ -27,9 +28,9 @@ def alum_post_detail(request, pk):
     return render(request, "alumni/alumnipostdetail.html", {'alum_posts': alum_posts, 'post': post})
     
 def delete_alum_post(request):
-    id = request.POST['blogs_id']
+    pk = request.POST['blogs_id']
     if request.method == 'POST':
-        blogs = get_object_or_404(AlumPost, pk=id)
+        blogs = get_object_or_404(AlumPost, pk=pk)
         try:
             blogs.delete()
             messages.success(request, 'You have successfully deleted the post')
@@ -38,6 +39,7 @@ def delete_alum_post(request):
             messages.warning(request, 'The post could not be deleted.')
 
     return redirect('get_alum_posts')
+
     
 def edit_alum_post(request, pk): 
     post = get_object_or_404(AlumPost, pk=pk)
