@@ -15,9 +15,9 @@ def do_login(request):
     
             if user is not None:
                 login(request, user)
-                return redirect("get_products")
+                return redirect("get_events")
             else:
-                login_form.add_error(None, "Yogtiur username or password are incorrect")
+                login_form.add_error(None, "Incorrect Username or Password!")
     else:
         login_form = UserLoginForm()
 

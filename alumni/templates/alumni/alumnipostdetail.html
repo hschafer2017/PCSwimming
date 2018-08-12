@@ -8,7 +8,7 @@
   }
 </style>
 
- {% include 'posts/posts.html' %}
+ {% include 'alumni/alumniposts.html' %}
  
 <style>
     .posts {
@@ -37,12 +37,21 @@
                     <p>By: {{post.owner}} ({{post.owner.graduated}})at {{ post.published_date }}</p>
                     <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
                     <br>
+            <img class="alumni-photo" src="{{MEDIA_URL}}{{post.image}}" width ='250px' height ="200px">
                         <br>
+                        {% if user.is_authenticated and user == post.owner or user.is_superuser %}
                     <div class="btn-group">
                         <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
                             <ul class="dropdown-menu">
+                                <li><a id = 'links' href="{% url 'edit_alum_post' post.id %}">Edit Post</a></li>
+                                <form action = "{% url 'delete_alum_post' %}" method = "POST">
+                                {% csrf_token %}
+                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
+                                    <li><input type="submit" id ='delete' value="Delete Post"/></li>
+                                </form> 
                             </ul>
                     </div>
+                    {% endif %}
                     <br>
                     <br>
                 </div>

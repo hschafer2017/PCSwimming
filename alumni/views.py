@@ -1,5 +1,6 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import AlumPost
+from .forms import AlumPostForm
 
 # Create your views here.
 
@@ -16,7 +17,7 @@ def new_alum_post(request):
             post.save()
             return redirect('get_alum_posts')
     else:
-        form = PostForm()
+        form = AlumPostForm()
         
     return render(request, 'alumni/alumnipostform.html', {'form': form})
     
@@ -25,3 +26,31 @@ def alum_post_detail(request, pk):
     post = get_object_or_404(AlumPost, pk=pk)
     return render(request, "alumni/alumnipostdetail.html", {'alum_posts': alum_posts, 'post': post})
     
+def delete_alum_post(request):
+    id = request.POST['blogs_id']
+    if request.method == 'POST':
+        post = get_object_or_404(AlumPost, pk=id)
+        if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser:
+            try:
+                post.delete()
+                messages.success(request, 'You have successfully deleted the post')
+        
+            except:
+                messages.warning(request, 'The post could not be deleted.')
+
+    return redirect('get_alum_posts')
+    
+def edit_alum_post(request, pk): 
+    post = get_object_or_404(AlumPost, pk=pk)
+    if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
+        if request.method == "POST":
+            form = AlumPostForm(request.POST, request.FILES, instance=post)
+            if form.is_valid():
+                post = form.save()
+                return redirect('alum_post_detail', post.pk)        
+        else:
+            form = AlumPostForm(instance=post)
+    else: 
+        return HttpResponseForbidden()
+        
+    return render(request, 'alumni/alumnipostform.html', {'form': form})
