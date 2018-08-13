@@ -3,7 +3,7 @@ from django import forms
 from .models import ItemRequirements 
 
 class ItemRequirementsForm(forms.ModelForm):
-    notes = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'placeholder': 'SPECIAL CONSIDERATIONS OR SIZE REQUIREMENTS'}))
+    notes = forms.CharField(max_length=15, widget=forms.TextInput(attrs={'placeholder': 'SIZE'}))
     
     class Meta:
         model = ItemRequirements

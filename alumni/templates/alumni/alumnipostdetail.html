@@ -48,11 +48,8 @@
   
 </style>
 
- <br>
 <div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
     <div class="container detail">
-    <br>
-    <br>
     <br class='form-hidden'>
         <a href="{% url 'get_alum_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
         <br class='responsive'>
@@ -74,7 +71,7 @@
                     <div class="btn-group">
                         <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
                             <ul class="dropdown-menu">
-                                <li><a id = 'links' href="{% url 'edit_alum_post' post.id %}">Edit Post</a></li>
+                                <li><a id = 'post_links' href="{% url 'edit_alum_post' post.id %}">Edit Post</a></li>
                                 
                                 
                                 
@@ -93,10 +90,14 @@
                     {% endif %}
                     <br>
                     <br>
+                    <br><br>
+                <br>
                 </div>
                 <br>
                 <br>
+                <br><br>
                 <br>
+                
             </div>
         </div>
         <br>
