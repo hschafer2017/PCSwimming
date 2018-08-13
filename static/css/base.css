@@ -315,7 +315,6 @@ input:-webkit-autofill:focus {
 }
 
 .panel-body {
-    /*width: 460px;*/
     width: auto;
     background: #fafafa;
     box-shadow: 0px 0px 25px #212121;
@@ -666,11 +665,12 @@ legend {
 
     #id_content,
     #id_title,
-    #id_published_date {
-        width: 64%;
+    #id_published_date,
+    #id_image {
+        width: 230px;
     }
     #post-btn {
-        width: 64%;
+        width: 100px;;
     }
 
 }
