@@ -28,9 +28,9 @@ I wanted to implement an ease of access with this site, to make it as simple and
 # Testing
 ## Automated Testing  
 All automated testing was done using Travis-CI. 
-There is automated testing done for all apps with an active forms.py file. 
+There is automated testing done for all apps with an active forms.py file. There is also testing done for models and views. 
 
-Testing was done by running the following in the command line: 
+Coverage was tested by running the following in the command line: 
 ```
 $ sudo pip3 install coverage 
 $ coverage run manage.py test (app name)
