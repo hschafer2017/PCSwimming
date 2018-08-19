@@ -36,6 +36,7 @@ class TestPostViews(TestCase):
         
         post = Post.objects.create(title='Test Discussion Post', content='Test Discussion Post Content')
         response = self.client.get("/posts/")
+        
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/posts.html")
         
@@ -47,12 +48,13 @@ class TestPostViews(TestCase):
             
         self.client.login(username='user1', password='password1')
         post = Post.objects.create(title='Test Discussion Post', content='Test Discussion Post Content')
+        self.assertEqual(Post.objects.count(), 1)
         response = self.client.get("/posts/1/detail".format(post.pk))
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/postdetail.html")
         
     def test_get_edit_page_for_item_that_does_not_exist(self):
-        page = self.client.get("/1/edit")
+        page = self.client.get("posts/1/edit")
         self.assertEqual(page.status_code, 404)
 
 class TestCommentsViews(TestCase):
@@ -90,6 +92,7 @@ class TestDeleteViews(TestCase):
         self.assertEqual(Post.objects.count(), 0)
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/postdetail.html")
+        
     def test_get_delete_comment(self): 
         User.objects.create_user(
             username='TestSwimmer1', 

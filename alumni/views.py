@@ -33,7 +33,7 @@ def delete_alum_post(request):
         blogs = get_object_or_404(AlumPost, pk=pk)
         try:
             blogs.delete()
-            messages.success(request, 'You have successfully deleted the post')
+            messages.success(request, 'You have successfully deleted the post!')
         
         except:
             messages.warning(request, 'The post could not be deleted.')
