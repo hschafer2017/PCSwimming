@@ -15,6 +15,7 @@ def get_posts(request):
     comments = Comment.objects.all()
     return render(request, 'posts/posts.html', {'blogs': blogs, 'comments': comments})
 
+@login_required(login_url='/accounts/login/')
 def new_post(request):
     if request.method == "POST":
         form = PostForm(request.POST, request.FILES)
@@ -28,7 +29,7 @@ def new_post(request):
         
     return render(request, 'posts/postform.html', {'form': form})
  
-  
+@login_required(login_url='/accounts/login/') 
 def new_comment(request, pk): 
     comments = Comment.objects.all()
     post = get_object_or_404(Post, pk=pk)
@@ -46,7 +47,7 @@ def new_comment(request, pk):
         
     return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
     
-    
+@login_required(login_url='/accounts/login/')    
 def edit_post(request, pk): 
     post = get_object_or_404(Post, pk=pk)
     if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
