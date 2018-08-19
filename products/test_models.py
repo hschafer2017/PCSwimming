@@ -14,6 +14,7 @@ class TestProductsModel(TestCase):
         
 
 class TestItemRequirementsModel(TestCase): 
+    
     def test_add_item_requirements(self):
         User.objects.create_user(
             username='TestSwimmer1', 
