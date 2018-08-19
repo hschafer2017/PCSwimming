@@ -6,7 +6,6 @@ from django.shortcuts import get_object_or_404
 
 
 class TestPostViews(TestCase):
-# Passing
     def test_get_posts_page(self):
         User.objects.create_user(
             username='user1', 
@@ -17,7 +16,6 @@ class TestPostViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "posts/posts.html")
     
-    # Passing
     def test_get_new_post_page(self):
         User.objects.create_user(
             username='user1', 
@@ -28,7 +26,6 @@ class TestPostViews(TestCase):
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "posts/postform.html")
     
-    # Passing
     def test_create_new_post_form(self):
         
         User.objects.create_user(
@@ -42,7 +39,6 @@ class TestPostViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/posts.html")
         
-    # Passing
     def test_view_post_detail(self):
         User.objects.create_user(
             username='TestSwimmer1', 
@@ -55,7 +51,6 @@ class TestPostViews(TestCase):
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "posts/postdetail.html")
         
-    # Passing 
     def test_get_edit_page_for_item_that_does_not_exist(self):
         page = self.client.get("/1/edit")
         self.assertEqual(page.status_code, 404)
