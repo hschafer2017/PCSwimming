@@ -7,8 +7,9 @@ from django.contrib import messages
 from django.contrib.auth.models import User
 
 
-
 # Create your views here - POSTS.
+
+
 @login_required(login_url='/accounts/login/')
 def get_posts(request):
     blogs = Post.objects.all()
@@ -90,7 +91,7 @@ def delete_post(request):
         blogs = get_object_or_404(Post, pk=id)
         try:
             blogs.delete()
-            messages.success(request, 'You have successfully deleted the post')
+            messages.success(request, 'You have successfully deleted the post!')
         
         except:
             messages.warning(request, 'The post could not be deleted.')

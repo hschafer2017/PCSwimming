@@ -2,7 +2,6 @@ from django.test import TestCase
 from .models import Post, Comment
 from django.contrib.auth.models import User
 
-
 class TestPostModel(TestCase):
 
     def test_create_post(self):
@@ -17,7 +16,9 @@ class TestPostModel(TestCase):
         self.assertEqual(post.owner.username, 'TestSwimmer1')
         self.assertFalse(post.title)
 
-class TestCommentModel(TestCase): 
+
+class TestCommentModel(TestCase):
+
     def test_create_comment(self):
         User.objects.create_user(
             username='TestSwimmer1', 
