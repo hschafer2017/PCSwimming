@@ -39,7 +39,7 @@
 
         {% for document in documents %}
             <br>
-            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-md login-btn new-post" id='document'>{{document.name}}</a>
+            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-lg login-btn new-post responsive" id='document'>{{document.name}}</a>
             <br>
             
         {% endfor %} 
@@ -47,11 +47,17 @@
             <br>
             <br>
     </div>
+    <br>
+    <br>
+    <br>
 </div>
+<div class="col-xs-hidden col-sm-hidden col-md-6">
+        <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
+    </div>
 
 <br>
 <br> 
-
+<br>
 {% endblock content %}
 
 

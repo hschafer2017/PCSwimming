@@ -20,7 +20,7 @@
     <title>PCHS Swimming and Diving</title>
 </head>
 
-<body>
+<body onload=loadModal()>
     <nav class="navbar navbar-masthead navbar-default navbar-fixed-top">
         <a href="{% url 'home' %}"><img src="{% static 'images/new_logo.png' %}" class='logo'></img></a>
         <div class="container" style="text-align: right;
@@ -60,9 +60,9 @@
         {% block content %} {% endblock content %}
     </div>
     
-    <div class="col-xs-hidden col-sm-hidden col-md-6">
-        <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
-    </div>
+    <!--<div class="col-xs-hidden col-sm-hidden col-md-6">-->
+    <!--    <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>-->
+    <!--</div>-->
     <br>
     
     <br>
@@ -70,22 +70,30 @@
     <br>
     <br>
     <footer>
-            <div class="row">
-                <div class="col-sm-4 col-md-6 col-lg-6 blue-side">
-                    <p>PORTAGE CENTRAL SWIMMING AND DIVING</p>
-                    <p>PORTAGE, MI</p>
-                    </div>
-                <div class="col-sm-4">
+        <div class="container">
+            <div class="row footer">
+                <div class="col-xs-12 col-sm-12 hidden-md hidden-lg">
+                    <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
                 </div>
-                <div class="col-sm-4 col-md-6 col-lg-6 white-side">
-                    <p class = 'payment-icons'>
-                    <i class="fab fa-cc-visa fa-2x"></i>
-                    <i class="fab fa-cc-mastercard fa-2x"></i>
-                    <i class="fab fa-cc-discover fa-2x"></i>
-                    <i class="fab fa-cc-amex fa-2x"></i></p>
-                    <p><i class="fab fa-stripe fa-3x pay-icon"></i></p>
+                <div class="row footer">
+                    <div class="col-xs-hidden col-sm-4 col-md-6 col-lg-6 blue-side">
+                        <p>PORTAGE CENTRAL SWIMMING AND DIVING</p>
+                        <p>PORTAGE, MI</p>
+                        <br>
+                        </div>
+                    <div class="col-xs-hidden col-sm-4">
+                    </div>
+                    <div class="col-xs-hidden col-sm-4 col-md-6 col-lg-6">
+                        <p class = 'payment-icons'>
+                        <i class="fab fa-cc-visa fa-2x"></i>
+                        <i class="fab fa-cc-mastercard fa-2x"></i>
+                        <i class="fab fa-cc-discover fa-2x"></i>
+                        <i class="fab fa-cc-amex fa-2x"></i></p>
+                        <p><i class="fab fa-stripe fa-3x pay-icon"></i></p>
+                    </div>
                 </div>
             </div>
+        </div>
     </footer>
     <script>
         $(document).on('click','.navbar-collapse.in',function(e) {

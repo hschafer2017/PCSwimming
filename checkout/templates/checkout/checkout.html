@@ -13,76 +13,70 @@
 {% endblock head_js %}
 
 {% block content %}
-<style>
-    .swimmer {
-        display: none;
-    }
-    .detail {
-         padding-right: 0px;
-    }
-</style>
 
 <br>
 <br>
 <br>
-<br class='responsive'>
-<br class='responsive'>
-<div class="col-xs-hidden col-sm-hidden col-md-6">
+<br>
+<br>
+<br>
+
+
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
     <div class="container posts">
+    <br>
+    <br>
+        <a href="{% url 'get_products' %}" class="btn btn-lg login-btn new-post responsive">Back to Shop</a>
         <br>
-        <br>
-        <br>
-        <a href="{% url 'get_products' %}" class="btn btn-md login-btn new-post">Back to Shop</a>
         <br>
         <h3 class='heading'>Cart</h3>
-
+    
         {% for p in cart %}
-        
+    
         <br>
-
+        <br>
         <div class="panel-body items">
-            <div class="col-md-3 col-lg-3">
-
-
-                <img src="{{MEDIA_URL}}{{p.image}}" class='product-image' width='85px' height='75px' alt='{{p.product}}'></img>
+            <div class="col-sm-3 col-md-3 col-lg-3 quick-photo-view">
+                <br>
+                <img src="{{MEDIA_URL}}{{p.image}}" class='product-image' alt='{{p.product}}'></img>
             </div>
-
-            <div class="col-md-6 col-lg-6">
+            <br>
+            <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                <p class='product-name'>{{p.product}}</p>
+                    <br class='responsive'>
+                    <p class='product-name'>{{p.product}}</p>
                 </div>
                 <div class="row">
                     <p class='product info'>{{p.description|truncatewords:10}}</p>
                 </div>
             </div>
-            <div class="col-md-3 col-lg-3">
+            <div class="col-sm-3 col-md-3 col-lg-3">
                 <div class="row">
                     <p id='price'>${{p.price}}</p>
                 </div>
-                    <div class="row">
-                        <form action='{% url "remove" %}' method="POST">
-        
-                            {% csrf_token %}
-        
-                            <input type="hidden" name="product_id" value="{{ p.product.id }}"/>
-                            <button class="btn-sm login-btn new-post buy">Remove</button>
-                        </form>
-                    </div>
+                <br>
+                <div class="row">
+                    <form action='{% url "remove" %}' method="POST">
+                        {% csrf_token %}
+                        <input type="hidden" name="product_id" value="{{ p.product.id }}"/>
+                        <button class="btn-sm login-btn new-post buy">Remove</button>
+                    </form>
+                </div>
             </div>
         </div>
-
-            {% endfor %}
-
+        
+    {% endfor %}
+    
         <br>
-    </div>
+    
+</div>
+<br>
+<br>
 </div>
 
-
 <!--PAYMENT FORM-->
-<div class="col-xs-hidden col-sm-hidden col-md-6">
-    <br>
-    <br>
-    
+<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+    <br><br><br><br>
     <div class="container detail">
         <form role="form" method="post" id="payment-form" action="{% url 'checkout' %}">
             
@@ -102,10 +96,12 @@
         
             {% csrf_token %}
             <div class="form-group">
-                <input class="btn-md login-btn new-post buy" id="submit_payment_btn" name="commit" type="submit" value="Checkout" style='width: 150px; height: 40px;'>
+                <input class="btn-lg login-btn new-post buy responsive" id="submit_payment_btn" name="commit" type="submit" value="Checkout">
             </div>
         
         </form>
+        <br>
+        <br>
     </div>
 </div>
 

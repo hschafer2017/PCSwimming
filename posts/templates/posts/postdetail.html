@@ -2,24 +2,29 @@
 {% load static from staticfiles %}
 {% block content %}
 <style>
- @media (max-width: 990px) {
-  footer {
-         display:none;
-     }
- }
-.swimmer {
-      display: none;
-  }
+/* @media (max-width: 990px) {*/
+/*  footer {*/
+/*         display:none;*/
+/*     }*/
+/* }*/
+/*.swimmer {*/
+/*      display: none;*/
+/*  }*/
 </style>
 
+<div class="hidden-xs hidden-sm">
 <div class="include_responsive">
  <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+     <br>
+     <br>
+     <br>
+     <br>
      <br>
      <br>
         <div class="container posts">
         <br>
         <br>
-            <a href="{% url 'new_post' %}" class ='btn btn-md login-btn new-post'> <i class ='fa fa-plus'></i> New Post</a>
+            <a href="{% url 'new_post' %}" class ='btn btn-lg login-btn new-post responsive'> <i class ='fa fa-plus'></i> New Post</a>
         <br>
     
             <h3 class='heading'>Discussion</h3>
@@ -46,7 +51,7 @@
 </div>
 
  </div>
- 
+ </div>
 <style>
     .posts {
       padding-right: 30px;
@@ -57,17 +62,14 @@
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
     <div class="container detail">
     <br>
-    <br class='responsive'>
-    <br class='responsive'>
-        <br class='responsive'>
+    <br><br><br>
     <br class='form-hidden'>
-        <a href="{% url 'get_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
-        <br class='responsive'>
-        <br class='responsive'>
-        <br class='responsive'>
-        <br class='responsive'>
+        <a href="{% url 'get_posts' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
+            <br><br><br>
+            <br><br><br>
+            <br>
         <div id = 'products-main' class="panel-body">
-        <br>
+       
             <div class=" post-content">
             
                 <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
@@ -121,7 +123,7 @@
                                 <form action = "{% url 'delete_post' %}" method = "POST">
                                 {% csrf_token %}
                                     <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
-                                    <li><input type="submit" id ='delete' value="Delete Post"/></li>
+                                    <li id='post-links'><input type="submit" id ='delete' value="Delete Post"/></li>
                                 </form> 
         
                                 {% endif %}

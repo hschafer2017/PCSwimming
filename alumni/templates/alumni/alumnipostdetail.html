@@ -2,19 +2,19 @@
 {% load static from staticfiles %}
 {% block content %}
 <style>
-@media (max-width: 990px) {
-  footer {
-         display:none;
-     }
- }
-   .swimmer {
-      display: none;
-  }
+/*@media (max-width: 990px) {*/
+/*  footer {*/
+/*         display:none;*/
+/*     }*/
+/* }*/
+/*   .swimmer {*/
+/*      display: none;*/
+/*  }*/
 </style>
 <br>
 <br>
 <br>
-<div class="include_responsive">
+<div class="include_responsive hidden-xs hidden-sm">
  <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
     <div class="container posts">
     <br>
@@ -42,19 +42,21 @@
  </div>
  
 <style>
-    .posts {
-      padding-right: 30px;
-  }
+  /*  .posts {*/
+  /*    padding-right: 30px;*/
+  /*}*/
   
 </style>
 
-<div class="col-xs-6 col-sm-12 col-md-6 col-lg-6 detail-content">
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
     <div class="container detail">
-    <br class='form-hidden'>
+    <br>
+    <br>
         <a href="{% url 'get_alum_posts' %}" class="btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
-        <br class='responsive'>
-        <br class='responsive'>
-        <br class='responsive'>
+        <br>
+        <br>
+        <br>
+        <br>
         <div id = 'products-main' class="panel-body">
         <br>
             <div class=" post-content">
@@ -81,16 +83,11 @@
                                     <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
                                     <li><input type="submit" id ='delete' value="Delete Post"/></li>
                                 </form> 
-                                
-                                
-                                
-                                
                             </ul>
                     </div>
                     {% endif %}
                     <br>
                     <br>
-                    <br><br>
                 <br>
                 </div>
                 <br>

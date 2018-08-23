@@ -3,39 +3,45 @@
 {% load bootstrap_tags %}
 {% block content %}
 <style>
-   @media (max-width: 990px) {
-  footer {
-         display:none;
-     }
- }
-.swimmer {
-      display: none;
-  }
+/*   @media (max-width: 990px) {*/
+/*  footer {*/
+/*         display:none;*/
+/*     }*/
+/* }*/
+/*.swimmer {*/
+/*      display: none;*/
+/*  }*/
   
 </style>
 
-<div class="include_responsive">
- <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
-    <div class="container posts">
+<div class="include_responsive hidden-xs hidden-sm">
+    <br>
+        <br>
+        <br>
+ <div class="col-md-6 col-lg-6">
+    <div class="posts">
     <br>
     <br>
         <br>
         <br>
-         <a href="{% url 'view_cart' %}" class='btn btn-md login-btn new-post'><i class="fa fa-shopping-cart"></i> Cart</a>
+         <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
         <br> 
-        
+        <br>
+        <h3 class='heading'>Shop</h3>
+        <br>
         {% for product in products %}
         
         <br>
         <br>
         <div class="panel-body items">
             <div class="col-sm-3 col-md-3 col-lg-3">
-                <img src="{{MEDIA_URL}}{{product.image}}" height='75px' class='product-image' width='85px' alt="{{product.name}}" />
+                <br>
+                <img src="{{MEDIA_URL}}{{product.image}}" class='product-image' alt="{{product.name}}" />
             </div>
-                
+                <br>
             <div class="col-sm-6 col-md-6 col-lg-6">
                 <div class="row">
-                    <p>{{product.name}}</p>
+                    <p class='product-name'>{{product.name}}</p>
                 </div>
                 <div class="row">
                     <p class='product info'>{{product.description|truncatewords:10}}</p>
@@ -47,9 +53,8 @@
                     <p id='price'>${{product.price}}</p>
                 </div>
                 <br>
-                
                 <div class="row">
-                    <a href="{% url 'product_detail' product.id %}" class="btn-sm login-btn new-post buy">More</a>
+                    <a href="{% url 'product_detail' product.id %}" class="btn btn-md login-btn new-post buy">More</a>
                 </div>
             </div>
         </div>
@@ -77,14 +82,18 @@
 </style>
 
 <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
-     <br><br><br>
+     <br><br><br><br>
+     
  <div class="container detail">
-  <a href="{% url 'view_cart' %}" class="btn btn-lg login-btn new-post responsive" id='cart_btn'>Cart</a>
-  <br class='responsive'>
-        <br class='responsive'>
-        <br class='responsive'>
+     <br><br><br>
+    <br class='form-hidden'>
+        <a href="{% url 'get_products' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
+  <a href="{% url 'view_cart' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" ><i class="fa fa-shopping-cart"></i> Cart</a>
+        <br>
+        <br>
+        <br>
   
-  <div id = 'products-main' class="panel-body">
+  <div id = 'products-main' class="panel-body product-detail-panel">
    <br>
    <div class="row">
     <div class="col-xs-hidden col-sm-8 col-md-8">
