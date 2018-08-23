@@ -51,6 +51,10 @@ li {
     color: #fafafa;
 }
 
+#links:hover {
+    color: #FFD236; 
+}
+
 #scroll-button {
     margin-top: -88px;
 }
@@ -377,7 +381,6 @@ h5 {
 }
 
 .alumni-photo {
-    width: auto;
     height: auto;
 }
 
