@@ -9,7 +9,7 @@ class TestUserTypesModel(TestCase):
         swimmer.save()
         self.assertEqual(swimmer.user_id, "1")
         self.assertFalse(swimmer.graduation_year)
-    
+
     def test_register_as_alumni(self):
         alumni = Alumni(user_id='1')
         alumni.save()

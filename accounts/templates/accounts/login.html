@@ -2,32 +2,29 @@
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
 {% block content %}
-<style>
-    .form_only {
-        height: inherit;
-    }
-</style>
-<br><br><br>
-<br><br><br><br>
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
-<div class="container login">
+
     <br><br><br>
-    <h3 class = 'heading' >Login</h3>
-    <form method='POST' class='form' id='form'>
-    {% csrf_token %}
-   
-       {{form | as_bootstrap }}
-   
-        <input type="submit" value="Login" class='btn btn-lg btn-default login-btn adjust'/>
-    <br>
-        <p id='respond'><a id='respond' href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
-        <p id='respond' style='font-size: 16px;'>Don't Have An Account Yet? <a id= 'respond' href="{% url 'register_swimmer' %}"> Register as a Swimmer </a> or <a id= 'respond' href="{% url 'register_alumni' %}"> Register as an Alumni</a></p>
-    </form>
-</div>
-
-</div>
-
-<div class="hidden-xs hidden-sm col-md-6">
+    <br><br><br><br>
+    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+        <div class="container login">
+            <br><br><br>
+            <h3 class = 'heading' >Login</h3>
+            <form method='POST' class='form' id='form'>
+                {% csrf_token %}
+               
+                {{form | as_bootstrap }}
+               
+                <input type="submit" value="Login" class='btn btn-lg btn-default login-btn adjust'/>
+                <br>
+                <p id='respond'><a id='respond' href="{% url 'password_reset' %}">Forgot Your Password?</a></p>
+                <p id='respond' style='font-size: 16px;'>Don't Have An Account Yet? <a id= 'respond' href="{% url 'register_swimmer' %}"> Register as a Swimmer </a> or <a id= 'respond' href="{% url 'register_alumni' %}"> Register as an Alumni</a></p>
+            </form>
+        </div>
+    </div>
+        
+    <div class="hidden-xs hidden-sm col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>
+    
 {% endblock content %}

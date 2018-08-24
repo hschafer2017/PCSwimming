@@ -4,20 +4,19 @@ from django.shortcuts import get_object_or_404
 
 
 class TestLoginView(TestCase):
-    
+
     def test_get_login_form(self):
         response = self.client.get("/accounts/login")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "accounts/login.html")
-        
-    
+
     def test_can_log_in(self):
         user1 = User.objects.create_user(
-            username='testUser', 
+            username='testUser',
             email='testUser@example.com',
             password='passw0rd')
-        
-        response = self.client.get('/accounts/login')
+
+        response = self.client.get('/events/')
         self.assertEqual(response.context['user'], AnonymousUser())
 
         response = self.client.post("/accounts/login", {
@@ -25,15 +24,15 @@ class TestLoginView(TestCase):
             'password': 'pass0word'
         })
 
-        response = self.client.get('/events/')
-
+        response = self.client.get('/accounts/login')
 
     def test_user_does_not_exist(self):
         response = self.client.post("/accounts/login", {
             'username': 'testUser',
             'password': 'pass0word'
         })
-        self.assertFormError(response, 'form', None, 'Incorrect Username or Password!')
+        self.assertFormError(response, 'form', None,
+                             'Incorrect Username or Password!')
 
 
 class TestRegisterUserTypesView(TestCase):
@@ -41,7 +40,7 @@ class TestRegisterUserTypesView(TestCase):
         response = self.client.get("/accounts/register_swimmer")
         self.assertEqual(response.status_code, 200)
         self.assertTemplateUsed(response, "accounts/register_swimmer.html")
-    
+
     def test_get_alumni_form(self):
         response = self.client.get("/accounts/register_alumni")
         self.assertEqual(response.status_code, 200)
@@ -58,9 +57,9 @@ class TestRegisterUserTypesView(TestCase):
             'graduation_year': '2020'
         })
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/accounts/login')
+        self.assertRedirects(response, '/events/')
         self.assertEqual(User.objects.count(), 1)
-    
+
     def test_can_register_alumni(self):
         self.assertEqual(User.objects.count(), 0)
 
@@ -72,9 +71,8 @@ class TestRegisterUserTypesView(TestCase):
             'graduated': '2002'
         })
         self.assertEqual(response.status_code, 302)
-        self.assertRedirects(response, '/accounts/login')
+        self.assertRedirects(response, '/events/')
         self.assertEqual(User.objects.count(), 1)
-
 
     def test_invalid_form_does_not_register(self):
         response = self.client.post("/accounts/register", {
