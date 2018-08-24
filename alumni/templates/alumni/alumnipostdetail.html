@@ -1,123 +1,86 @@
 {% extends 'home/base.html' %}
 {% load static from staticfiles %}
 {% block content %}
-<style>
-/*@media (max-width: 990px) {*/
-/*  footer {*/
-/*         display:none;*/
-/*     }*/
-/* }*/
-/*   .swimmer {*/
-/*      display: none;*/
-/*  }*/
-</style>
-<br>
-<br>
-<br>
 
-<div class="include_responsive hidden-xs hidden-sm">
-      <br>
-    <br>
-
- <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
-     <br>
-     <br>
-         <br>
-    <div class="container posts">
-    <br>
-    <br>
-        <a href="{% url 'new_alum_post' %}" class ='btn btn-lg login-btn new-post responsive'> <i class ='fa fa-plus'></i> New Post</a>
-    <br>
+    <br><br><br>
     
-        <h3 class='heading'>Alumni</h3>
-        <br>
-        {% for alum_post in alum_posts %}
-        <div class="panel-body post-panels">
-            <br>
-            <h3 class = 'blog-title'>{{ alum_post.title }}</h3>
-            <br>
-            <p class='blog-content'>{{ alum_post.content|truncatewords:30 }}</p>
-            <p class ='info'><span class="boldtext">Published on:</span> {{ alum_post.published_date }} </p>
-            <p><a href="{% url 'alum_post_detail' alum_post.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
-        </div>
-        <br>
-        <br>
-{% endfor %}
-        <br>
-    </div>
-</div>
- </div>
- 
-<style>
-  /*  .posts {*/
-  /*    padding-right: 30px;*/
-  /*}*/
-  
-</style>
-
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
-    
-    <div class="container detail">
-    <br>
-    <br>
-        <a href="{% url 'get_alum_posts' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <br>
-        <div id = 'products-main' class="panel-body">
-        <br>
-            <div class=" post-content">
-            
-                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
-                    <p class='post-title' >{{ post.title }}</p>
-                    <hr>
-                    <p>By: {{post.owner}} ({{post.grad_year.graduated}}) at {{ post.published_date }}</p>
-                    <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
-                    <br>
-            <img class="alumni-photo" src="{{MEDIA_URL}}{{post.image}}" width ='250px' height ="200px">
-                        <br>
-                        {% if user.is_authenticated and user == post.owner or user.is_superuser %}
-                    <div class="btn-group">
-                        <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
-                            <ul class="dropdown-menu">
-                                <li><a id = 'post_links' href="{% url 'edit_alum_post' post.id %}">Edit Post</a></li>
-                                
-                                
-                                
-                                
-                                <form action = "{% url 'delete_alum_post' %}" method = "POST">
-                                {% csrf_token %}
-                                    <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
-                                    <li><input type="submit" id ='delete' value="Delete Post"/></li>
-                                </form> 
-                            </ul>
-                    </div>
-                    {% endif %}
-                    <br>
-                    <br>
-                <br>
-                </div>
-                <br>
-                <br>
+    <div class="include_responsive hidden-xs hidden-sm">
+        <br><br>
+         <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+            <br><br><br>
+            <div class="container posts">
                 <br><br>
+                <a href="{% url 'new_alum_post' %}" class ='btn btn-lg login-btn new-post responsive'> <i class ='fa fa-plus'></i> New Post</a>
+                <br>
+                <h3 class='heading'>Alumni</h3>
                 <br>
                 
+                {% for alum_post in alum_posts %}
+                
+                    <div class="panel-body post-panels">
+                        <br>
+                        <h3 class = 'blog-title'>{{ alum_post.title }}</h3>
+                        <br>
+                        <p class='blog-content'>{{ alum_post.content|truncatewords:30 }}</p>
+                        <p class ='info'><span class="boldtext">Published on:</span> {{ alum_post.published_date }} </p>
+                        <p><a href="{% url 'alum_post_detail' alum_post.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
+                    </div>
+                    <br><br>
+                
+                {% endfor %}
+
+                <br>
             </div>
         </div>
+     </div>
+    
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
+        <div class="container detail">
+            <br><br>
+            <a href="{% url 'get_alum_posts' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
+            <br><br><br><br>
+            <br><br><br><br>
+            <div id='products-main' class="panel-body">
+                <br>
+                <div class=" post-content">
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <p class='post-title' >{{ post.title }}</p>
+                        <hr>
+                        <p>By: {{post.owner}} ({{post.grad_year.graduated}}) at {{ post.published_date }}</p>
+                        <p class='blog-content'>{{ post.content | linebreaksbr }}</p>
+                        <br>
+                        <img class="alumni-photo" src="{{MEDIA_URL}}{{post.image}}" width ='250px' height ="200px">
+                        <br>
+                            
+                        {% if user.is_authenticated and user == post.owner or user.is_superuser %}
+
+                            <div class="btn-group">
+                                <button type="button" class="btn btn-md login-btn new-post buy dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">Post<span class="caret"></span></button>
+                                    <ul class="dropdown-menu">
+                                        <li><a id = 'post_links' href="{% url 'edit_alum_post' post.id %}">Edit Post</a></li>
+                                        <form action = "{% url 'delete_alum_post' %}" method = "POST">
+                                        {% csrf_token %}
+                                            <input type="hidden" name="blogs_id" value="{{ post.id }}"/>
+                                            <li><input type="submit" id ='delete' value="Delete Post"/></li>
+                                        </form> 
+                                    </ul>
+                                </div>
+                            
+                        {% endif %}
+                        
+                        <br><br><br>
+                    </div>
+                    <br><br><br><br><br>
+                </div>
+            </div>
+            <br>
+        </div>
         <br>
     </div>
-    <br>
-</div>
-    <br>
-    <br>
+    <br><br>
                 
-<script>
-    $('.dropdown-toggle').dropdown()
-</script>
+    <script>
+        $('.dropdown-toggle').dropdown()
+    </script>
 
 {% endblock content %}

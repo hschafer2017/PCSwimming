@@ -2,70 +2,54 @@
 {% load bootstrap_tags %}
 {% load static from staticfiles %}
 {% block content %}
-<style type="text/css">
-    /*.form_only {*/
-    /*    height: inherit;*/
-    /*}*/
-    footer {
-        position:relative;
-    }
-    /*.swimmer {*/
-    /*    display: none;*/
-    /*}*/
-</style>
 
-<br>
-<br>
-<br>
-<br>
+
+    <br><br><br><br>
+
     <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 form-view">
         <div class="container login" id='post-container'>
-
-    <br>
-    <br>
-    <div class="center">
-    <br>
-    <h3 class='heading'>New Post</h3>
-    <br>
-    <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
-        {% csrf_token %}
-        {{ form | as_bootstrap }}
-        <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn adjust-post'>Post</button>
-    </form>
+            <br><br>
+            <div class="center">
+            <br>
+            <h3 class='heading'>New Post</h3>
+            <br>
+            <form method="POST" enctype="multipart/form-data" class='post-form' id='form'>
+                {% csrf_token %}
+                {{ form | as_bootstrap }}
+                <button type="submit" id= 'post-btn' class='btn btn-lg btn-default login-btn adjust-post'>Post</button>
+            </form>
+            </div>
+            <br>
+        </div>
     </div>
-    <br>
-    </div>
-</div>
-<div class="hidden-xs hidden-sm col-md-6">
+    <div class="hidden-xs hidden-sm col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>
+
 <!--INSTRUCTION MODAL-->
 <div class="modal fade" tabindex="-1" role="dialog" id='instructionModal'>
-    <br>
-    <br>
-    <br>
-        <div class="modal-dialog" role="document">
-            <br>
-            <br>
-            <br>
-            <div class="modal-content">
-                <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
-                    <h4 class="modal-title">Post a Memory</h4>
-                </div>
-                <div class="modal-body">
-                    <p class='header'>Alumni Board Guidelines: </p>
-                    <p>Feel free to post about past memories, upload old team images, or alumni reunions. Please keep in mind that the community will be able to see what you write and who it belongs to, so be sure to think before you publish.</p>
-                    
+    <br><br><br>
+    <div class="modal-dialog" role="document">
+        <br><br><br>
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                <h4 class="modal-title">Post a Memory</h4>
+            </div>
+            <div class="modal-body">
+                <p class='header'>Alumni Board Guidelines: </p>
+                <p>Feel free to post about past memories, upload old team images, or alumni reunions. Please keep in mind that the community will be able to see what you write and who it belongs to, so be sure to think before you publish.</p>
                 <div class="modal-footer">
                     <button class='btn btn-md login-btn new-post' data-dismiss="modal" style='box-shadow: 0px 0px 25px #d3d3d3'>Got it!</button>
                 </div>
             </div>
         </div>
     </div>
+    
     <script>
     function loadModal() {
     $('#instructionModal').modal('show');
         }
     </script>
+
 {% endblock %}
