@@ -65,23 +65,22 @@ def edit_post(request, pk):
     return render(request, 'posts/postform.html', {'form': form})
 
 
-def edit_comment(request, pk): 
+def edit_comment(request, pk):
     comments = Comment.objects.all()
     blogs = Post.objects.all()
-    post = get_object_or_404(Post, pk=pk)
     comment = get_object_or_404(Comment, pk=pk)
     if request.user.is_authenticated and request.user == comment.owner or request.user.is_superuser: 
         if request.method == "POST":
             form = CommentForm(request.POST, request.FILES, instance=comment)
             if form.is_valid():
                 comment = form.save()
-                return redirect('post_detail', comment.post.pk)        
+                return redirect('post_detail', comment.post.id)        
         else:
             form = CommentForm(instance=comment)
     else: 
         return HttpResponseForbidden()
         
-    return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
+    return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': comment.post})
 
 
 def delete_post(request):

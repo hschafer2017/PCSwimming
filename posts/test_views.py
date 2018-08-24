@@ -118,13 +118,9 @@ class TestEditViews(TestCase):
         comment = Comment.objects.create(content = "Test Discussion Comment", 
                                         post_id = '1')
         
-        page = self.client.get('/posts/1/comment/edit')
+        page = self.client.get('/posts/comment/1/edit')
         self.assertEqual(page.status_code, 200)
         self.assertTemplateUsed(page, "posts/commentform.html")
-        
-        # comment = Comment.objects.update( 
-        #         content='Test Discussion Comment Edit Content')
-        
         
         comment.content = 'Test Discussion Comment Edit Content'
         comment.save()
