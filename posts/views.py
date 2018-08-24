@@ -85,30 +85,37 @@ def edit_comment(request, pk):
 
 
 def delete_post(request):
-   
     id = request.POST['blogs_id']
-    if request.method == 'POST':
-        blogs = get_object_or_404(Post, pk=id)
-        try:
-            blogs.delete()
-            messages.success(request, 'You have successfully deleted the post!')
-        
-        except:
-            messages.warning(request, 'The post could not be deleted.')
+    post = get_object_or_404(Post, id=id)
+    if request.user.is_authenticated and request.user == post.owner or request.user.is_superuser: 
+        if request.method == 'POST':
+            blogs = get_object_or_404(Post, pk=id)
+            try:
+                blogs.delete()
+                messages.success(request, 'You have successfully deleted the post!')
+            
+            except:
+                messages.warning(request, 'The post could not be deleted.')
+    else: 
+        return HttpResponseForbidden()
 
     return redirect('get_posts')
 
 def delete_comment(request):
     id = request.POST['comment_id']
     pk = request.POST['blogs_id']
-    if request.method == 'POST':
-        comment = get_object_or_404(Comment, id=id, pk=pk)
-        try:
-            comment.delete()
-            messages.success(request, 'You have successfully deleted the comment!')
-        
-        except:
-            messages.warning(request, 'The comment could not be deleted.')
+    post = get_object_or_404(Post, pk=pk)
+    comment = get_object_or_404(Comment, id=id)
+    if request.user.is_authenticated and request.user == comment.owner or request.user.is_superuser: 
+        if request.method == 'POST':
+            try:
+                comment.delete()
+                messages.success(request, 'You have successfully deleted the comment!')
+                        
+            except:
+                messages.warning(request, 'The comment could not be deleted.')
+    else: 
+        return HttpResponseForbidden()
     return redirect('get_posts')  
 
    
@@ -119,4 +126,3 @@ def post_detail(request, pk):
     post.views += 1
     post.save()
     return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':comments, 'post': post})
-    
