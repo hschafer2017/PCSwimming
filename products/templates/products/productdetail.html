@@ -2,134 +2,92 @@
 {% load static from staticfiles %}
 {% load bootstrap_tags %}
 {% block content %}
-<style>
-/*   @media (max-width: 990px) {*/
-/*  footer {*/
-/*         display:none;*/
-/*     }*/
-/* }*/
-/*.swimmer {*/
-/*      display: none;*/
-/*  }*/
-  
-</style>
+
+<!--ALL PRODUCTS - DESKTOP ONLY-->
 
 <div class="include_responsive hidden-xs hidden-sm">
-    <br>
-        <br>
-        <br>
- <div class="col-md-6 col-lg-6">
-    <div class="posts">
-    <br>
-    <br>
-        <br>
-        <br>
-         <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
-        <br> 
-        <br>
-        <h3 class='heading'>Shop</h3>
-        <br>
-        {% for product in products %}
-        
-        <br>
-        <br>
-        <div class="panel-body items">
-            <div class="col-sm-3 col-md-3 col-lg-3">
+    <br><br><br>
+    <div class="col-md-6 col-lg-6">
+        <div class="posts" style ="padding-right: 30px;">
+            <br><br><br><br>
+             <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
+            <br> 
+            <br>
+            <h3 class='heading'>Shop</h3>
+            <br>
+    
+            {% for product in products %}
+    
+                <br><br>
+                <div class="panel-body items">
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        <br>
+                        <img src="{{MEDIA_URL}}{{product.image}}" class='product-image' alt="{{product.name}}" />
+                    </div>
+                        <br>
+                    <div class="col-sm-6 col-md-6 col-lg-6">
+                        <div class="row">
+                            <p class='product-name'>{{product.name}}</p>
+                        </div>
+                        <div class="row">
+                            <p class='product info'>{{product.description|truncatewords:10}}</p>
+                        </div>
+                    </div>
+                        
+                    <div class="col-sm-3 col-md-3 col-lg-3">
+                        <div class="row">
+                            <p id='price'>${{product.price}}</p>
+                        </div>
+                        <br>
+                        <div class="row">
+                            <a href="{% url 'product_detail' product.id %}" class="btn btn-md login-btn new-post buy">More</a>
+                        </div>
+                    </div>
+                </div>
                 <br>
-                <img src="{{MEDIA_URL}}{{product.image}}" class='product-image' alt="{{product.name}}" />
+            {% endfor %}
             </div>
-                <br>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="row">
-                    <p class='product-name'>{{product.name}}</p>
-                </div>
-                <div class="row">
-                    <p class='product info'>{{product.description|truncatewords:10}}</p>
-                </div>
-                </div>
-                
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                <div class="row">
-                    <p id='price'>${{product.price}}</p>
-                </div>
-                <br>
-                <div class="row">
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-md login-btn new-post buy">More</a>
-                </div>
-            </div>
+            <br><br><br>
         </div>
-        
-    <br>
+    </div>
     
-    <div class="col-xs-hidden col-sm-hidden">
-    </div>
-    <div class="col-xs-hidden col-sm-hidden"></div>
-     {% endfor %}
-    </div>
-    <br>
-    <br>
-    <br>
-</div>
- <style>
-  
-</style>
- </div>
+<!--SPECIFIC PRODUCT-->
 
-<style>
-    .posts {
-      padding-right: 30px;
-  }
-</style>
-
-<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
-     <br><br><br><br>
-     
- <div class="container detail">
-     <br><br><br>
-    <br class='form-hidden'>
-        <a href="{% url 'get_products' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
-  <a href="{% url 'view_cart' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" ><i class="fa fa-shopping-cart"></i> Cart</a>
-        <br>
-        <br>
-        <br>
-  
-  <div id = 'products-main' class="panel-body product-detail-panel">
-   <br>
-   <div class="row">
-    <div class="col-xs-hidden col-sm-8 col-md-8">
-    
-     <img class="img-prod" src="{{MEDIA_URL}}{{product.image}}">
+    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6 detail-content">
+        <br><br><br><br>
+        <div class="container detail">
+            <br><br><br><br>
+            <a href="{% url 'get_products' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" style='padding: 10px 16px;'>Back</a>
+            <a href="{% url 'view_cart' %}" class="hidden-md hidden-lg btn btn-lg login-btn new-post responsive" ><i class="fa fa-shopping-cart"></i> Cart</a>
+            <br><br><br>
+            <div id = "products-main" class="panel-body product-detail-panel">
+                <br>
+                <div class="row">
+                    <div class="col-xs-hidden col-sm-8 col-md-8">
+                        <img class="img-prod" src="{{MEDIA_URL}}{{product.image}}">
+                    </div>
+                    <div class="col-xs-hidden col-sm-4 col-md-4">
+                        <div class="row product-row">
+                            <h5 id='price' style='margin-top: 7px;'>${{product.price}}</h5>
+                        </div>
+                        <br><br>
+                        <div class="row product-row">
+                            <form action='{% url "cart" %}' method="POST" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                <input type="hidden" name="product_id" value="{{ product.id }}"/>
+                                <button type="submit" class="btn btn-md login-btn new-post buy">Buy</button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <h3 class="product-name-detail">{{ product.name }}</h3>
+                </div>
+                <hr>
+                <h5>Product Description</h5>
+                <p class="description">{{product.description}}</p>
+            </div>
+            <br><br><br><br>
+        </div>
     </div>
-  
-   <div class="col-xs-hidden col-sm-4 col-md-4">
-    <div class="row product-row">
-     <h5 id='price' style='margin-top: 7px;'>${{product.price}}</h5>
-    </div>
-    <br>
-    <br>
-    <div class="row product-row">
-      <form action='{% url "cart" %}' method="POST" enctype="multipart/form-data">
-         {% csrf_token %}
-         {{ form | as_bootstrap }}
-       <input type="hidden" name="product_id" value="{{ product.id }}"/>
-        <button type="submit" class="btn btn-md login-btn new-post buy">Buy</button>
-      </form>
-      </form>
-    </div>
-  </div>
- </div>
-  <div class="row">
-   <h3 class='product-name-detail'>{{ product.name }}</h3>
-  </div>
-   <hr>
-      
-   <h5>Product Description</h5>
-   <p class='description'>{{product.description}}</p>
-  </div>
-  <br>
-  <br>
-  <br>
-  <br>
- </div>
-</div>
 {% endblock %}

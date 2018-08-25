@@ -1,18 +1,17 @@
 from django.shortcuts import get_object_or_404
-from products.models import Product, ItemRequirements
+from products.models import Product
 from decimal import Decimal
+
 
 def get_cart_items_and_total(cart):
     totals = 0
     products = []
-    
+
     for p in cart:
         product = get_object_or_404(Product, pk=p)
-        product_notes = get_object_or_404(ItemRequirements, pk=p)
         products.append({
-            'product' : product,
+            'product': product,
             'quantity': cart[p],
-            'notes': product_notes.notes,
             'price': product.price,
             'description': product.description,
             'image': product.image,
