@@ -39,7 +39,7 @@
 
         {% for document in documents %}
             <br>
-            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-lg login-btn new-post responsive" id='document'>{{document.name}}</a>
+            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-lg login-btn new-post responsive" target="_blank" id="document">{{document.name}}</a>
             <br>
             
         {% endfor %} 

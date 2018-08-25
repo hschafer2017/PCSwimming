@@ -12,7 +12,8 @@ class MakePaymentForm(forms.Form):
     expiry_month = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control-override'}), choices=MONTH_CHOICES, required=False)
     expiry_year = forms.ChoiceField(widget=forms.Select(attrs={'class': 'form-control-override'}), choices=YEAR_CHOICES, required=False)
     stripe_id = forms.CharField(widget=forms.HiddenInput)
-    
+
+   
 class OrderForm(forms.ModelForm):
     full_name = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'NAME ON CARD', 'class': 'form-control-override'}))
     phone_number = forms.CharField(widget=forms.TextInput(attrs={'placeholder': 'PHONE NUMBER', 'class': 'form-control-override'}))

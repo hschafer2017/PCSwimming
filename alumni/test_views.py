@@ -7,8 +7,8 @@ from django.shortcuts import get_object_or_404
 
 
 class TestAlumPostViews(TestCase):
-    """Tests that you have to be registed as an Alumni to view Alumni page"""
-    def test_get_alumposts_page(self):
+    """Tests that you have to be registered as an Alumni to view Alumni page"""
+    def test_get_alumposts_page_as_alumni(self):
         User.objects.create_user(
             username='Alumniuser1',
             email='Alumniuser1@example.com',

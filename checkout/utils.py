@@ -1,12 +1,14 @@
 from django.shortcuts import get_object_or_404
 from .models import OrderLineItem
 from products.models import Product
-import stripe
 from django.conf import settings
 from django.template.loader import render_to_string
 from django.core.mail import send_mail
+import stripe
+
 
 stripe.api_key = settings.STRIPE_SECRET
+
 
 def save_order_items(order, cart):
     for id, quantity in cart.items():
@@ -17,7 +19,8 @@ def save_order_items(order, cart):
             quantity = quantity
             )
         order_line_item.save()
-        
+
+
 def charge_card(stripe_token, total):
     total_in_cent = int(total*100)
     return stripe.Charge.create(
@@ -26,6 +29,7 @@ def charge_card(stripe_token, total):
         description="Dummy Transaction",
         card=stripe_token,
     )
+
 
 def send_confirmation_email(email, username, items_and_total):
     context = {
