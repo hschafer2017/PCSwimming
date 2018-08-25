@@ -4,6 +4,7 @@ from .forms import PostForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.contrib.messages import get_messages
+from accounts.models import Swimmer
 
 # class TestSetup(TestCase): 
 #     def test_get_test_setup(cls): 
@@ -28,6 +29,7 @@ class TestPostViews(TestCase):
             username='user1', 
             email='user1@example.com',
             password='password1')
+        swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
         self.client.login(username='user1', password='password1')
         page = self.client.get("/posts/")
         self.assertEqual(page.status_code, 200)
@@ -51,6 +53,7 @@ class TestPostViews(TestCase):
             username='TestSwimmer1', 
             email='TestSwimmer1@example.com',
             password='password1')
+        swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
         self.client.login(username='TestSwimmer1', password='password1')
         
         post = Post.objects.create(title='Test Discussion Post', content='Test Discussion Post Content')
@@ -80,6 +83,7 @@ class TestEditViews(TestCase):
             username='TestSwimmer1', 
             email='TestSwimmer1@example.com',
             password='password1')
+        swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
         self.client.login(username='TestSwimmer1', password='password1')
         
         post = Post.objects.create(title='Test Discussion Post', 

@@ -5,6 +5,7 @@ from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
+from accounts.models import Swimmer
 
 
 # Create your views here - POSTS.
@@ -12,9 +13,17 @@ from django.contrib.auth.models import User
 
 @login_required(login_url='/accounts/login/')
 def get_posts(request):
-    blogs = Post.objects.all()
-    comments = Comment.objects.all()
+    # If the user is a swimmer return page, else return HttpResponseForbidden
+    try:
+        if request.user.is_superuser or request.user.swimmer.graduation_year is not None: 
+            blogs = Post.objects.all()
+            comments = Comment.objects.all()
+        
+    except Swimmer.DoesNotExist:  
+        return HttpResponseForbidden()
+    
     return render(request, 'posts/posts.html', {'blogs': blogs, 'comments': comments})
+
 
 @login_required(login_url='/accounts/login/')
 def new_post(request):
@@ -29,7 +38,8 @@ def new_post(request):
         form = PostForm()
         
     return render(request, 'posts/postform.html', {'form': form})
- 
+
+
 @login_required(login_url='/accounts/login/') 
 def new_comment(request, pk): 
     comments = Comment.objects.all()
@@ -47,6 +57,7 @@ def new_comment(request, pk):
         form = CommentForm()
         
     return render(request, 'posts/commentform.html', {'form': form, 'blogs': blogs, 'comments':comments, 'post': post})
+
     
 @login_required(login_url='/accounts/login/')    
 def edit_post(request, pk): 
@@ -100,6 +111,7 @@ def delete_post(request):
 
     return redirect('get_posts')
 
+
 def delete_comment(request):
     id = request.POST['comment_id']
     pk = request.POST['blogs_id']
@@ -117,7 +129,7 @@ def delete_comment(request):
         return HttpResponseForbidden()
     return redirect('get_posts')  
 
-   
+
 def post_detail(request, pk):
     blogs = Post.objects.all()
     comments = Comment.objects.all()
