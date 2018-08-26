@@ -2,62 +2,53 @@
 {% load static from staticfiles %} 
 {% block content %}
 
-<br>
-<br>
-<br>
-<div class="col-xs-hidden col-sm-hidden col-md-6 main-column">
-    <div class="container posts">
-    <br>
-    <br> 
-        <br>
-        <br>
-        <h3 class='heading'>Events</h3>
-               
-                {% for event in events %}
-               
-        <br>
-            <div class="panel-body">
-                <div class="col-xs-hidden col-sm-8 col-md-8 col-lg-8">
-                    <div class="row">
-                        <h4 class='product-name meet'>{{ event.name }}</h4>
+    <br><br><br>
+    <div class="col-xs-hidden col-sm-hidden col-md-6 main-column">
+        <div class="container posts">
+            <br><br><br><br>
+            <h3 class='heading'>Events</h3>
+                   
+            {% for event in events %}
+                   
+                <br>
+                <div class="panel-body">
+                    <div class="col-xs-hidden col-sm-8 col-md-8 col-lg-8">
+                        <div class="row">
+                            <h4 class='product-name meet'>{{ event.name }}</h4>
+                        </div>
+                        <div class="row">
+                            <p class='product info location'>{{ event.location }}</p>
+                        </div>
+                        <div class="row">
+                            <p class='notes'>{{event.notes|truncatewords:10}}</p>
+                        </div>
                     </div>
-                    <div class="row">
-                        <p class='product info location'>{{ event.location }}</p>
-                    </div>
-                    <div class="row">
-                        <p class='notes'>{{event.notes|truncatewords:10}}</p>
+                    <div class="col-xs-hidden col-sm-4 col-md-4 col-lg-4">
+                        <p class='day'>{{event.day|date:'m/d/Y' }}</p>
+                        <p class='time'>{{ event.start_time }}</p> 
                     </div>
                 </div>
-                <div class="col-xs-hidden col-sm-4 col-md-4 col-lg-4">
-                    <p class='day'>{{event.day|date:'m/d/Y' }}</p>
-                    <p class='time'>{{ event.start_time }}</p> 
-                </div>
-            </div>
-            <br>
-                            
-                {% endfor %}
-
-        {% for document in documents %}
-            <br>
-            <a href="{{MEDIA_URL}}{{document.file}}" class="btn-lg login-btn new-post responsive" target="_blank" id="document">{{document.name}}</a>
-            <br>
+                <br>
+                                
+            {% endfor %}
+    
+            {% for document in documents %}
             
-        {% endfor %} 
-
-            <br>
-            <br>
+                <br>
+                <a href="{{MEDIA_URL}}{{document.file}}" class="btn-lg login-btn new-post responsive" target="_blank" id="document">{{document.name}}</a>
+                <br>
+                
+            {% endfor %} 
+    
+            <br><br>
+        </div>
+        <br><br><br>
     </div>
-    <br>
-    <br>
-    <br>
-</div>
-<div class="col-xs-hidden col-sm-hidden col-md-6">
-        <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
+    <div class="col-xs-hidden col-sm-hidden col-md-6">
+        <img src="{% static 'images/swimmer.png' %}" alt='swimmer' class='swimmer'>
     </div>
-
-<br>
-<br> 
-<br>
+    <br><br><br>
+    
 {% endblock content %}
 
 
