@@ -82,6 +82,12 @@ a {
     width: 105px;
 }
 
+.navbar-container {
+    text-align: right;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
 @media (max-width: 5000px) {
     .navbar-header {
         float: none;

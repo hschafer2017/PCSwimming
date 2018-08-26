@@ -63,6 +63,12 @@ li {
     z-index: 1;
 }
 
+.navbar-container {
+    text-align: right;
+    margin-right: 1%;
+    margin-top: 1%;
+}
+
 @media (max-width: 5000px) {
     .navbar-header {
         float: none;
@@ -275,6 +281,10 @@ p a:hover {
     text-align: center;
 }
 
+#document:hover {
+    text-decoration: none;
+}
+
 
 /*PRODUCTS*/
 
@@ -286,7 +296,6 @@ p a:hover {
     text-transform: uppercase;
     color: #212121;
     font-weight: bolder;
-    /*font-size: 20px;*/
 }
 
 .product-image {
