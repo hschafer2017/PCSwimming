@@ -39,10 +39,11 @@ def send_confirmation_email(email, username, items_and_total):
     context.update(items_and_total)
     message = render_to_string('checkout/text_confirmation_email.html', context)
     html_message = render_to_string('checkout/html_confirmation_email.html', context)
-                
+
     subject = 'Thanks for your order!'
     message = message
     from_email = settings.SYSTEM_EMAIL
     to_email = [email]
-    
-    send_mail(subject,message,from_email,to_email,fail_silently=True,html_message=html_message)
+
+    send_mail(subject,message,from_email,to_email,fail_silently=True,
+              html_message=html_message)
