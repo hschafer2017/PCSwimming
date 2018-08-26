@@ -11,8 +11,7 @@
         <div class="posts" style ="padding-right: 30px;">
             <br><br><br><br>
              <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
-            <br> 
-            <br>
+            <br><br>
             <h3 class='heading'>Shop</h3>
             <br>
     
@@ -33,7 +32,6 @@
                             <p class='product info'>{{product.description|truncatewords:10}}</p>
                         </div>
                     </div>
-                        
                     <div class="col-sm-3 col-md-3 col-lg-3">
                         <div class="row">
                             <p id='price'>${{product.price}}</p>
@@ -90,4 +88,5 @@
             <br><br><br><br>
         </div>
     </div>
+
 {% endblock %}

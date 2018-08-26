@@ -1,73 +1,67 @@
-{% extends 'home/base.html' %} {% load static from staticfiles %} {% load bootstrap_tags %} {% block content %}
-<br>
-<br>
-<br>
-<br>
+{% extends 'home/base.html' %} 
+{% load static from staticfiles %} 
+{% load bootstrap_tags %} 
+{% block content %}
+    
+    <br><br><br><br>
+    
     {% if messages %}
-        <br>
-        <br>
-        <br>
+        <br><br><br>
         <div class="alert alert-success">
             <div class="messages">
-                    
-                    {% for message in messages %} {{ message }} {% endfor %}
+                    {% for message in messages %} 
+                        {{ message }} 
+                    {% endfor %}
             </div>
         </div>
     {% endif %}
         
-<div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
-    <div class="container posts">
-    <br>
-    <br>
-        <br>
-        <br>
-         <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
-        <br> 
-        <br>
-        <h3 class='heading'>Shop</h3>
-        <br>
-        {% for product in products %}
-        
-        <br>
-        <br>
-        <div class="panel-body items">
-            <div class="col-sm-3 col-md-3 col-lg-3 quick-photo-view">
-                <br>
-                <img src="{{MEDIA_URL}}{{product.image}}" class='product-image' alt="{{product.name}}" />
-            </div>
-                <br>
-            <div class="col-sm-6 col-md-6 col-lg-6">
-                <div class="row">
-                    <p class='product-name'>{{product.name}}</p>
+    <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
+        <div class="container posts">
+            <br><br><br><br>
+             <a href="{% url 'view_cart' %}" class='btn btn-lg login-btn new-post responsive'><i class="fa fa-shopping-cart"></i> Cart</a>
+            <br><br>
+            <h3 class='heading'>Shop</h3>
+            <br>
+            
+            {% for product in products %}
+            
+            <br><br>
+            <div class="panel-body items">
+                <div class="col-sm-3 col-md-3 col-lg-3 quick-photo-view">
+                    <br>
+                    <img src="{{MEDIA_URL}}{{product.image}}" class='product-image' alt="{{product.name}}" />
                 </div>
-                <div class="row">
-                    <p class='product info'>{{product.description|truncatewords:10}}</p>
+                    <br>
+                <div class="col-sm-6 col-md-6 col-lg-6">
+                    <div class="row">
+                        <p class='product-name'>{{product.name}}</p>
+                    </div>
+                    <div class="row">
+                        <p class='product info'>{{product.description|truncatewords:10}}</p>
+                    </div>
                 </div>
-                </div>
-                
-            <div class="col-sm-3 col-md-3 col-lg-3">
-                <div class="row">
-                    <p id='price'>${{product.price}}</p>
-                </div>
-                <br>
-                <div class="row">
-                    <a href="{% url 'product_detail' product.id %}" class="btn btn-md login-btn new-post buy">More</a>
+                <div class="col-sm-3 col-md-3 col-lg-3">
+                    <div class="row">
+                        <p id='price'>${{product.price}}</p>
+                    </div>
+                    <br>
+                    <div class="row">
+                        <a href="{% url 'product_detail' product.id %}" class="btn btn-md login-btn new-post buy">More</a>
+                    </div>
                 </div>
             </div>
+            <br>
+            <div class="col-xs-hidden col-sm-hidden"></div>
+            <div class="col-xs-hidden col-sm-hidden"></div>
+         
+         {% endfor %}
+         
         </div>
-        
-    <br>
-    
-    <div class="col-xs-hidden col-sm-hidden">
+        <br><br><br>
     </div>
-    <div class="col-xs-hidden col-sm-hidden"></div>
-     {% endfor %}
-    </div>
-    <br>
-    <br>
-    <br>
-</div>
-    <div class="hidden-xs hidden-sm col-md-6">
-        <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
-    </div>
+        <div class="hidden-xs hidden-sm col-md-6">
+            <img src="{% static 'images/swimmer.png' %}" alt='swimmer' class='swimmer'>
+        </div>
+
 {% endblock content %}
