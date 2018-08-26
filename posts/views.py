@@ -2,76 +2,86 @@ from django.shortcuts import render, get_object_or_404, redirect
 from .models import Post, Comment
 from .forms import PostForm, CommentForm
 from django.http import HttpResponseForbidden, HttpResponse
-from django.contrib.auth.decorators import login_required
 from django.contrib import messages
 from django.contrib.auth.models import User
 from accounts.models import Swimmer
 
+"""
+Only swimmers have access to the posts/discussion page. If the user is not 
+    a swimmer or a superuser, return HttpResponseForbidden. If a user is not 
+    logged in, it redirects them to the login page. The posts app allows 
+    swimmers to create, read, update, and delete posts and comments for posts.
+"""
 
-@login_required(login_url='/accounts/login/')
+
 def get_posts(request):
-    """If the user is not a swimmer, return HttpResponseForbidden"""
-    try:
-        if (request.user.is_superuser or
-                request.user.swimmer.graduation_year is not None):
-            blogs = Post.objects.all()
-            comments = Comment.objects.all()
-
-    except Swimmer.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else: 
+        try:
+            if (request.user.is_superuser or
+                    request.user.swimmer.graduation_year is not None):
+                blogs = Post.objects.all()
+                comments = Comment.objects.all()
+    
+        except Swimmer.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, 'posts/posts.html', {'blogs': blogs, 'comments':
                   comments})
 
 
-@login_required(login_url='/accounts/login/')
 def new_post(request):
-    try:
-        if (request.user.is_superuser or
-                request.user.swimmer.graduation_year is not None):
-            if request.method == "POST":
-                form = PostForm(request.POST, request.FILES)
-                if form.is_valid():
-                    post = form.save(commit=False)
-                    post.owner = request.user
-                    post.save()
-                    return redirect('get_posts')
-            else:
-                form = PostForm()
-
-    except Swimmer.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                    request.user.swimmer.graduation_year is not None):
+                if request.method == "POST":
+                    form = PostForm(request.POST, request.FILES)
+                    if form.is_valid():
+                        post = form.save(commit=False)
+                        post.owner = request.user
+                        post.save()
+                        return redirect('get_posts')
+                else:
+                    form = PostForm()
+    
+        except Swimmer.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, 'posts/postform.html', {'form': form})
 
 
-@login_required(login_url='/accounts/login/')
 def new_comment(request, pk):
-    try:
-        if (request.user.is_superuser or
-                request.user.swimmer.graduation_year is not None):
-            comments = Comment.objects.all()
-            post = get_object_or_404(Post, pk=pk)
-            blogs = Post.objects.all()
-            if request.method == "POST":
-                form = CommentForm(request.POST)
-                if form.is_valid():
-                    comment = form.save(commit=False)
-                    comment.owner = request.user
-                    comment.post = post
-                    comment.save()
-                    return redirect('post_detail', pk=post.pk)
-            else:
-                form = CommentForm()
-
-    except Swimmer.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated: 
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                    request.user.swimmer.graduation_year is not None):
+                comments = Comment.objects.all()
+                post = get_object_or_404(Post, pk=pk)
+                blogs = Post.objects.all()
+                if request.method == "POST":
+                    form = CommentForm(request.POST)
+                    if form.is_valid():
+                        comment = form.save(commit=False)
+                        comment.owner = request.user
+                        comment.post = post
+                        comment.save()
+                        return redirect('post_detail', pk=post.pk)
+                else:
+                    form = CommentForm()
+    
+        except Swimmer.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, 'posts/commentform.html', {'form': form, 'blogs':
                   blogs, 'comments': comments, 'post': post})
 
 
-@login_required(login_url='/accounts/login/')
 def edit_post(request, pk):
     post = get_object_or_404(Post, pk=pk)
     if (request.user.is_authenticated and request.user == post.owner or
@@ -148,17 +158,20 @@ def delete_comment(request):
 
 
 def post_detail(request, pk):
-    try:
-        if (request.user.is_superuser or
-                request.user.swimmer.graduation_year is not None):
-            blogs = Post.objects.all()
-            comments = Comment.objects.all()
-            post = get_object_or_404(Post, pk=pk)
-            post.views += 1
-            post.save()
-
-    except Swimmer.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or request.user.is_authenticated and
+                    request.user.swimmer.graduation_year is not None):
+                blogs = Post.objects.all()
+                comments = Comment.objects.all()
+                post = get_object_or_404(Post, pk=pk)
+                post.views += 1
+                post.save()
+    
+        except Swimmer.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':
                   comments, 'post': post})
