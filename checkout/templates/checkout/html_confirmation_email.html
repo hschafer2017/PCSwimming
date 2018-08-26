@@ -15,22 +15,21 @@ Thank you for your purchase through {{ site_name }}!
         </tr>
     </thead>
     <tbody>
-        {% for item in cart_items %}
+        {% for p in cart %}
         <tr>
-            <td><img width="150" height="75" src="{{MEDIA_URL}}{{item.image}}"/></td>    
-            <td>{{ item.name }}</td>    
-            <td>{{ item.quantity}}</td>    
-            <td>${{ item.price }}</td>
-            <td>${{ item.total}}</td>
+            <td><img width="150" height="75" src="{{MEDIA_URL}}{{p.image}}"/></td>    
+            <td>{{ p.product }}</td>    
+            <td>{{ p.quantity}}</td>    
+            <td>${{ p.price }} ea</td>
+            <td>Total: ${{ p.total}}</td>
         </tr>
         {% endfor %}
-
         <tr>
             <td></td>
             <td></td>
             <td></td>
-            <td><strong>Total:</strong></td>
-            <td><strong>${{total}}</strong></td>
+            <td><strong>Sub-Total:</strong></td>
+            <td><strong>${{totals}}</strong></td>
         </tr>
     </tbody>
 </table>

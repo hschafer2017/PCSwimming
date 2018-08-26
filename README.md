@@ -8,6 +8,8 @@ This is a **fictional** ecommerce site, for the nature of this project, for a sw
 # Demo
 A live demo of this project can be found [here](https://pcswimming-project.herokuapp.com/). This application is hosted on Heroku. 
 
+![Desktop Demo](https://raw.githubusercontent.com/hschafer2017/PCSwimming/master/README_Resources/Swimming.gif "Desktop Demo")
+
 # UX
 This site is intended for use by Swimmers and Alumni to allow them further ease of access into what's happening at team events, who is organizing them, a meet schedule, and a place to buy team gear for the season. By paying online, it makes it easier for the coach to keep track of who paid and what they ordered, rather than having to keep track of checks or multiple spreadsheets. 
 
@@ -28,7 +30,10 @@ I wanted to implement an ease of access with this site, to make it as simple and
 # Testing
 ## Automated Testing  
 All automated testing was done using Travis-CI. 
-There is automated testing done for all apps with an active forms.py file. There is also testing done for models and views. 
+There is automated testing done for all apps with views, models, and forms (where applicable). The testing currently provides 87% coverage for the app. There is quite a bit of repetition in the testing, however, I would like to further refactor them and implement more specific tests for more coverage at a later date. 
+
+During testing, I realized that since I have two different user types, swimmers and alumni, there was nothing stopping a swimmer from typing in the URL to an alumni page and being able to access it and visa versa. To resolve this glaring security issue, I implemented a try/except into the views that required the function to check whether or not the user had the Swimmer (or Alumni) model associated with their user account. If the logged in user did not have the appropriate model associated with their user account, then they will be given an HttpResponseForbidden (403 error) when trying to access the page. The superuser is permitted to access both Swimmer-specific pages and Alumni-specific pages. Furthermore, I implemented an if statment to redirect the user to the login page if they were not authenticated (an AnonymousUser), and if they were authenticated to then run the try/except. 
+
 
 Coverage was tested by running the following in the command line: 
 ```
@@ -36,11 +41,16 @@ $ sudo pip3 install coverage
 $ coverage run manage.py test (app name)
 $ coverage html
 ```
-This will create a htmlcov folder. There are a bunch of files in this folder, so make sure to include them in the .gitignore. 
+This will create a htmlcov folder. There are a bunch of files in this folder, so I included them in the .gitignore. 
 
 To view the percentage of your app that's being tested for, open a new idle, and run the command 'htmlcov/index.html' in the idle. By clicking the link that appears when you run, it will be able to see the coverage in a new window. You can also view that all of your tests are passing by running the following in the command line: 
 ```
 $ python3 manage.py test
+```
+To view the coverage report in the command line for the entire project, run the following commands, alternatively, you can run the report for just one app by only including that app in the source: 
+```
+$ coverage run --source=alumni,accounts,events,home,products,cart,posts,checkout manage.py test
+$ coverage report
 ```
 
 ## Manual Testing: 
@@ -64,6 +74,8 @@ I would like to make the alumni section more sophisticated to allow the alumni t
 
 I would also like to make modals for new posts and comments on the desktop instead of redirecting to a new page. I think this could improve the overall flow of the UX for desktop users. 
 
+For products, I would also like to implement an option to choose a size, so that team members can purchase their team suits through the site individually specifying their size, along with other apparel that is size-specific. The issue I ran into here, is that swim suits are in numeric sizes (28, 30, 32, etc), while jackets, t-shirts, and other apparel follow the small/medium/large format. Also, certain products, like team dues and equipment, will not have a size. I would like to make it so that some products have a size option (that can vary depending on the product) and some don't. 
+
 I hope to implement this website for commercial use by setting up the payment functionality to process real credit cards. 
 
 # Credits 
@@ -74,7 +86,7 @@ All content in the Events, Alumni, Discussion, and Shop sections is fictional an
 The PC logo was provided by Portage Central Swimming and Diving. 
 
 ## Acknowledgments 
-
+The media query for the collapsed navbar regardless of viewport width was taken from this [site](https://www.codeply.com/go/iaM1zcNsQB/bootstrap-navbar-always-collapsed). 
 
 # Plug-Ins 
 If you have the Grammarly plug-in in your browser, when you click on a form's textarea to create or edit a post or comment, the textarea box will jump to the top of the page and then reposition itself into the designated input area on the page. The plug-in will still work, and you will still be able to add and edit content if you're using the plug-in. If the plug-in is turned off, there is no issue with the textarea jumping around the page. Read more about this issue with the Grammarly plug-in [here](https://stackoverflow.com/questions/47957205/textarea-box-moving-on-click-on-initial-page-load). 

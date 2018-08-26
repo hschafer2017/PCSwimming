@@ -8,11 +8,11 @@ Thank you for your purchase through {{ site_name }}!
 
 You bought...
 
-{% for item in cart_items %}
-{{ item.quantity}} {{ item.name }} @ ${{ item.price }} (${{ item.total}})\n
+{% for p in cart %}
+{{ p.quantity}} {{ p.product }} @ ${{ p.price }} (${{ p.total}})\n
 {% endfor %}
 
-Total: ${{total}}\n\n
+Total: ${{totals}}\n\n
 
 Thanks supporting Portage Central Swimming and Diving! Be sure to check out the website for upcoming events!
 
