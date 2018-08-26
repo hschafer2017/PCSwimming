@@ -3,10 +3,21 @@ from products.models import Product
 from .utils import get_cart_items_and_total
 from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden
+from accounts.models import Swimmer
 
 
 def view_cart(request):
-    cart = request.session.get('cart', {})
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                    request.user.swimmer.graduation_year is not None):
+                cart = request.session.get('cart', {})
+
+        except Swimmer.DoesNotExist:
+            return HttpResponseForbidden()
+
     return render(request, 'cart/cart.html', get_cart_items_and_total(cart))
 
 
