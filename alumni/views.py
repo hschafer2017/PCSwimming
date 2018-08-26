@@ -10,47 +10,56 @@ from django.contrib import messages
 @login_required(login_url='/accounts/login/')
 def get_alum_posts(request):
     """If the user is not an Alumni, return HttpResponseForbidden"""
-    try:
-        if (request.user.is_superuser or
-                request.user.alumni.graduated is not None):
-                alum_posts = AlumPost.objects.all()
-
-    except Alumni.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                    request.user.alumni.graduated is not None):
+                    alum_posts = AlumPost.objects.all()
+    
+        except Alumni.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, "alumni/alumniposts.html", 
                   {"alum_posts": alum_posts})
 
 
 def new_alum_post(request):
-    try:
-        if (request.user.is_superuser or
-            request.user.alumni.graduated is not None):
-            if request.method == "POST":
-                form = AlumPostForm(request.POST, request.FILES)
-                if form.is_valid():
-                    post = form.save(commit=False)
-                    post.owner = request.user
-                    post.save()
-                    return redirect('get_alum_posts')
-            else:
-                form = AlumPostForm()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                request.user.alumni.graduated is not None):
+                if request.method == "POST":
+                    form = AlumPostForm(request.POST, request.FILES)
+                    if form.is_valid():
+                        post = form.save(commit=False)
+                        post.owner = request.user
+                        post.save()
+                        return redirect('get_alum_posts')
+                else:
+                    form = AlumPostForm()
 
-    except Alumni.DoesNotExist:
-        return HttpResponseForbidden()
+        except Alumni.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, 'alumni/alumnipostform.html', {'form': form})
 
 
 def alum_post_detail(request, pk):
-    try:
-        if (request.user.is_superuser or
-            request.user.alumni.graduated is not None):
-            alum_posts = AlumPost.objects.all()
-            post = get_object_or_404(AlumPost, pk=pk)
-
-    except Alumni.DoesNotExist:
-        return HttpResponseForbidden()
+    if not request.user.is_authenticated:
+        return redirect('login')
+    else:
+        try:
+            if (request.user.is_superuser or
+                request.user.alumni.graduated is not None):
+                alum_posts = AlumPost.objects.all()
+                post = get_object_or_404(AlumPost, pk=pk)
+    
+        except Alumni.DoesNotExist:
+            return HttpResponseForbidden()
 
     return render(request, "alumni/alumnipostdetail.html",
                   {'alum_posts': alum_posts, 'post': post})

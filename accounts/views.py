@@ -1,9 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, authenticate, login
-from .forms import UserLoginForm, UserRegistrationForm, AlumniRegistrationForm, SwimmerRegistrationForm
-
-# Create your views here - ACCOUNTS.
+from .forms import (UserLoginForm, UserRegistrationForm, 
+AlumniRegistrationForm, SwimmerRegistrationForm)
 
 
 def do_login(request):
@@ -26,6 +25,7 @@ def do_login(request):
 
 
 def register_swimmer(request):
+    """Register a user as a Swimmer and save with foriegn key to User"""
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
         swimmer_form = SwimmerRegistrationForm(request.POST, request.FILES)
@@ -53,6 +53,7 @@ def register_swimmer(request):
 
 
 def register_alumni(request):
+    """Register a user as an Alumni and save with foriegn key to User"""
     if request.method == "POST":
         registration_form = UserRegistrationForm(request.POST)
         alumni_form = AlumniRegistrationForm(request.POST, request.FILES)

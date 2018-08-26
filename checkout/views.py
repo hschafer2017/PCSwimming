@@ -54,6 +54,7 @@ def checkout(request):
 
                         if customer.paid:
                             messages.error(request, "You have successfully paid!")
+
                             # Send confirmation email
                             send_confirmation_email(request.user.email, 
                                                     request.user, 

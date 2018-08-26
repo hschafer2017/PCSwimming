@@ -30,7 +30,7 @@ I wanted to implement an ease of access with this site, to make it as simple and
 # Testing
 ## Automated Testing  
 All automated testing was done using Travis-CI. 
-There is automated testing done for all apps with views, models, and forms (where applicable). The testing currently provides 87% coverage for the app. There is quite a bit of repetition in the testing, however, I would like to further refactor them and implement more specific tests for more coverage at a later date. 
+There is automated testing done for all apps with views, models, and forms (where applicable). The testing currently provides 86% coverage for the app. There is quite a bit of repetition in the testing, however, I would like to further refactor them and implement more specific tests for more coverage at a later date. 
 
 During testing, I realized that since I have two different user types, swimmers and alumni, there was nothing stopping a swimmer from typing in the URL to an alumni page and being able to access it and visa versa. To resolve this glaring security issue, I implemented a try/except into the views that required the function to check whether or not the user had the Swimmer (or Alumni) model associated with their user account. If the logged in user did not have the appropriate model associated with their user account, then they will be given an HttpResponseForbidden (403 error) when trying to access the page. The superuser is permitted to access both Swimmer-specific pages and Alumni-specific pages. Furthermore, I implemented an if statment to redirect the user to the login page if they were not authenticated (an AnonymousUser), and if they were authenticated to then run the try/except. 
 
@@ -57,6 +57,8 @@ $ coverage report
 Manual testing was done for all edit/post/delete/appearance functions in both the events and posts apps. This was to ensure that what was supposed to be deleting was deleting, and that only designated users (the post/comment owner or the superuser) was able to delete/edit the content selected. I also verified that the correct author showed up for the posts and comments. All links and forms are verified to be working correctly via manual testing. 
 
 The Stripe payment function has been verified with a test card and all transactions show up on the Stripe dashboard. 
+
+![Stripe Test Cart Payment](https://raw.githubusercontent.com/hschafer2017/PCSwimming/master/README_Resources/payment.png "Test Card Payment")
 
 # Features
 Only the head coach has access to the admin page. Since it is their team's site, it makes it easier for them to monitor all account activity and blog content. They are the only ones who will be allowed to make master changes to the site. This site has ecommerce and blog functionality. Payments are processed through Stripe, and since it is a fictional site, it only processes 'test card payments.' The events section allows the public, alumni, and swimmers to see upcoming events. 
@@ -87,6 +89,8 @@ The PC logo was provided by Portage Central Swimming and Diving.
 
 ## Acknowledgments 
 The media query for the collapsed navbar regardless of viewport width was taken from this [site](https://www.codeply.com/go/iaM1zcNsQB/bootstrap-navbar-always-collapsed). 
+
+For the post comments, I followed the Django Girls Tutorial [here](https://tutorial-extensions.djangogirls.org/en/homework_create_more_models/), however, it was significantly modified to fit my project, and the ability to edit and delete comments was added. 
 
 # Plug-Ins 
 If you have the Grammarly plug-in in your browser, when you click on a form's textarea to create or edit a post or comment, the textarea box will jump to the top of the page and then reposition itself into the designated input area on the page. The plug-in will still work, and you will still be able to add and edit content if you're using the plug-in. If the plug-in is turned off, there is no issue with the textarea jumping around the page. Read more about this issue with the Grammarly plug-in [here](https://stackoverflow.com/questions/47957205/textarea-box-moving-on-click-on-initial-page-load). 
