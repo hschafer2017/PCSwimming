@@ -6,7 +6,7 @@
 <br>
 <br>
 <br>
-
+<br>
 {% if messages %}
         <br>
         <br>
@@ -19,7 +19,7 @@
         </div>
     {% endif %}
     
-
+    <br>
     <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
         <div class="container posts">
         <br>
@@ -33,16 +33,16 @@
             <br>
             <br>
         {% for blog in blogs %}
-            <div class="panel-body post-panels">
+            <div class="panel-body">
                 <br>
                 
                 <h2 class = 'blog-title'>{{ blog.title }}</h2>
                 <br>
-                    <p class='blog-content'>{{ blog.content|truncatewords:20 }}</p>
-                    <p class ='info'><span class="boldtext">Published on:</span> {{ blog.published_date }} </p>
-                    <p class='info'>Views: {{blog.views}}</p>
+                    <p>{{ blog.content|truncatewords:20 }}</p>
+                    <p><span>Published on:</span> {{ blog.published_date }} </p>
+                    <p>Views: {{blog.views}}</p>
     
-                    <p class='info'>Comments: {{ blog.comments.count}}</p>
+                    <p>Comments: {{ blog.comments.count}}</p>
                             
                     <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
             </div>
