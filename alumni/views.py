@@ -1,5 +1,4 @@
 from django.shortcuts import render, get_object_or_404, redirect
-from django.contrib.auth.decorators import login_required
 from django.http import HttpResponseForbidden
 from .models import AlumPost
 from .forms import AlumPostForm
@@ -7,7 +6,7 @@ from accounts.models import Alumni
 from django.contrib import messages
 
 
-@login_required(login_url='/accounts/login/')
+
 def get_alum_posts(request):
     """If the user is not an Alumni, return HttpResponseForbidden"""
     if not request.user.is_authenticated:
