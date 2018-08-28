@@ -391,6 +391,7 @@ h5 {
 
 .alumni-photo {
     height: auto;
+    width: 170px;
 }
 
 /*CHECKOUT*/
@@ -548,5 +549,14 @@ footer {
     }
     .blue-side {
         color: #fafafa;
+    }
+}
+
+/*TABLET & DESKTOP*/
+
+@media (min-width: 458px) {
+    .alumni-photo {
+        height: auto;
+        width: 300px;
     }
 }
