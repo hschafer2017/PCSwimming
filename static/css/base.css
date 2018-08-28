@@ -52,7 +52,7 @@ li {
 }
 
 #links:hover {
-    color: #FFD236; 
+    color: #FFD236;
 }
 
 #scroll-button {
@@ -124,7 +124,6 @@ li {
     font-size: 14px;
     border-radius: 0px;
     background-color: transparent !important;
-    /*z-index: 3;*/
 }
 
 .form-view {
@@ -400,6 +399,16 @@ legend {
     text-transform: uppercase;
     text-align: center;
     margin-bottom: 35px;
+}
+
+.checkout-view {
+    padding: 30px;
+}
+
+ul {
+    list-style: none;
+    text-align: center;
+    padding-left: 0px;
 }
 
 /*FOOTER*/

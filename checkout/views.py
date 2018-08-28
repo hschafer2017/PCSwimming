@@ -14,12 +14,13 @@ import stripe
 from .utils import save_order_items, charge_card, send_confirmation_email
 
 """
-Only swimmers have access to the checkout, as only swimmers can access the cart 
-and products. If the user is not a swimmer or a superuser, 
-return HttpResponseForbidden. If a user is not logged in, it redirects them to 
+Only swimmers have access to the checkout, as only swimmers can access the cart
+and products. If the user is not a swimmer or a superuser,
+return HttpResponseForbidden. If a user is not logged in, it redirects them to
 the login page. The checkout app allows swimmers to purchase team products
 via Stripe.
 """
+
 
 def checkout(request):
     if not request.user.is_authenticated:
@@ -28,7 +29,7 @@ def checkout(request):
         try:
             if (request.user.is_superuser or
                     request.user.swimmer.graduation_year is not None):
-                if request.method=="POST":
+                if request.method == "POST":
                     order_form = OrderForm(request.POST)
                     payment_form = MakePaymentForm(request.POST)
 
@@ -45,7 +46,7 @@ def checkout(request):
                         # Charge the Card
                         items_and_total = get_cart_items_and_total(cart)
                         total = items_and_total['totals']
-                        stripe_token=payment_form.cleaned_data['stripe_id']
+                        stripe_token = payment_form.cleaned_data['stripe_id']
 
                         try:
                             customer = charge_card(stripe_token, total)
@@ -56,8 +57,8 @@ def checkout(request):
                             messages.error(request, "You have successfully paid!")
 
                             # Send confirmation email
-                            send_confirmation_email(request.user.email, 
-                                                    request.user, 
+                            send_confirmation_email(request.user.email,
+                                                    request.user,
                                                     items_and_total)
 
                             # Clear the Cart
@@ -69,7 +70,7 @@ def checkout(request):
                     payment_form = MakePaymentForm()
                     context = {'order_form': order_form,
                                'payment_form': payment_form,
-                               'publishable': settings.STRIPE_PUBLISHABLE }
+                               'publishable': settings.STRIPE_PUBLISHABLE}
                     cart = request.session.get('cart', {})
                     cart_items_and_total = get_cart_items_and_total(cart)
                     context.update(cart_items_and_total)
