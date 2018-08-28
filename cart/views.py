@@ -5,6 +5,11 @@ from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden
 from accounts.models import Swimmer
 
+"""
+As products and checkout are only accessible to swimmers, the 
+cart is also restricted to swimmers only.
+"""
+
 
 def view_cart(request):
     if not request.user.is_authenticated:

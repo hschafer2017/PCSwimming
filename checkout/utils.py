@@ -11,6 +11,7 @@ stripe.api_key = settings.STRIPE_SECRET
 
 
 def save_order_items(order, cart):
+    """Save order to OrderLineItem model for admin panel purchase history"""
     for id, quantity in cart.items():
         product = get_object_or_404(Product, pk=id)
         order_line_item = OrderLineItem(
@@ -22,6 +23,7 @@ def save_order_items(order, cart):
 
 
 def charge_card(stripe_token, total):
+    """Charge test card in USD under 'Dummy Transaction'"""
     total_in_cent = int(total*100)
     return stripe.Charge.create(
         amount=total_in_cent,
@@ -32,6 +34,7 @@ def charge_card(stripe_token, total):
 
 
 def send_confirmation_email(email, username, items_and_total):
+    """Confirmation email to swimmer following purchase"""
     context = {
         'site_name': "Portage Central Swim Boosters",
         'user': username,

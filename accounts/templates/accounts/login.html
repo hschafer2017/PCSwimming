@@ -10,7 +10,7 @@
         <div class="container login">
             <br><br><br>
             <h3 class = 'heading' >Login</h3>
-            <form method='POST' class='form' id='form'>
+            <form method='POST' id='form'>
                 {% csrf_token %}
                
                 {{form | as_bootstrap }}
