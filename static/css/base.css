@@ -41,6 +41,7 @@ li {
 .navbar .navbar-collapse {
     text-align: right;
     border-top: 0px solid transparent;
+    overflow-x: hidden;
 }
 
 .navbar-default .navbar-toggle {
@@ -407,7 +408,6 @@ legend {
 
 ul {
     list-style: none;
-    text-align: center;
     padding-left: 0px;
 }
 

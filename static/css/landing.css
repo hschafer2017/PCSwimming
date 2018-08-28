@@ -1,8 +1,10 @@
 /*LANDING PAGE*/
+
 body,
 html {
     height: 100%;
     font-family: 'Muli', sans-serif;
+
 }
 
 .background {
@@ -26,6 +28,7 @@ html {
 .navbar .navbar-collapse {
     text-align: right;
     border-top: 0px solid transparent;
+    overflow-x: hidden;
 }
 
 #scroll-button {
@@ -186,13 +189,10 @@ h1 {
 
 @media (min-width: 426px) and (max-width: 990px) {
     .background {
-        background-image: url('../images/swim_background_tablet.png');
-        height: 100vh;
-        width: 100vw;
-        background-position: center;
-        background-repeat: no-repeat;
+        background: url('../images/swim_background_tablet.png') no-repeat center center fixed;
         background-size: cover;
-        position: relative;
+        height: 100%;
+        overflow: hidden;
     }
     .jumbotron {
         margin-bottom: 0px;
@@ -232,13 +232,15 @@ h1 {
 /*MOBILE SIZING*/
 
 @media (max-width: 426px) {
+    html,
+    body {
+        height: auto;
+    }
     .background {
-        background-image: url('../images/swim_background_mobile.png');
+        background: url('../images/swim_background_mobile.png') no-repeat center center fixed;
         height: 100%;
-        background-position: center;
-        background-repeat: no-repeat;
+        overflow: hidden;
         background-size: cover;
-        position: relative;
     }
     .jumbotron {
         margin-bottom: 0px;
@@ -276,5 +278,3 @@ h1 {
         height: 175px;
     }
 }
-
-
