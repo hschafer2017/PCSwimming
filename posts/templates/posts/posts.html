@@ -2,37 +2,35 @@
 {% load static from staticfiles %}
 
 {% block content %}
-<br>
-<br>
-<br>
-<br>
-<br>
-{% if messages %}
-        <br>
-        <br>
-        <br>
-        <div class="alert alert-success">
-            <div class="messages">
-                    
-                    {% for message in messages %} {{ message }} {% endfor %}
-            </div>
+
+    <br><br><br><br><br>
+
+    {% if messages %}
+
+    <br><br><br>
+    <div class="alert alert-success">
+        <div class="messages">
+
+            {% for message in messages %} 
+                {{ message }} 
+            {% endfor %}
+
         </div>
+    </div>
+
     {% endif %}
-    
+
     <br>
     <div class="col-xs-hidden col-sm-hidden col-md-6 col-lg-6">
         <div class="container posts">
-        <br>
-        <br>
-        <br>
-        <br>
+        <br><br><br><br>
             <a href="{% url 'new_post' %}" class ='btn btn-lg login-btn new-post responsive'> <i class ='fa fa-plus'></i> New Post</a>
-        <br>
-        <br>
+            <br><br>
             <h3 class='heading'>Discussion</h3>
-            <br>
-            <br>
-        {% for blog in blogs %}
+            <br><br>
+            
+            {% for blog in blogs %}
+            
             <div class="panel-body">
                 <br>
                 
@@ -46,14 +44,15 @@
                             
                     <p><a href="{% url 'post_detail' blog.id %}"  class="btn btn-md login-btn new-post buy" style='width: auto;'>Read more</a></p>
             </div>
+            <br><br>
+            
+            {% endfor %}
+            
             <br>
-            <br>
-        {% endfor %}
-        
-        <br>
+        </div>
     </div>
-</div>
-<div class="hidden-xs hidden-sm col-md-6">
+    <div class="hidden-xs hidden-sm col-md-6">
         <img src="{% static 'images/swimmer.png' %}" alt='swimmer' class='swimmer'></img>
     </div>
-    {% endblock content %}
+
+{% endblock content %}

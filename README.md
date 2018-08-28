@@ -31,10 +31,10 @@ I wanted to implement an ease of access with this site, to make it as simple and
     2. Heroku
     3. Postgres Database (mySQL)
     4. Stripe Payment 
-    5. JavaScript
+    5. JavaScript/jQuery
     6. HTML
     7. CSS
-    8. Bootstrap
+    8. Bootstrap (3.3.7)
 
 # Development Process 
 The backend was done first, with the styling added after. As the styling was progressing, and after it was mostly finished, there were some back-end additions that needed to be made for testing and bug fixes. 
@@ -71,6 +71,8 @@ $ coverage report
 
 ## Manual Testing: 
 Manual testing was done for all edit/post/delete/appearance functions in both the events and posts apps. This was to ensure that what was supposed to be deleting was deleting, and that only designated users (the post/comment owner or the superuser) was able to delete/edit the content selected. I also verified that the correct author showed up for the posts and comments. All links and forms are verified to be working correctly via manual testing. 
+
+While testing on different operating systems and different browsers, I noticed that on Windows (and browsers operating on Windows), the collapsed navbar has a old-style scroll bar that appears on the navbar action as it collapses. However, it's almost unnoticeable on OS X due to the nature of the operating system's default styling. I managed to remove this by adding ```overflow-x: hidden;``` to ```.navbar .navbar-collapse```. Looking in the Bootstrap CSS, it does look like it is set to ```overflow-x: visible``` for this property. 
 
 The Stripe payment function has been verified with a test card and all transactions show up on the Stripe dashboard. 
 
