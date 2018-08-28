@@ -17,7 +17,7 @@ class TestAlumPostViews(TestCase):
         self.client.login(username='Alumniuser1', password='password1')
         page = self.client.get("/alumni/")
         self.assertEqual(page.status_code, 200)
-    
+
     def test_get_alumposts_page_as_swimmer(self):
         """Tests that Swimmers are blocked from the Alumni page"""
         User.objects.create_user(
@@ -28,7 +28,7 @@ class TestAlumPostViews(TestCase):
         self.client.login(username='Swimuser1', password='password1')
         page = self.client.get("/alumni/")
         self.assertEqual(page.status_code, 403)
-    
+
     def test_get_new_alumpost_page(self):
         User.objects.create_user(
             username='Alumniuser1',
@@ -38,10 +38,10 @@ class TestAlumPostViews(TestCase):
         self.client.login(username='Alumniuser1', password='password1')
         page = self.client.get("/alumni/new/")
         self.assertEqual(page.status_code, 200)
-    
+
     def test_create_new_alumpost_form(self):
         User.objects.create_user(
-            username='Alumniuser1', 
+            username='Alumniuser1',
             email='Alumniuser1@example.com',
             password='password1')
         alumni = Alumni.objects.create(user_id='1', graduated='2009')
@@ -68,20 +68,20 @@ class TestAlumPostViews(TestCase):
     def test_get_edit_page_for_item_that_does_not_exist(self):
         page = self.client.get("alumni/1")
         self.assertEqual(page.status_code, 404)
-    
-    def test_get_delete_post(self): 
+
+    def test_get_delete_post(self):
         User.objects.create_user(
             username='Alumniuser1',
             email='Alumniuser1@example.com',
             password='password1')
         alumni = Alumni.objects.create(user_id='1', graduated='2009')
         self.client.login(username='Alumniuser1', password='password1')
-        
-        alum_post = AlumPost.objects.create(title='Test Alumni Post', content='Test Alumni Post Content')
-        
-        
+
+        alum_post = AlumPost.objects.create(title='Test Alumni Post',
+                                            content='Test Alumni Post Content')
+
         self.assertEqual(AlumPost.objects.count(), 1)
         response = self.client.get("/alumni/1".format(alum_post.pk))
-        
+
         alum_post.delete()
         self.assertEqual(AlumPost.objects.count(), 0)

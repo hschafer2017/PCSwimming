@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect
 from django.http import HttpResponse
 from django.contrib.auth import logout, authenticate, login
-from .forms import (UserLoginForm, UserRegistrationForm, 
-AlumniRegistrationForm, SwimmerRegistrationForm)
+from .forms import (UserLoginForm, UserRegistrationForm,
+                    AlumniRegistrationForm, SwimmerRegistrationForm)
 
 
 def do_login(request):

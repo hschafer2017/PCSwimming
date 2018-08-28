@@ -1,5 +1,6 @@
 from django.test import TestCase
-from .forms import UserLoginForm, UserRegistrationForm, SwimmerRegistrationForm, AlumniRegistrationForm
+from .forms import (UserLoginForm, UserRegistrationForm,
+                    SwimmerRegistrationForm, AlumniRegistrationForm)
 from django.contrib.auth.models import User
 
 

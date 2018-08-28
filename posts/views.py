@@ -7,9 +7,9 @@ from django.contrib.auth.models import User
 from accounts.models import Swimmer
 
 """
-Only swimmers have access to the posts/discussion page. If the user is not 
-    a swimmer or a superuser, return HttpResponseForbidden. If a user is not 
-    logged in, it redirects them to the login page. The posts app allows 
+Only swimmers have access to the posts/discussion page. If the user is not
+    a swimmer or a superuser, return HttpResponseForbidden. If a user is not
+    logged in, it redirects them to the login page. The posts app allows
     swimmers to create, read, update, and delete posts and comments for posts.
 """
 
@@ -17,13 +17,13 @@ Only swimmers have access to the posts/discussion page. If the user is not
 def get_posts(request):
     if not request.user.is_authenticated:
         return redirect('login')
-    else: 
+    else:
         try:
             if (request.user.is_superuser or
                     request.user.swimmer.graduation_year is not None):
                 blogs = Post.objects.all()
                 comments = Comment.objects.all()
-    
+
         except Swimmer.DoesNotExist:
             return HttpResponseForbidden()
 
@@ -47,7 +47,7 @@ def new_post(request):
                         return redirect('get_posts')
                 else:
                     form = PostForm()
-    
+
         except Swimmer.DoesNotExist:
             return HttpResponseForbidden()
 
@@ -55,7 +55,7 @@ def new_post(request):
 
 
 def new_comment(request, pk):
-    if not request.user.is_authenticated: 
+    if not request.user.is_authenticated:
         return redirect('login')
     else:
         try:
@@ -74,7 +74,7 @@ def new_comment(request, pk):
                         return redirect('post_detail', pk=post.pk)
                 else:
                     form = CommentForm()
-    
+
         except Swimmer.DoesNotExist:
             return HttpResponseForbidden()
 
@@ -128,9 +128,10 @@ def delete_post(request):
             blogs = get_object_or_404(Post, pk=id)
             try:
                 blogs.delete()
-                messages.success(request, 'You have successfully deleted the post!')
+                messages.success(request,
+                                 'You have successfully deleted the post!')
 
-            except:
+            except Post.DoesNotExist:
                 messages.warning(request, 'The post could not be deleted.')
     else:
         return HttpResponseForbidden()
@@ -148,10 +149,12 @@ def delete_comment(request):
         if request.method == 'POST':
             try:
                 comment.delete()
-                messages.success(request, 'You have successfully deleted the comment!')
+                messages.success(request,
+                                 'You have successfully deleted the comment!')
 
-            except:
-                messages.warning(request, 'The comment could not be deleted.')
+            except Comment.DoesNotExist:
+                messages.warning(request,
+                                 'The comment could not be deleted.')
     else:
         return HttpResponseForbidden()
     return redirect('get_posts')
@@ -169,9 +172,9 @@ def post_detail(request, pk):
                 post = get_object_or_404(Post, pk=pk)
                 post.views += 1
                 post.save()
-    
+
         except Swimmer.DoesNotExist:
             return HttpResponseForbidden()
 
-    return render(request, "posts/postdetail.html", {'blogs': blogs, 'comments':
-                  comments, 'post': post})
+    return render(request, "posts/postdetail.html", {'blogs': blogs,
+                  'comments': comments, 'post': post})

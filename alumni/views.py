@@ -17,11 +17,11 @@ def get_alum_posts(request):
             if (request.user.is_superuser or
                     request.user.alumni.graduated is not None):
                     alum_posts = AlumPost.objects.all()
-    
+
         except Alumni.DoesNotExist:
             return HttpResponseForbidden()
 
-    return render(request, "alumni/alumniposts.html", 
+    return render(request, "alumni/alumniposts.html",
                   {"alum_posts": alum_posts})
 
 
@@ -57,7 +57,7 @@ def alum_post_detail(request, pk):
                 request.user.alumni.graduated is not None):
                 alum_posts = AlumPost.objects.all()
                 post = get_object_or_404(AlumPost, pk=pk)
-    
+
         except Alumni.DoesNotExist:
             return HttpResponseForbidden()
 
@@ -67,16 +67,19 @@ def alum_post_detail(request, pk):
 
 def delete_alum_post(request):
     pk = request.POST['blogs_id']
-    if (request.user.is_authenticated and request.user == alumpost.owner or 
+    alumpost = get_object_or_404(AlumPost, pk=pk)
+    if (request.user.is_authenticated and request.user == alumpost.owner or
         request.user.is_superuser):
         if request.method == 'POST':
             blogs = get_object_or_404(AlumPost, pk=pk)
             try:
                 blogs.delete()
-                messages.success(request, 'You have successfully deleted the post!')
+                messages.success(request,
+                                 'You have successfully deleted the post!')
 
-            except:
-                messages.warning(request, 'The post could not be deleted.')
+            except AlumPost.DoesNotExist:
+                messages.warning(request,
+                                 'The post could not be deleted.')
     else:
         return HttpResponseForbidden()
     return redirect('get_alum_posts')
@@ -84,7 +87,7 @@ def delete_alum_post(request):
 
 def edit_alum_post(request, pk):
     post = get_object_or_404(AlumPost, pk=pk)
-    if (request.user.is_authenticated and request.user == post.owner or 
+    if (request.user.is_authenticated and request.user == post.owner or
         request.user.is_superuser):
         if request.method == "POST":
             form = AlumPostForm(request.POST, request.FILES, instance=post)

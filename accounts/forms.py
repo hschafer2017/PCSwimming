@@ -26,7 +26,7 @@ class UserRegistrationForm(UserCreationForm):
     password1 = forms.CharField(label='Password', widget=forms.PasswordInput(
         attrs={'placeholder': 'PASSWORD'}))
     password2 = forms.CharField(label='Password Confirmation',
-        widget=forms.PasswordInput(attrs={'placeholder': 'CONFIRM PASSWORD'}))
+                                widget=forms.PasswordInput(attrs={'placeholder': 'CONFIRM PASSWORD'}))
 
     class Meta:
         model = User

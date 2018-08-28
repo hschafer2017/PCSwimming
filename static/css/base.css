@@ -507,6 +507,9 @@ footer {
     #id_notes {
         width: 80%;
     }
+    #div_id_image {
+        color: #fafafa;
+    }
     .form-control-override {
         background-color: #fafafa !important;
         color: #424242 !important;

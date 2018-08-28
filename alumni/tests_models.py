@@ -10,4 +10,3 @@ class TestUserTypesModel(TestCase):
         self.assertEqual(alum_post.title, "Alumni Test")
         self.assertEqual(alum_post.content, "Some test content.")
         self.assertFalse(alum_post.image)
-    

@@ -3,6 +3,7 @@ from .models import Product
 from django.contrib.auth.models import User
 from accounts.models import Swimmer, Alumni
 
+
 class TestProductViews(TestCase):
 
     def test_get_product_page_as_swimmer(self):

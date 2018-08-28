@@ -6,7 +6,7 @@ from django.http import HttpResponseForbidden
 from accounts.models import Swimmer
 
 """
-As products and checkout are only accessible to swimmers, the 
+As products and checkout are only accessible to swimmers, the
 cart is also restricted to swimmers only.
 """
 

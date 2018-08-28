@@ -2,11 +2,12 @@ from django.test import TestCase
 from .models import Post, Comment
 from django.contrib.auth.models import User
 
+
 class TestPostModel(TestCase):
 
     def test_create_post(self):
         User.objects.create_user(
-            username='TestSwimmer1', 
+            username='TestSwimmer1',
             email='TestSwimmer1@example.com',
             password='password1')
         self.client.login(username='TestSwimmer1', password='password1')
@@ -21,7 +22,7 @@ class TestCommentModel(TestCase):
 
     def test_create_comment(self):
         User.objects.create_user(
-            username='TestSwimmer1', 
+            username='TestSwimmer1',
             email='TestSwimmer1@example.com',
             password='password1')
         self.client.login(username='TestSwimmer1', password='password1')

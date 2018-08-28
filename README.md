@@ -27,14 +27,14 @@ The swimmer on certain desktop pages was a minimalistic way to fill the off-whit
 I wanted to implement an ease of access with this site, to make it as simple and obvious as possible for both swimmers and alumni to navigate through the site while maintaining consistency throughout the design. 
 
 # Technologies 
-    1. Django (2.0)
-    2. Heroku
-    3. Postgres Database (mySQL)
-    4. Stripe Payment 
-    5. JavaScript/jQuery
-    6. HTML
-    7. CSS
-    8. Bootstrap (3.3.7)
+1. Django (2.0)
+2. Heroku
+3. Postgres Database (mySQL)
+4. Stripe Payment 
+5. JavaScript/jQuery
+6. HTML
+7. CSS
+8. Bootstrap (3.3.7)
 
 # Development Process 
 The backend was done first, with the styling added after. As the styling was progressing, and after it was mostly finished, there were some back-end additions that needed to be made for testing and bug fixes. 

@@ -20,7 +20,7 @@ class TestPostViews(TestCase):
         self.client.login(username='user1', password='password1')
         page = self.client.get("/posts/")
         self.assertEqual(page.status_code, 200)
-    
+
     def test_get_posts_page_as_alumni(self):
         """Tests that Alumni are blocked from the Discussion page"""
         User.objects.create_user(
@@ -34,7 +34,7 @@ class TestPostViews(TestCase):
 
     def test_get_new_post_page(self):
         User.objects.create_user(
-            username='user1', 
+            username='user1',
             email='user1@example.com',
             password='password1')
         swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
@@ -45,7 +45,7 @@ class TestPostViews(TestCase):
 
     def test_create_new_post_form(self):
         User.objects.create_user(
-            username='TestSwimmer1', 
+            username='TestSwimmer1',
             email='TestSwimmer1@example.com',
             password='password1')
         swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
@@ -62,7 +62,8 @@ class TestPostViews(TestCase):
             password='password1')
         swimmer = Swimmer.objects.create(user_id='1', graduation_year='2019')
         self.client.login(username='TestSwimmer1', password='password1')
-        post = Post.objects.create(title='Test Discussion Post', content='Test Discussion Post Content')
+        post = Post.objects.create(title='Test Discussion Post',
+                                   content='Test Discussion Post Content')
         self.assertEqual(Post.objects.count(), 1)
         response = self.client.get("/posts/1/detail".format(post.pk))
         self.assertEqual(response.status_code, 200)
@@ -79,8 +80,8 @@ class TestEditViews(TestCase):
         self.client.login(username='TestSwimmer1', password='password1')
 
         post = Post.objects.create(title='Test Discussion Post',
-                content='Test Discussion Post Content')
-        
+                                   content='Test Discussion Post Content')
+
         self.assertEqual(post.content, 'Test Discussion Post Content')
 
         page = self.client.get('/posts/1/edit')
@@ -117,14 +118,15 @@ class TestEditViews(TestCase):
         comment.content = 'Test Discussion Comment Edit Content'
         comment.save()
 
-        self.assertEqual(comment.content, 'Test Discussion Comment Edit Content')
+        self.assertEqual(comment.content,
+                         'Test Discussion Comment Edit Content')
 
         response = self.client.get('/posts/detail'.format(comment.post.pk))
 
     def test_get_edit_page_for_item_that_does_not_exist(self):
         page = self.client.get("posts/1/edit")
         self.assertEqual(page.status_code, 404)
-    
+
         comment_page = self.client.get("posts/1/comment/edit")
         self.assertEqual(comment_page.status_code, 404)
 

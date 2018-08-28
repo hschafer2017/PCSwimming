@@ -18,4 +18,3 @@ urlpatterns = [
         {'post_reset_redirect': reverse_lazy('password_reset_complete')}, name='password_reset_confirm'),
     path('password-reset/complete/', password_reset_complete, name='password_reset_complete'),
     ]
-    
