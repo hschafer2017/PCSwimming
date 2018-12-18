@@ -23,5 +23,30 @@
     <div class="hidden-xs hidden-sm col-md-6">
         <img src="{% static 'images/swimmer.png' %}" class='swimmer'></img>
     </div>
+    <!--INSTRUCTION MODAL-->
+    <div class="modal fade" tabindex="-1" role="dialog" id='instructionModal'>
+        <br><br><br><br><br>
+        <div class="modal-dialog" role="document">
+            <br><br><br>
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" style='text-align: right;' aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title">Registration</h4>
+                </div>
+                <div class="modal-body">
+                    <p class='header'>Site Guidelines: </p>
+                        <p>This site is for educational use only and can only process test card payments. Please, do not use personal details.</p>
+                    <div class="modal-footer">
+                        <button class='btn btn-md login-btn new-post' data-dismiss="modal" style='box-shadow: 0px 0px 25px #d3d3d3'>I Understand!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script>
+        function loadModal() {
+        $('#instructionModal').modal('show');
+            }
+        </script>
 
 {% endblock content %}
