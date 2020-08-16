@@ -17,7 +17,6 @@ from django.contrib import admin
 from django.urls import path
 from django.conf.urls import url, include
 from home import urls as home_urls
-from accounts import urls as accounts_urls
 from posts import urls as posts_urls
 from products import urls as products_urls
 from django.conf.urls.static import static
@@ -32,7 +31,7 @@ from alumni import urls as alumni_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(home_urls)), 
-    path('accounts/', include(accounts_urls)),
+    path('accounts/', include('allauth.urls')),
     path('posts/', include(posts_urls)),
     path('products/', include(products_urls)), 
     path('cart/', include(cart_urls)),

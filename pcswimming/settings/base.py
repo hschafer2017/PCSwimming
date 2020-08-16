@@ -35,6 +35,13 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'django_forms_bootstrap',
+    'django.contrib.sites',
+    # Django allauth
+    'allauth',
+    'allauth.account',
+    'allauth.socialaccount',
+    # Google Account authentication
+    'allauth.socialaccount.providers.google',
     'storages', 
     'home', 
     'accounts', 
@@ -63,7 +70,8 @@ ROOT_URLCONF = 'pcswimming.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [os.path.join(BASE_DIR, 'templates')],
+        'DIRS': [os.path.join(BASE_DIR, 'templates'), 
+                 os.path.join(BASE_DIR, 'templates', 'allauth')],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -72,7 +80,6 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'django.template.context_processors.media',
-                'django.template.context_processors.request',
             ],
         },
     },
@@ -102,6 +109,37 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+AUTHENTICATION_BACKENDS = [
+    'django.contrib.auth.backends.ModelBackend',
+    'allauth.account.auth_backends.AuthenticationBackend',
+]
+
+SITE_ID = 1
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+ACCOUNT_AUTHENTICATION_METHOD = 'username_email'
+ACCOUNT_EMAIL_REQUIRED = True
+ACCOUNT_EMAIL_VERIFICATION = 'mandatory'
+ACCOUNT_USERNAME_MIN_LENGTH = 6
+PASSWORD_MIN_LENGTH = 8
+ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
+ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
+
+
+LOGIN_URL = 'accounts/login/'
+LOGIN_REDIRECT_URL = '/'
+ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
+
+SOCIALACCOUNT_PROVIDERS = {
+    # Login with Google Account
+    'google': {
+        'APP': {
+            'client_id': os.environ.get('GOOGLE_CLIENT_ID'),
+            'secret': os.environ.get('GOOGLE_CLIENT_SECRET'),
+            'key': ''
+        }
+    }
+}
 
 # Internationalization
 # https://docs.djangoproject.com/en/2.0/topics/i18n/

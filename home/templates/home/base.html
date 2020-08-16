@@ -39,7 +39,7 @@
                     <li><a id='links' href="{% url 'get_products' %}">Shop</a></li>
                     {% endif %} 
                     {% if user.is_authenticated %}
-                    <li><a id='links' href="{% url 'logout' %}">Logout</a></li>
+                    <li><a id='links' href="{% url 'account_logout' %}">Logout</a></li>
                     {% endif %}
                     <br>
                 </ul>
