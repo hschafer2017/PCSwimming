@@ -21,8 +21,6 @@ class TestCheckoutViews(TestCase):
     def test_get_checkout_page_as_unathenticated(self):
         page = self.client.get("/checkout/")
         self.assertEqual(page.status_code, 302)
-        redirect = self.client.get("/accounts/login")
-        self.assertEqual(redirect.status_code, 200)
 
     def test_card_accepted(self):
         User.objects.create_user(

@@ -32,7 +32,8 @@ from alumni import urls as alumni_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(home_urls)), 
-    path('accounts/', include(accounts_urls)),
+    path('accounts/', include('django.contrib.auth.urls')),
+    path('register/', include(accounts_urls)),
     path('posts/', include(posts_urls)),
     path('products/', include(products_urls)), 
     path('cart/', include(cart_urls)),
@@ -40,5 +41,4 @@ urlpatterns = [
     path('events/', include(events_urls)),
     path('alumni/', include(alumni_urls)),
     path('media/<path:path>', serve, {'document_root': settings.MEDIA_ROOT }),
-    
 ]
