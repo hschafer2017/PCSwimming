@@ -1,8 +1,13 @@
 # PRODUCTION SETTINGS
 from .base import *
 import dj_database_url
+import os
+try:
+    import env
+except ModuleNotFoundError:
+    pass
 
-SECRET_KEY = os.environ.get('SECRET_KEY')
+SECRET_KEY = os.environ['SECRET_KEY']
 
 # Database
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases

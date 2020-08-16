@@ -7,10 +7,10 @@ from django.contrib.auth.views import password_reset, password_reset_done, passw
 # ACCOUNTS URLS
 
 urlpatterns = [
-    path('login', do_login, name='login'), 
-    path('register_swimmer', register_swimmer, name='register_swimmer'),
-    path('register_alumni', register_alumni, name='register_alumni'), 
-    path('logout', do_logout, name='logout'),
+    path('login/', do_login, name='login'), 
+    path('register_swimmer/', register_swimmer, name='register_swimmer'),
+    path('register_alumni/', register_alumni, name='register_alumni'), 
+    path('logout/', do_logout, name='logout'),
     path('password-reset/', password_reset,
         {'post_reset_redirect': reverse_lazy('password_reset_done')}, name='password_reset'),
     path('password-reset/done/', password_reset_done, name='password_reset_done'),
