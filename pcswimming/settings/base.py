@@ -45,7 +45,7 @@ INSTALLED_APPS = [
     'events',
     'alumni',
     'djangobower',
-    
+
 ]
 
 MIDDLEWARE = [
