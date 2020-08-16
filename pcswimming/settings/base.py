@@ -13,7 +13,7 @@ https://docs.djangoproject.com/en/2.0/ref/settings/
 import os
 try:
     import env
-except ModuleNotFoundError:
+except ImportError:
     pass
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
