@@ -1,12 +1,22 @@
-{% extends "account/base.html" %}
+{% extends "home/base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Verify Your E-mail Address" %}{% endblock %}
 
 {% block content %}
-    <h1>{% trans "Verify Your E-mail Address" %}</h1>
+<br><br><br>
+<br><br><br><br>
 
-    <p>{% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}</p>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="container login">
+        <h3 class='heading'>{% trans "Verify Your E-mail Address" %}</h3>
+        <p id='respond' style='font-size: 16px;'>
+            {% blocktrans %}We have sent an e-mail to you for verification. Follow the link provided to finalize the signup process. Please contact us if you do not receive it within a few minutes.{% endblocktrans %}
+        </p>
+    </div>
+</div>
+
+{% include 'includes/_swimmer_image.html' %}
 
 {% endblock %}
