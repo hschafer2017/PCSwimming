@@ -1,21 +1,35 @@
-{% extends "account/base.html" %}
+{% extends "home/base.html" %}
+{% load bootstrap_tags %}
+{% load static %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Signup" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Up" %}</h1>
+  <br><br><br>
+  <br><br><br><br>
 
-<p>{% blocktrans %}Already have an account? Then please <a href="{{ login_url }}">sign in</a>.{% endblocktrans %}</p>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="container login">
+      <h3 class='heading'>Register</h3>
+      <form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <p id='respond' style='font-size: 16px;'>
+          {% blocktrans %}Already have an account? Then please <a id= 'respond' href="{{ login_url }}">sign in</a>.{% endblocktrans %}
+        </p>
+        <button type="submit" class='btn btn-lg btn-default login-btn adjust'>{% trans "Sign Up" %}</button>
+      </form>
+    </div>
+  <br><br>
+</div>
 
-<form class="signup" id="signup_form" method="post" action="{% url 'account_signup' %}">
-  {% csrf_token %}
-  {{ form.as_p }}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
-  {% endif %}
-  <button type="submit">{% trans "Sign Up" %} &raquo;</button>
-</form>
+{% include 'includes/_swimmer_image.html' %}
+{% include 'includes/_test_modal.html' %}
+
 
 {% endblock %}

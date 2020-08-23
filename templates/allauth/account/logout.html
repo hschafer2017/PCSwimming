@@ -7,17 +7,27 @@
 {% block head_title %}{% trans "Sign Out" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Sign Out" %}</h1>
 
-<p>{% trans 'Are you sure you want to sign out?' %}</p>
+<br><br><br>
+<br><br><br><br>
 
-<form method="post" action="{% url 'account_logout' %}">
-  {% csrf_token %}
-  {% if redirect_field_value %}
-  <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
-  {% endif %}
-  <button type="submit">{% trans 'Sign Out' %}</button>
-</form>
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="container login">
+        <h3 class='heading'>{% trans "Sign Out" %}</h3>
+        <p id='respond' style='font-size: 16px;'>
+            {% trans 'Are you sure you want to sign out?' %}
+        </p>
+        <form method="post" action="{% url 'account_logout' %}">
+            {% csrf_token %}
+            {% if redirect_field_value %}
+            <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}"/>
+            {% endif %}
+            <button type="submit" class='btn btn-lg btn-default login-btn adjust'>{% trans 'Sign Out' %}</button>
+        </form>
+    </div>
+    <br><br>
+</div>
 
+{% include 'includes/_swimmer_image.html' %}
 
 {% endblock %}
