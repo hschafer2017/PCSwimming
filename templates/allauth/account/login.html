@@ -1,0 +1,35 @@
+{% extends 'home/base.html' %}
+{% load bootstrap_tags %}
+{% load static %}
+
+{% load i18n %}
+{% load account socialaccount %}
+
+{% block head_title %}{% trans "Sign In" %}{% endblock %}
+
+{% block content %}
+
+  <br><br><br>
+  <br><br><br><br>
+
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+  <div class="container login">
+      <br><br><br>
+      <h3 class = 'heading' >Login</h3>
+      <form class="login" id="form" method="POST" action="{% url 'account_login' %}">
+        {% csrf_token %}
+        {{ form | as_bootstrap }}
+        {% if redirect_field_value %}
+        <input type="hidden" name="{{ redirect_field_name }}" value="{{ redirect_field_value }}" />
+        {% endif %}
+        <p id="respond">
+          <a class="button secondaryAction" id="respond" href="{% url 'account_reset_password' %}">{% trans "Forgot Password?" %}</a>
+        </p>
+        <p id='respond' style='font-size: 16px;'>{% blocktrans %}Don't Have An Account Yet? <a id= 'respond' href="{{ signup_url }}"> Register as a Swimmer </a> or <a id= 'respond' href="{{ signup_url }}"> Register as an Alumni</a>{% endblocktrans %}</p>
+        <button class='btn btn-lg btn-default login-btn adjust' type="submit">{% trans "Sign In" %}</button>
+      </form>
+  </div>
+</div>
+
+{% endblock %}
