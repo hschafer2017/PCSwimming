@@ -6,3 +6,5 @@ env.py
 media
 db.sqlite3
 htmlcov
+
+local_run.sh

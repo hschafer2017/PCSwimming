@@ -2,7 +2,7 @@
 from .base import *
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'vj#j6)5#b^sr9t3#2zmy**0@a25(z4s7_u^6j@8&8j5##=_vsi'
+SECRET_KEY = os.environ.get('SECRET_KEY')
 
 DATABASES = {
     'default': {
