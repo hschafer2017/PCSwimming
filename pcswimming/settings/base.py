@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     'allauth.socialaccount.providers.google',
     'storages', 
     'home', 
-    'accounts', 
+    'profiles', 
     'posts',
     'products',
     'cart', 
@@ -126,7 +126,7 @@ ACCOUNT_LOGIN_ON_EMAIL_CONFIRMATION = True
 ACCOUNT_EMAIL_CONFIRMATION_EXPIRE_DAYS = 1
 
 
-LOGIN_URL = 'accounts/login/'
+LOGIN_URL = 'profiles/login/'
 LOGIN_REDIRECT_URL = '/'
 ACCOUNT_EMAIL_CONFIRMATION_AUTHENTICATED_REDIRECT_URL = '/'
 
