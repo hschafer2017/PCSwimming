@@ -1,11 +1,26 @@
-{% extends "account/base.html" %}
+{% extends "home/base.html" %}
 
 {% load i18n %}
 
 {% block head_title %}{% trans "Account Inactive" %}{% endblock %}
 
 {% block content %}
-<h1>{% trans "Account Inactive" %}</h1>
 
-<p>{% trans "This account is inactive." %}</p>
+<br><br><br>
+<br><br><br><br>
+
+<div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <div class="container login">
+        <h3 class='heading'>{% trans "Account Inactive" %}</h3>
+        <p id='respond' style='font-size: 16px;'>
+            {% trans "This account is inactive." %}
+        </p>
+        <br>
+        <p id='respond' style='font-size: 16px;'>{% blocktrans %} Want to create a new account? <a id= 'respond' href="{{ signup_url }}"> Register as a Swimmer </a> or <a id= 'respond' href="{{ signup_url }}"> Register as an Alumni</a>{% endblocktrans %}</p>
+    </div>
+    <br><br>
+</div>
+
+{% include 'includes/_swimmer_image.html' %}
+
 {% endblock %}
