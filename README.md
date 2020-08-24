@@ -65,7 +65,7 @@ $ python3 manage.py test
 ```
 To view the coverage report in the command line for the entire project, run the following commands, alternatively, you can run the report for just one app by only including that app in the source: 
 ```
-$ coverage run --source=alumni,accounts,events,home,products,cart,posts,checkout manage.py test
+$ coverage run --source=alumni,profiles,events,home,products,cart,posts,checkout manage.py test
 $ coverage report
 ```
 
