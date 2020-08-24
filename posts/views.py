@@ -4,7 +4,7 @@ from .forms import PostForm, CommentForm
 from django.http import HttpResponseForbidden, HttpResponse
 from django.contrib import messages
 from django.contrib.auth.models import User
-from accounts.models import Swimmer
+from profiles.models import Swimmer
 
 """
 Only swimmers have access to the posts/discussion page. If the user is not

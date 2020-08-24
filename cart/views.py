@@ -3,7 +3,7 @@ from products.models import Product
 from .utils import get_cart_items_and_total
 from django.contrib.auth.models import User
 from django.http import HttpResponseForbidden
-from accounts.models import Swimmer
+from profiles.models import Swimmer
 
 """
 As products and checkout are only accessible to swimmers, the

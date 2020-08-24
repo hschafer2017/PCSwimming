@@ -4,7 +4,7 @@ from .forms import PostForm
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 from django.contrib.messages import get_messages
-from accounts.models import Swimmer, Alumni
+from profiles.models import Swimmer, Alumni
 
 
 class TestPostViews(TestCase):

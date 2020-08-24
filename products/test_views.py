@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import Product
 from django.contrib.auth.models import User
-from accounts.models import Swimmer, Alumni
+from profiles.models import Swimmer, Alumni
 
 
 class TestProductViews(TestCase):

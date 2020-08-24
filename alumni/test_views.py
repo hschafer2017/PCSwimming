@@ -1,7 +1,7 @@
 from django.test import TestCase
 from .models import AlumPost
 from .forms import AlumPostForm
-from accounts.models import Alumni, Swimmer
+from profiles.models import Alumni, Swimmer
 from django.contrib.auth.models import User
 from django.shortcuts import get_object_or_404
 

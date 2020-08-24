@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse, get_object_or_404
 from django.http import HttpResponseForbidden
 from .models import Product
 from django.contrib.auth.models import User
-from accounts.models import Swimmer
+from profiles.models import Swimmer
 
 """
 Only swimmers have access to the products/shop page. If the user is not

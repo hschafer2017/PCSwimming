@@ -2,7 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.http import HttpResponseForbidden
 from .models import AlumPost
 from .forms import AlumPostForm
-from accounts.models import Alumni
+from profiles.models import Alumni
 from django.contrib import messages
 
 

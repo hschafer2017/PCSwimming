@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, get_object_or_404
 from django.http import HttpResponse, HttpResponseForbidden
 from .forms import OrderForm, MakePaymentForm
 from products.models import Product
-from accounts.models import Swimmer
+from profiles.models import Swimmer
 from django.contrib.auth.models import User
 from decimal import Decimal
 from cart.utils import get_cart_items_and_total

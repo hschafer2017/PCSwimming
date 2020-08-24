@@ -2,7 +2,7 @@ from django.test import TestCase
 from products.models import Product
 from django.contrib.auth.models import User
 from django.urls import reverse
-from accounts.models import Swimmer
+from profiles.models import Swimmer
 
 
 class TestCartViews(TestCase):

@@ -3,7 +3,7 @@ from .models import Order, OrderLineItem
 from django.contrib.auth.models import User
 from django.contrib import messages
 from django.contrib.messages import get_messages
-from accounts.models import Swimmer, Alumni
+from profiles.models import Swimmer, Alumni
 
 
 class TestCheckoutViews(TestCase):
@@ -21,7 +21,7 @@ class TestCheckoutViews(TestCase):
     def test_get_checkout_page_as_unathenticated(self):
         page = self.client.get("/checkout/")
         self.assertEqual(page.status_code, 302)
-        redirect = self.client.get("/accounts/login")
+        redirect = self.client.get("/profiles/login")
         self.assertEqual(redirect.status_code, 200)
 
     def test_card_accepted(self):
