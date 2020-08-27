@@ -31,7 +31,7 @@ from alumni import urls as alumni_urls
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('', include(home_urls)), 
-    path('profiles/', include('allauth.urls')),
+    path('accounts/', include('allauth.urls')),
     path('posts/', include(posts_urls)),
     path('products/', include(products_urls)), 
     path('cart/', include(cart_urls)),
